@@ -6,7 +6,7 @@ description:
 ---
 # Filter Components
 
-Datafor offers a variety of filter components to help users analyze data more flexibly.
+Optimibi offers a variety of filter components to help users analyze data more flexibly.
 
 **Filter components include:**
 
@@ -43,4 +43,4 @@ Datafor offers a variety of filter components to help users analyze data more fl
 
 ## Conclusion
 
-Datafor's filter components play a crucial role in data analysis and decision-making. They not only enhance data accessibility and interactivity but also support complex analytical needs and personalized analytical experiences.
+Optimibi's filter components play a crucial role in data analysis and decision-making. They not only enhance data accessibility and interactivity but also support complex analytical needs and personalized analytical experiences.
