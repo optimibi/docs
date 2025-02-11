@@ -4,7 +4,7 @@ import { defineNoteConfig, defineNotesConfig } from "vuepress-theme-plume";
 
 const documentationNote = defineNoteConfig({
 	dir: "documenation",
-	link: "/documentation/",
+	link: "/documentation",
 	sidebar: [
 		{
 			text: "Welcome",
@@ -113,7 +113,7 @@ const documentationNote = defineNoteConfig({
 
 const apiNote = defineNoteConfig({
 	dir: "api",
-	link: "/api/",
+	link: "/api",
 	sidebar: [
 		{
 			text: "System",
@@ -146,7 +146,7 @@ export const enNotes = defineNotesConfig({
 
 const documentationNoteZH = defineNoteConfig({
 	dir: "zh/documenation",
-	link: "/documenation/",
+	link: "/documenation",
 	sidebar: [
 		{
 			text: "欢迎",
@@ -255,7 +255,7 @@ const documentationNoteZH = defineNoteConfig({
 
 const apiNoteZH = defineNoteConfig({
 	dir: "zh/api",
-	link: "/api/",
+	link: "/api",
 	sidebar: [
 		{
 			text: "System",
