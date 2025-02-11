@@ -42,7 +42,7 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Visualizer",
+			text: "Visualization",
 			collapsed: true,
 			prefix: "/documentation/Visualizer/",
 			items: [
