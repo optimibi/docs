@@ -1,6 +1,8 @@
 import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
 import { plumeTheme } from "vuepress-theme-plume";
+import fs from "fs-extra";
+import path from "path";
 
 export default defineUserConfig({
 	base: "/",
@@ -16,6 +18,13 @@ export default defineUserConfig({
 		// 	lang: "zh-CN",
 		// 	description: "Optimibi documentation",
 		// },
+	},
+
+	onGenerated: async app => {
+		let sourceDir = path.resolve(__dirname, "../../CNAME");
+		let destDir = path.resolve(app.dir.dest(), "CNAME");
+		await fs.copy(sourceDir, destDir);
+		console.log(`>>> Copy favicon.ico and plume.svg to ${app.dir.dest()}`);
 	},
 
 	head: [

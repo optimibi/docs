@@ -5,7 +5,7 @@ export const enNavbar = defineNavbarConfig([
 		text: "Documentations",
 		icon: "mdi:idea",
 		link: "/documentation/intro.md",
-		activeMatch: "^/documentation/",
+		activeMatch: "^/documentation/|^/",
 	},
 	{
 		text: "API",
