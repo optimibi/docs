@@ -68,17 +68,7 @@ const documentationNote = defineNoteConfig({
 			text: "Analysis",
 			collapsed: true,
 			prefix: "/documentation/Analysis/",
-			items: [
-				{
-					text: "Exploratory Analysis",
-					link: "/documentation/Visualizer/Exploratory Analysis.md",
-				},
-				{
-					text: "Filter Components",
-					link: "/documentation/Visualizer/Filter Components.md",
-				},				
-
-			],
+			items: "auto",
 		},
 		{
 			text: "Share",

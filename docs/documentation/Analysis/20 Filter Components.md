@@ -1,6 +1,6 @@
 ---
 title: Filter Components 
-permalink: /documentation/Filter Components/
+permalink: /documentation/Analysis/Filter Components/
 tags:
 description: 
 ---

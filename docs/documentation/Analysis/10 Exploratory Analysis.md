@@ -1,10 +1,9 @@
 ---
 title: Exploratory Analysis 
-permalink: /documentation/Exploratory Analysis/
+permalink: /documentation/Analysis/Exploratory Analysis/
 tags:
 description: 
 ---
-# Exploratory Analysis
 
 ## Overview
 
