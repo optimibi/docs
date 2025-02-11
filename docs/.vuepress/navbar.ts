@@ -2,7 +2,7 @@ import { defineNavbarConfig } from "vuepress-theme-plume";
 
 export const enNavbar = defineNavbarConfig([
 	{
-		text: "Documentations",
+		text: "Documentation",
 		link: "/documentation/intro.md",
 		activeMatch: "^/documentation/|^/",
 	},
@@ -11,6 +11,11 @@ export const enNavbar = defineNavbarConfig([
 		link: "/api/intro.md",
 		activeMatch: "^/api/",
 	},
+	{
+		text: "Release notes",
+		link: "/release/intro.md",
+		activeMatch: "^/release/",
+	},	
 	// {
 	// 	text: "Blog",
 	// 	link: "/blog/intro.md",
@@ -26,5 +31,5 @@ export const zhNavbar = defineNavbarConfig([
 		activeMatch: "^/documentation/",
 	},
 	{ text: "接口", link: "/api/intro.md", activeMatch: "^/api/" },
-	//{ text: "博客", link: "/blog/intro.md", activeMatch: "^/blog/" },
+	//{ text: "博客", link: "/blog/intro.md", activeMatch: "^/release/" },
 ]);
