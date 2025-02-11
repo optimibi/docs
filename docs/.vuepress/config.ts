@@ -90,6 +90,10 @@ export default defineUserConfig({
 		//   title: true,      // 是否生成标题
 		// },
 
+		lastUpdated: false,
+
+		contributors: false,
+
 		plugins: {
 			/**
 			 * Shiki 代码高亮

@@ -3,8 +3,6 @@ title: Welcome
 createTime: 2025/02/10 17:14:56
 permalink: /documentation/TK3azSid/
 author: Optimibi
-lastUpdated: false
-contributors: false
 tags:
   - Start
   - Optimibi
