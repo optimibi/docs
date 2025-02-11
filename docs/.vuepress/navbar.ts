@@ -3,7 +3,6 @@ import { defineNavbarConfig } from "vuepress-theme-plume";
 export const enNavbar = defineNavbarConfig([
 	{
 		text: "Documentations",
-		icon: "mdi:idea",
 		link: "/documentation/intro.md",
 		activeMatch: "^/documentation/|^/",
 	},
@@ -11,7 +10,6 @@ export const enNavbar = defineNavbarConfig([
 		text: "API",
 		link: "/api/intro.md",
 		activeMatch: "^/api/",
-		icon: "carbon:idea",
 	},
 	// {
 	// 	text: "Blog",

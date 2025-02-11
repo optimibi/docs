@@ -24,6 +24,8 @@
   --vp-c-text-2: rgba(60, 60, 67, 0.78);
   --vp-c-text-3: rgba(60, 60, 67, 0.56);
   */
+
+  --vp-nav-logo-height:32px;
 }
 
 /** 深色模式 */
@@ -64,4 +66,7 @@ nav#SidebarNav div.group>div{
 img{
   border-radius: 4px!important;
   position: relative;
+}
+.vp-link.no-icon.link.title{
+  justify-content: center;
 }
