@@ -10,12 +10,7 @@ const documentationNote = defineNoteConfig({
 			text: "Welcome",
 			link: "/documentation/intro.md",
 		},
-		{
-			text: "Update",
-			collapsed: true,
-			prefix: "/documentation/Update/",
-			items: "auto",
-		},
+
 		{
 			text: "Start",
 			collapsed: true,
@@ -73,7 +68,17 @@ const documentationNote = defineNoteConfig({
 			text: "Analysis",
 			collapsed: true,
 			prefix: "/documentation/Analysis/",
-			items: "auto",
+			items: [
+				{
+					text: "Exploratory Analysis",
+					link: "/documentation/Visualizer/Exploratory Analysis.md",
+				},
+				{
+					text: "Filter Components",
+					link: "/documentation/Visualizer/Filter Components.md",
+				},				
+
+			],
 		},
 		{
 			text: "Share",
