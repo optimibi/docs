@@ -8,10 +8,17 @@ on:
 jobs:
  build-deploy:
   runs-on: ubuntu-latest
-
+  permissions:
+   contents: write # 允许 Git 操作（push、commit）
+   pages: write # 如果涉及 GitHub Pages 部署，需加此权限
   steps:
-   - name: 🚀 Checkout Repository
-     uses: actions/checkout@v4
+   - uses: actions/checkout@v2
+   - name: Config
+     # with:
+     #   persist-credentials: false
+     run: |
+      git config --global user.email "meishenlieshou@gmail.com"
+      git config --global user.name "meishenlieshou"
 
    - name: ⚡ Set up Node.js
      uses: actions/setup-node@v4
@@ -40,11 +47,6 @@ jobs:
 
    - name: 🔨 Build VuePress
      run: npm run docs:build # VuePress 默认构建命令
-
-   #  - name: Delete gh-pages branch
-   #    run: |
-   #     git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/optimibi/docs.git
-   #     git push origin --delete gh-pages
 
    - name: 🚀 Deploy to GitHub Pages
      uses: peaceiris/actions-gh-pages@v4
