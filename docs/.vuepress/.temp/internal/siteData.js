@@ -1,4 +1,4 @@
-export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"en-US\",\"title\":\"\",\"description\":\"\",\"head\":[[\"link\",{\"rel\":\"icon\",\"type\":\"image/png\",\"href\":\"https://theme-plume.vuejs.press/favicon-32x32.png\"}]],\"locales\":{\"/\":{\"title\":\"OPTIMIBI\",\"lang\":\"en-US\",\"description\":\"Optimibi documentation\"}}}")
+export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"en-US\",\"title\":\"\",\"description\":\"\",\"head\":[[\"link\",{\"rel\":\"icon\",\"type\":\"image/png\",\"href\":\"/logo.png\"}]],\"locales\":{\"/\":{\"title\":\"OPTIMIBI\",\"lang\":\"en-US\",\"description\":\"Optimibi documentation\"}}}")
 
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()

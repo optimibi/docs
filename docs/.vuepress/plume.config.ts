@@ -56,7 +56,7 @@ export default defineThemeConfig({
 			 * @see https://theme-plume.vuejs.press/config/basic/#profile
 			 */
 			profile: {
-				avatar: "https://theme-plume.vuejs.press/plume.png",
+				avatar: "/plume.svg",
 				name: "Optimibi",
 				description: "Optimibi documentation",
 				// circle: true,
