@@ -61,3 +61,7 @@ nav#SidebarNav div.group>section,
 nav#SidebarNav div.group>div{
   padding-bottom: 5px!important;
 }
+img{
+  border-radius: 4px!important;
+  position: relative;
+}
