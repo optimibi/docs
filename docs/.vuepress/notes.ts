@@ -89,9 +89,9 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Q&A",
+			text: "FAQs",
 			collapsed: true,
-			prefix: "/documentation/Q&A/",
+			prefix: "/documentation/FAQs/",
 			items: "auto",
 		},
 		{
