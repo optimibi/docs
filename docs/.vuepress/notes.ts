@@ -62,7 +62,19 @@ const documentationNote = defineNoteConfig({
 					prefix: "/documentation/Visualization/Chart/",
 					items: "auto",
 				},
-			items: "auto",				
+				{
+					text: "Welcome",
+					link: "/documentation/Visualization/40_图表组件的工具提示.md",
+				},
+				{
+					text: "Welcome",
+					link: "/documentation/Visualization/81 X 轴类型设置：连续和类别.md",
+				},
+				{
+					text: "Welcome",
+					link: "/documentation/Visualization/110 条件颜色设置.md",
+				},				
+				
 			],
 		},
 		{
