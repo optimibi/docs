@@ -58,7 +58,7 @@ const documentationNote = defineNoteConfig({
 		{
 			text: "Embeded",
 			collapsed: true,
-			prefix: "/documentation/Embeded/",
+			prefix: "/documentation/Embedded/",
 			items: "auto",
 		},
 		{
