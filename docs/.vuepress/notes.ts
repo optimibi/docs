@@ -71,9 +71,9 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Share",
+			text: "Embeded",
 			collapsed: true,
-			prefix: "/documentation/Share/",
+			prefix: "/documentation/Embeded/",
 			items: "auto",
 		},
 		{
