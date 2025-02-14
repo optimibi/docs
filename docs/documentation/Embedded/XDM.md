@@ -1,6 +1,6 @@
 ---
 title: Embedding Reports Using XDM
-permalink: /documentation/System/Embedding-Reports-Using-XDM/
+permalink: /documentation/Embedded/Embedding-Reports-Using-XDM/
 tags:
 description: 
 ---
