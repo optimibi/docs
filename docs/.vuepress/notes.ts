@@ -46,8 +46,6 @@ const documentationNote = defineNoteConfig({
 			collapsed: true,
 			prefix: "/documentation/Visualization/",
 			items: "auto",				
-				
-
 		},
 		{
 			text: "Analysis",
@@ -56,7 +54,7 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Embeded",
+			text: "Embedded",
 			collapsed: true,
 			prefix: "/documentation/Embedded/",
 			items: "auto",
