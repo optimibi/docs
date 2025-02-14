@@ -46,18 +46,17 @@ Datafor BI allows multiple fields to be combined into a **composite key** to est
 ### Step 1:
 Select the desired model and open the **Model Editor**.  
 
-![1739507155878](D:\github_projects\docs-optimibi\docs\documentation\Model\images\1739507155878.png)  
-
+<div align="left"><img src="./images/1739507155878.png"  /></div>
 
 ### Step 2: 
 Drag and drop fields to connect **primary keys (PKs)** and **foreign keys (FKs)** to establish relationships between tables.  
 
-![Table Relationships](D:\github_projects\docs-optimibi\docs\documentation\Model\images\w5pfw-7adbc-1739507845203-1.gif)
+<div align="left"><img src="./images/w5pfw-7adbc-1739507845203-1.gif"  /></div>
 
 ### Step 3：
 Define join types, primary and foreign key fields, and relationship types based on the data model.  
 
-![1739507391896](D:\github_projects\docs-optimibi\docs\documentation\Model\images\1739507391896.png)
+<div align="left"><img src="./images/1739507391896.png"  /></div>
 
 ### Step 4: 
 - Click **OK** to close the relationship settings.  
