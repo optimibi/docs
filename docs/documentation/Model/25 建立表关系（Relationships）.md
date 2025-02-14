@@ -24,7 +24,7 @@ When establishing table relationships, the following **four types of joins** are
   <div align="left"><img src="./images/1739506840470(1).png"  width="60%" /></div>
 
 ### **Supported Relationship Types**  
-Supports **one-to-one (1:1)** and **one-to-many (1:N)** relationships, determined by the **"Unique Key"** toggle:  
+Supports **one-to-one (1:1)** and **one-to-many (1:N)** relationships, determined by the **"Key values are unique "** toggle:  
 
 - **Enabled** → The field has unique values, representing the **"1"** side.  
 
