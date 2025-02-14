@@ -70,6 +70,10 @@ const documentationNote = defineNoteConfig({
 					text: "Conditional Colors",
 					link: "/documentation/Visualization/110 条件颜色设置.md",
 				},	
+				{
+					text: "Parameter-Driven Tab Switching",
+					link: "/documentation/Visualization/120 参数驱动Tabs的显示.md",
+				},				
 			],				
 		},
 		{
