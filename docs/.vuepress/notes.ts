@@ -58,6 +58,7 @@ const documentationNote = defineNoteConfig({
 					prefix: "/documentation/Visualization/Chart/",
 					items: "auto",
 				},
+				
 		        items: "auto",
 			],				
 		},
