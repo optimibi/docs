@@ -44,24 +44,25 @@ const documentationNote = defineNoteConfig({
 		{
 			text: "Visualization",
 			collapsed: true,
-			prefix: "/documentation/Visualizer/",
+			prefix: "/documentation/Visualization/",
 			items: [
 				{
 					text: "Welcome",
-					link: "/documentation/Visualizer/intro.md",
+					link: "/documentation/Visualization/intro.md",
 				},
 				{
 					text: "Page",
 					collapsed: true,
-					prefix: "/documentation/Visualizer/Page/",
+					prefix: "/documentation/Visualization/Page/",
 					items: "auto",
 				},
 				{
 					text: "Chart",
 					collapsed: true,
-					prefix: "/documentation/Visualizer/Chart/",
+					prefix: "/documentation/Visualization/Chart/",
 					items: "auto",
 				},
+			items: "auto",				
 			],
 		},
 		{
