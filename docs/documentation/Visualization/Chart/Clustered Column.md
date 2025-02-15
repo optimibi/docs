@@ -38,11 +38,11 @@ Optimibi provides a range of customization options for the Clustered Column Char
 
 *Insert an image of the Clustered Column Chart interface here*  
 
-![Clustered Column Chart](./images/clustered_column_chart.png)  
+
 
 *Insert an image showing grouped data representation*  
 
-![Grouped Data in Clustered Column Chart](./images/grouped_data.png)  
+
 
 ## Summary  
 
