@@ -3,7 +3,6 @@ title: SAML2 Authentication
 permalink: /docs/saml2-auth/
 tags: [SAML, Authentication]
 description: "Guide to configuring SAML2 authentication in Optimibi"
-markdown: kramdown
 ---
 
 
@@ -42,8 +41,8 @@ The following fields must be configured to enable SAML2 authentication:
 
 | Parameter           | Description                                                  |
 | ------------------- | ------------------------------------------------------------ |
-| **IdP SSO URL**     | The Single Sign-On (SSO) URL provided by the IdP. Example: `https://login.microsoftonline.com/9fdff6f1-4338...`. |
-| **IdP Entity ID**   | The unique identifier (Entity ID) of the IdP. Example: `https://sts.windows.net/9fdff6f1-4338...`. |
+| **IdP SSO URL**     | The Single Sign-On (SSO) URL provided by the IdP. Example: `https://login.microsoftonline.com/9fdff6f1-4338...` |
+| **IdP Entity ID**   | The unique identifier (Entity ID) of the IdP. Example: `https://sts.windows.net/9fdff6f1-4338...` |
 | **IdP Certificate** | The X.509 certificate issued by the IdP to verify SAML responses. Ensure it includes `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. |
 
 ------
