@@ -4,7 +4,6 @@ permalink: /documentation/System/LDAP/
 tags:
 description: 
 ---
-# **LDAP**
 
 ## **Overview**
 
