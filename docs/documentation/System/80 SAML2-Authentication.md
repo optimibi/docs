@@ -1,6 +1,6 @@
 ---
 title: SAML2 Authentication
-permalink: /docs/saml2-auth/
+permalink: /documentation/System/SAML2/
 tags: [SAML, Authentication]
 description: "Guide to configuring SAML2 authentication in Optimibi"
 ---
