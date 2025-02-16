@@ -9,7 +9,6 @@ description: "My Account"
 
 The **My Account** section in OptimiBI allows users to manage their **personal information, language preferences, and homepage settings**. This guide explains how to navigate and configure these settings.
 
-------
 
 ## **1. Accessing My Account**
 
@@ -21,7 +20,6 @@ To access your account settings:
 
 <div align="left"><img src="./images/1739691734888(1).png" width="30%"/></div>
 
-------
 
 ## **2. Managing Personal Information**
 
@@ -44,7 +42,6 @@ In the **Personal Information** section, users can view and update their basic p
 1. Modify the necessary fields.
 2. Click **"Save"** to confirm changes.
 
-------
 
 ## **3. Changing Language Preferences**
 
@@ -60,7 +57,6 @@ Users can set their preferred language for the OptimiBI interface.
 
 > **Note**: The selected language will be applied immediately to the system interface.
 
-------
 
 ## **4. Configuring the Homepage**
 
