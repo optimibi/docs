@@ -5,8 +5,6 @@ tags: [Account, Language, Password]
 description: "My Account"
 ---
 
-### **My Account - User Settings in OptimiBI**
-
 ## **Overview**
 
 The **My Account** section in OptimiBI allows users to manage their **personal information, language preferences, and homepage settings**. This guide explains how to navigate and configure these settings.
@@ -20,7 +18,8 @@ To access your account settings:
 1. Click on the **profile icon** at the top-right corner of the interface.
 2. Select **"My Account"** from the dropdown menu.
 
-<div align="left"><img src="./images/1739691351786.png" width="80%"/></div>
+
+<div align="left"><img src="./images/1739691734888(1).png" width="30%"/></div>
 
 ------
 
@@ -28,7 +27,7 @@ To access your account settings:
 
 In the **Personal Information** section, users can view and update their basic profile details.
 
-<div align="left"><img src="./images/1739691368238.png" width="80%"/></div>
+<div align="left"><img src="./images/1739691822118.png" width="60%"/></div>
 
 ### **Editable Fields:**
 
@@ -51,7 +50,7 @@ In the **Personal Information** section, users can view and update their basic p
 
 Users can set their preferred language for the OptimiBI interface.
 
-<div align="left"><img src="./images/1739691382695.png" width="80%"/></div>
+<div align="left"><img src="./images/1739691849012.png" width="50%"/></div>
 
 ### **Steps to Change Language:**
 
@@ -67,12 +66,12 @@ Users can set their preferred language for the OptimiBI interface.
 
 Users can customize their **default homepage** after logging in.
 
-<div align="left"><img src="./images/1739691400000.png" width="80%"/></div>
+<div align="left"><img src="./images/1739691953959.png" width="67%" /></div>
 
 ### **Steps to Set a Custom Homepage:**
 
 1. Navigate to **"Home page"** in the left menu.
 2. Toggle **"Customize"** to enable customization.
-3. Select a **Homepage address** from the dropdown (e.g., Visualizer Report).
-4. Choose a specific **default page**.
+3. Select a **Homepage address** from the dropdown (Report page or URL).
+4. Choose a specific **default page** or Input **URL**
 5. Click **"Apply"** to save your settings.
