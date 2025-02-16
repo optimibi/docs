@@ -5,6 +5,7 @@ tags:
 description: 
 ---
 
+
 ## **Overview**
 
 SAML2 (Security Assertion Markup Language 2.0) enables **single sign-on (SSO)** authentication, allowing users to log into **Optimibi** using an **Identity Provider (IdP)** such as **Microsoft Azure AD, Okta, or other SAML2-supported providers**.
