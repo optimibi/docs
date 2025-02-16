@@ -9,7 +9,7 @@ export default defineUserConfig({
 	lang: "en-US",
 	locales: {
 		"/": {
-			title: "OPTIMIBI",
+			title: "optimibi",
 			lang: "en-US",
 			description: "Optimibi documentation",
 		},

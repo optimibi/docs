@@ -10,12 +10,7 @@ const documentationNote = defineNoteConfig({
 			text: "Welcome",
 			link: "/documentation/intro.md",
 		},
-		{
-			text: "Update",
-			collapsed: true,
-			prefix: "/documentation/Update/",
-			items: "auto",
-		},
+
 		{
 			text: "Start",
 			collapsed: true,
@@ -47,27 +42,39 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Visualizer",
+			text: "Visualization",
 			collapsed: true,
-			prefix: "/documentation/Visualizer/",
-			items: [
-				{
-					text: "Welcome",
-					link: "/documentation/Visualizer/intro.md",
-				},
+			prefix: "/documentation/Visualization/",
+            items: [
 				{
 					text: "Page",
 					collapsed: true,
-					prefix: "/documentation/Visualizer/Page/",
+					prefix: "/documentation/Visualization/Page/",
 					items: "auto",
 				},
 				{
 					text: "Chart",
 					collapsed: true,
-					prefix: "/documentation/Visualizer/Chart/",
+					prefix: "/documentation/Visualization/Chart/",
 					items: "auto",
 				},
-			],
+				{
+					text: "Tooltips",
+					link: "/documentation/Visualization/40_图表组件的工具提示.md",
+				},
+				{
+					text: "X Axis Type Settings - Continuous and Categorical",
+					link: "/documentation/Visualization/81 X 轴类型设置：连续和类别.md",
+				},
+				{
+					text: "Conditional Colors",
+					link: "/documentation/Visualization/110 条件颜色设置.md",
+				},	
+				{
+					text: "Parameter-Driven Tab Switching",
+					link: "/documentation/Visualization/120 参数驱动Tabs的显示.md",
+				},				
+			],				
 		},
 		{
 			text: "Analysis",
@@ -76,9 +83,9 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Share",
+			text: "Embedded",
 			collapsed: true,
-			prefix: "/documentation/Share/",
+			prefix: "/documentation/Embedded/",
 			items: "auto",
 		},
 		{
@@ -94,9 +101,9 @@ const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Q&A",
+			text: "FAQs",
 			collapsed: true,
-			prefix: "/documentation/Q&A/",
+			prefix: "/documentation/FAQs/",
 			items: "auto",
 		},
 		{
@@ -191,7 +198,7 @@ const documentationNoteZH = defineNoteConfig({
 		{
 			text: "可视化",
 			collapsed: true,
-			prefix: "/documentation/Visualizer/",
+			prefix: "/documentation/Visualization/",
 			items: "auto",
 		},
 		{

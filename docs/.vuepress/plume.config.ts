@@ -65,7 +65,7 @@ export default defineThemeConfig({
 			},
 			home: "https://www.optimibi.com",
 			footer: {
-				message: "OPTIMIBI Documentation",
+				message: "Optimibi Documentation",
 				copyright: "Copyright ©2025 Optimibi All rights reserved.",
 			},
 
