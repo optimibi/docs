@@ -12,8 +12,6 @@ SAML2 (Security Assertion Markup Language 2.0) enables **single sign-on (SSO)** 
 
 This guide provides step-by-step instructions to configure SAML2 authentication within Optimibi.
 
-------
-
 ## **1. Accessing SAML2 Configuration**
 
 1. **Log in** to the **Optimibi** admin panel.
