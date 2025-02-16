@@ -64,6 +64,7 @@ nav#SidebarNav div.group>div{
   padding-bottom: 5px!important;
 }
 img{
-  border-radius: 4px!important;
+  border-radius: 6px!important;
   position: relative;
+  border: 1px solid #f0f0f0;
 }
