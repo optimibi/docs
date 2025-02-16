@@ -198,7 +198,7 @@ const documentationNoteZH = defineNoteConfig({
 		{
 			text: "可视化",
 			collapsed: true,
-			prefix: "/documentation/Visualizer/",
+			prefix: "/documentation/Visualization/",
 			items: "auto",
 		},
 		{
