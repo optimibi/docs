@@ -1,10 +1,10 @@
 ---
-title: Filter Components 
-permalink: /documentation/Analysis/Filter Components/
+title: Filters
+permalink: /documentation/Visualization/Filter Components/
 tags:
 description: 
 ---
-# Filter Components
+# Filters
 
 Optimibi offers a variety of filter components to help users analyze data more flexibly.
 

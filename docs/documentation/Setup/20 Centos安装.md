@@ -1,9 +1,9 @@
 ---
-title: OptimiBI Installation (CentOS)
+title: Optimi BI Installation (CentOS)
 permalink: /documentation/Setup/OptimiBI-Installation-CentOS/
 ---
 
-# OptimiBI Installation (CentOS)
+# Optimi BI Installation (CentOS)
 
 **Step 1. Switch to the root user**
 
@@ -21,11 +21,11 @@ groupadd optimibi
 
 <div align="left"><img src="./images/image-20220829172418679.png"  /></div>
 
-**Step 3. Create the 'OptimiBI' user, add it to the 'OptimiBI' user group, and set the user password to 'OptimiBI' as well.**
+**Step 3. Create the 'optimibi' user, add it to the 'OptimiBI' user group, and set the user password to 'optimibi' as well.**
 
 ```
-adduser OptimiBI -g OptimiBI
-passwd OptimiBI
+adduser optimibi -g optimibi
+passwd optimibi
 ```
 
 <div align="left"><img src="./images/image-20220829172434849.png"  /></div>
