@@ -17,8 +17,8 @@ Optimibi offers a variety of filter components to help users analyze data more f
 - Hierarchical filter
 - Date
 - Date range
-- Timeline
-- Range timeline
+- TimeAxis
+- TimeAxis range
 - Numeric range filter
 - Pager
 - Search
