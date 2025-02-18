@@ -51,11 +51,17 @@ export const documentationNote = defineNoteConfig({
 					items: "auto",
 				},
 				{
-					text: "Chart",
+					text: "Charts",
 					collapsed: true,
 					prefix: "/documentation/Visualization/Chart/",
 					items: "auto",
 				},
+				{
+					text: "Filters",
+					collapsed: true,
+					prefix: "/documentation/Visualization/Filters/",
+					items: "auto",
+				},				
 				{
 					text: "Add Charts",
 					link: "/documentation/Visualization/10 添加图表.md",
