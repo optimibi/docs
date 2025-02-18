@@ -59,6 +59,14 @@ const documentationNote = defineNoteConfig({
 					items: "auto",
 				},
 				{
+					text: "Add Charts",
+					link: "/documentation/Visualization/10 添加图表.md",
+				},
+				{
+					text: "Add Filters",
+					link: "/documentation/Visualization/20 添加筛选器.md",
+				},				
+				{
 					text: "Tooltips",
 					link: "/documentation/Visualization/40_图表组件的工具提示.md",
 				},
@@ -73,7 +81,11 @@ const documentationNote = defineNoteConfig({
 				{
 					text: "Parameter-Driven Tab Switching",
 					link: "/documentation/Visualization/120 参数驱动Tabs的显示.md",
-				},				
+				},	
+				{
+					text: "Export",
+					link: "/documentation/Visualization/130 导出.md",
+				},					
 			],				
 		},
 		{
