@@ -1,9 +1,8 @@
 ---
-title: List Box
-permalink: /documentation/Visualization/List-Box/
-tags:
-description: 
+title:  List Box
+permalink:  /documentation/Visualization/List-Box/
 ---
+
 
 # List Box
 
