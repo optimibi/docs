@@ -1,6 +1,6 @@
 ---
 title: Filters
-permalink: /documentation/Visualization/Filter Components/
+permalink: /documentation/Visualization/Filters/
 tags:
 description: 
 ---
@@ -40,7 +40,3 @@ Optimibi offers a variety of filter components to help users analyze data more f
 - Providing Personalized Analytical Experience
 
   Different users have different needs and focuses on data. Filter components allow users to customize data views based on their specific analytical requirements.
-
-## Conclusion
-
-Optimibi's filter components play a crucial role in data analysis and decision-making. They not only enhance data accessibility and interactivity but also support complex analytical needs and personalized analytical experiences.
