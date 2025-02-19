@@ -1,8 +1,8 @@
 ---
-title: Basic Operations for Page Design
+title: Logout
 permalink: /api/Authentication/Logout/
 tags: ["api","Authentication"]
-description: "Logout"
+description: 
 ---
 
 ## GET Logout
