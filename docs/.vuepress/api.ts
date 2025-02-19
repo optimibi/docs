@@ -5,8 +5,9 @@ export const apiNote = defineNoteConfig({
 	link: "/api",
 	sidebar: [
 		{
-			text: "System",
+			text: "Authentication",
 			collapsed: true,
+			prefix: "/api/Authentication/",
 			items: "auto",
 		},
 		{
@@ -27,8 +28,9 @@ export const apiNoteZH = defineNoteConfig({
 	link: "/api",
 	sidebar: [
 		{
-			text: "System",
+			text: "Authentication",
 			collapsed: true,
+			prefix: "/api/Authentication/",
 			items: "auto",
 		},
 		{
