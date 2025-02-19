@@ -9,6 +9,9 @@ description:
 
 GET /Logout
 
+### Description
+User can log out of the application and redirects to the specified location.
+
 > Response Examples
 
 > 302 Response
@@ -19,5 +22,11 @@ GET /Logout
 |---|---|----------------------------|---|
 |302|[Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)|Location /datafor/index.jsp |Inline|
 
-### Responses Data Schema
+### Headers
+
+#### Request Headers
+- **Cookie**: The session cookie to identify the user's session.
+
+#### Response Headers
+- **Location**: The URL to which the client is redirected after logout.
 

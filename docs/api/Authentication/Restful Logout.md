@@ -9,6 +9,9 @@ description:
 
 GET /plugin/datafor/api/extension/auth/logout
 
+### Description
+User can log out of the application and get the result in JSON format.
+
 > Response Examples
 
 ```json
