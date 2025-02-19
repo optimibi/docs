@@ -1,6 +1,6 @@
 ---
 title: Restful Logout
-permalink: /api/Authentication/Restful-Logout/
+permalink: /api/Authentication/Restful Logout/
 tags: ["api","Authentication"]
 description: 
 ---

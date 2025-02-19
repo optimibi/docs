@@ -1,6 +1,6 @@
 ---
 title: Get user types
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Get user types/
 tags: ["api","Users"]
 description: 
 ---

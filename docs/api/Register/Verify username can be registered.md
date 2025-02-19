@@ -1,6 +1,6 @@
 ---
 title: Verify username can be registered
-permalink: /api/Authentication/Users/Register/
+permalink: /api/Register/Verify username can be registered/
 tags: ["api","Users","Register"]
 description: 
 ---

@@ -1,6 +1,6 @@
 ---
 title: Register
-permalink: /api/Authentication/Users/Register/
+permalink: /api/Register/Register/
 tags: ["api","Users","Register"]
 description: 
 ---

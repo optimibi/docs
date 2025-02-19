@@ -1,6 +1,6 @@
 ---
 title: Get Users
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Get Users/
 tags: ["api","Users"]
 description: 
 ---

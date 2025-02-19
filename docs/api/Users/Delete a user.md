@@ -1,6 +1,6 @@
 ---
 title: Delete a user
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Delete a user/
 tags: ["api","Users"]
 description: 
 ---

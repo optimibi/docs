@@ -1,6 +1,6 @@
 ---
 title: Get register code
-permalink: /api/Authentication/Users/Register/
+permalink: /api/Register/Get register code/
 tags: ["api","Users","Register"]
 description: 
 ---

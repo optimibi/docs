@@ -1,6 +1,6 @@
 ---
 title: Get user's own information
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Get user's own information/
 tags: ["api","Users"]
 description: 
 ---

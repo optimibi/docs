@@ -1,6 +1,6 @@
 ---
 title: Restful Login
-permalink: /api/Authentication/REstful Login/
+permalink: /api/Authentication/Restful Login/
 tags: ["api","Authentication"]
 description: 
 ---

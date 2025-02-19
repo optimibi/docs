@@ -1,6 +1,6 @@
 ---
 title: Get users for grant
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Get users for grant/
 tags: ["api","Users"]
 description: 
 ---

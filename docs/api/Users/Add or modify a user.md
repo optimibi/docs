@@ -1,6 +1,6 @@
 ---
 title: Add or modify a user
-permalink: /api/Authentication/Users/
+permalink: /api/Users/Add or modify a user/
 tags: ["api","Users"]
 description: 
 ---

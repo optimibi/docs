@@ -1,6 +1,6 @@
 ---
 title: Verify register code
-permalink: /api/Authentication/Users/Register/
+permalink: /api/Register/Verify register code/
 tags: ["api","Users","Register"]
 description: 
 ---

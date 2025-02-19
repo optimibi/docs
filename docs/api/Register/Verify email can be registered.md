@@ -1,6 +1,6 @@
 ---
 title: Verify email can be registered
-permalink: /api/Authentication/Users/Register/
+permalink: /api/Register/Verify email can be registered/
 tags: ["api","Users","Register"]
 description: 
 ---
