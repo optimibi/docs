@@ -1,9 +1,9 @@
 ---
-title: Optimi BI Installation (CentOS)
+title: Optimibi Installation (CentOS)
 permalink: /documentation/Setup/OptimiBI-Installation-CentOS/
 ---
 
-# Optimi BI Installation (CentOS)
+# Optimibi Installation (CentOS)
 
 **Step 1. Switch to the root user**
 

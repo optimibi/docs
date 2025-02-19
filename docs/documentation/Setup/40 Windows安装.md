@@ -1,9 +1,9 @@
 ---
-title: Optimi BI Installation (Windows)
+title: Optimibi Installation (Windows)
 permalink: /documentation/Setup/OptimiBI-Installation-windows/
 ---
 
-# Optimi BI Installation (Windows)
+# Optimibi Installation (Windows)
 
 Log in to Windows as an **Administrator**.
 

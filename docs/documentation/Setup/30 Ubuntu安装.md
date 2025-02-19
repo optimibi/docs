@@ -1,9 +1,9 @@
 ---
-title: Optimi BI Installation (Ubuntu)
+title: Optimibi Installation (Ubuntu)
 permalink: /documentation/Setup/OptimiBI-Installation-Ubuntu/
 ---
 
-# Optimi BI Installation (Ubuntu)
+# Optimibi Installation (Ubuntu)
 ## Installation Steps
 
 **Step 1. Switch to the root user**
