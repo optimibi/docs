@@ -128,67 +128,68 @@ export const apiNote = defineNoteConfig({
 			text: "Data Security",
 			collapsed: true,
 			prefix: "/api/Data Security/",
-			items: "auto",
-		},
-		{
-			text: "Rows",
-			collapsed: true,
-			prefix: "/api/Data Security/Rows/",
-			items: "auto",
-		},
-		{
-			text: "Objects",
-			collapsed: true,
-			prefix: "/api/Data Security/Objects/",
-			items: "auto",
+			items: [
+				{
+					text: "Rows",
+					collapsed: true,
+					prefix: "/api/Data Security/Rows/",
+					items: "auto",
+				},
+				{
+					text: "Objects",
+					collapsed: true,
+					prefix: "/api/Data Security/Objects/",
+					items: "auto",
+				}]
 		},
 		{
 			text: "Extention Plugins",
 			collapsed: true,
 			prefix: "/api/Extention Plugins/",
-			items: "auto",
-		},
-		{
-			text: "White Label",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/White Label/",
-			items: "auto",
-		},
-		{
-			text: "Audit",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/Audit/",
-			items: "auto",
-		},
-		{
-			text: "Backup",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/Backup/",
-			items: "auto",
-		},
-		{
-			text: "LDAP",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/LDAP/",
-			items: "auto",
-		},
-		{
-			text: "OAuth2",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/OAuth2/",
-			items: "auto",
-		},
-		{
-			text: "SAML2",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/SAML2/",
-			items: "auto",
-		},
-		{
-			text: "Cas",
-			collapsed: true,
-			prefix: "/api/Extention Plugins/Cas/",
-			items: "auto",
+			items: [
+				{
+					text: "White Label",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/White Label/",
+					items: "auto",
+				},
+				{
+					text: "Audit",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/Audit/",
+					items: "auto",
+				},
+				{
+					text: "Backup",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/Backup/",
+					items: "auto",
+				},
+				{
+					text: "LDAP",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/LDAP/",
+					items: "auto",
+				},
+				{
+					text: "OAuth2",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/OAuth2/",
+					items: "auto",
+				},
+				{
+					text: "SAML2",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/SAML2/",
+					items: "auto",
+				},
+				{
+					text: "Cas",
+					collapsed: true,
+					prefix: "/api/Extention Plugins/Cas/",
+					items: "auto",
+				}
+			]
 		}
 	],
 });
