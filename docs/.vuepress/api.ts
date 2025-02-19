@@ -17,6 +17,12 @@ export const apiNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
+			text: "Register",
+			collapsed: true,
+			prefix: "/api/Register/",
+			items: "auto",
+		},
+		{
 			text: "Roles",
 			collapsed: true,
 			prefix: "/api/Roles/",
