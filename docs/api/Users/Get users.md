@@ -9,14 +9,14 @@ description:
 
 GET /plugin/datafor-auth/api/user/list
 
-Preconditions:User Type must be Administrator
+Preconditions:The current user's user type must be Administrator
 
 ### Params
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|start|query|string| no |none|
-|count|query|string| no |none|
+|Name|Location| Type |Required|Description|
+|---|---|------|---|---|
+|start|query|integer| no |none|
+|count|query|integer| no |none|
 |withRole|query|string| no |none|
 |orderBy|query|string| no |none|
 

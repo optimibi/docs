@@ -9,7 +9,7 @@ description:
 
 POST /plugin/datafor-auth/api/user/insertOrUpdate
 
-Preconditions:User Type must be Administrator or update the user‘s own information
+Preconditions:The current user's user type must be Administrator or update the user‘s own information
 
 > Body Parameters
 

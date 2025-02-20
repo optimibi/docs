@@ -1,36 +1,40 @@
 ---
-title: Delete a user
-permalink: /api/Users/Delete a user/
-tags: ["api","Users"]
+title: Set language or theme
+permalink: /api/User Settings/Set language or theme/
+tags: ["api","User Settings"]
 description: 
 ---
 
-## POST Delete a user
+## POST Set language or theme
 
-POST /plugin/datafor-auth/api/user/delete
-
-Preconditions:The current user's user type must be Administrator
+POST /plugin/datafor-modeler/api/user-settings/display
 
 > Body Parameters
 
-```yaml
-username: dev
-
+```json
+[
+  {
+    "id": "language",
+    "value": "en"
+  },
+  {
+    "id": "theme",
+    "value": "light"
+  }
+]
 ```
 
 ### Params
 
 |Name|Location|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|object| no |none|
-|» username|body|string| yes |none|
+|body|body|array[object]| no |none|
 
 > Response Examples
 
 ```json
 {
-  "success": true,
-  "username": "dev"
+  "success": true
 }
 ```
 

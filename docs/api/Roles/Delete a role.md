@@ -1,20 +1,20 @@
 ---
-title: Delete a user
-permalink: /api/Users/Delete a user/
-tags: ["api","Users"]
+title: Delete a role
+permalink: /api/Roles/Delete a role/
+tags: ["api","Roles"]
 description: 
 ---
 
-## POST Delete a user
+## POST Delete a role
 
-POST /plugin/datafor-auth/api/user/delete
+POST /plugin/datafor-auth/api/roles/delete
 
 Preconditions:The current user's user type must be Administrator
 
 > Body Parameters
 
 ```yaml
-username: dev
+authority: DEV
 
 ```
 
@@ -23,14 +23,13 @@ username: dev
 |Name|Location|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|object| no |none|
-|» username|body|string| yes |none|
+|» authority|body|string| yes |none|
 
 > Response Examples
 
 ```json
 {
-  "success": true,
-  "username": "dev"
+  "success": true
 }
 ```
 
