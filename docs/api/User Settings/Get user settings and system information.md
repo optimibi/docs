@@ -153,6 +153,7 @@ HTTP Status Code **200**
 
 #### Enum
 
-|Name|Value|
-|---|---|
+|Name| Value|
+|---|-|
 |ver|C|
+|ver|F|
