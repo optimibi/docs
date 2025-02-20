@@ -1,6 +1,6 @@
 ---
 title: Add a folder
-permalink: /api/Folders/:title/
+permalink: /api/Folders/Add a folder/
 tags: ["api","Folders"]
 description: 
 ---
@@ -8,6 +8,7 @@ description:
 ## POST Add a folder
 
 POST /plugin/datafor-modeler/api/repo/dirs/add
+
 
 Preconditions:The current user has administrator authority of the parent folder
 

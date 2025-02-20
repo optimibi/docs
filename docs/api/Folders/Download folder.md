@@ -1,6 +1,6 @@
 ---
 title: Download folder
-permalink: /api/Folders/:title/
+permalink: /api/Folders/Download folder/
 tags: ["api","Folders"]
 description: 
 ---

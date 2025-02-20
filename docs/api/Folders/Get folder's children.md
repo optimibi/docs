@@ -1,6 +1,6 @@
 ---
 title: Get folder's children
-permalink: /api/Folders/:title/
+permalink: /api/Folders/Get folder's children/
 tags: ["api","Folders"]
 description: 
 ---
