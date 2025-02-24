@@ -67,7 +67,7 @@ export const documentationNote = defineNoteConfig({
 					link: "/documentation/Visualization/10 添加图表.md",
 				},
 				{
-					text: "Add Filters",
+					text: "Data Filtering in Chart Components via Filter Subscriptions",
 					link: "/documentation/Visualization/20 筛选器订阅.md",
 				},
 				{
