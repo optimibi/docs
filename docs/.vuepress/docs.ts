@@ -68,7 +68,7 @@ export const documentationNote = defineNoteConfig({
 				},
 				{
 					text: "Add Filters",
-					link: "/documentation/Visualization/20 添加筛选器.md",
+					link: "/documentation/Visualization/20 筛选器订阅.md",
 				},
 				{
 					text: "Tooltips",
