@@ -2,7 +2,6 @@
 title: Configuring MySQL Data Source
 permalink: /documentation/Datasource/Configuring-MySQL-Data-Source/
 tags:
-description: 
 ---
 
 # **Configuring MySQL Data Source**
