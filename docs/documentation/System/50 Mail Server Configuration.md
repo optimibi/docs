@@ -14,7 +14,7 @@ Optimibi allows administrators to configure the mail server, enabling the system
 2. In the left-hand menu navigation, click **“Settings”**.
 3. Under **“Settings”**, select **“Mail Server”**.
 
-<div align="left"><img src="./images/1739629578601.png" width="48%" /></div>
+<div align="left"><img src="./images/1739629578601.png" width="67%" /></div>
 
 ## 2. Configuring the Mail Server
 
