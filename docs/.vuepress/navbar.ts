@@ -4,7 +4,7 @@ export const enNavbar = defineNavbarConfig([
 	{
 		text: "Documentation",
 		link: "/documentation/intro.md",
-		activeMatch: "^/documentation/|^/",
+		activeMatch: "^/documentation/",
 	},
 	{
 		text: "API",
@@ -15,7 +15,7 @@ export const enNavbar = defineNavbarConfig([
 		text: "Release notes",
 		link: "/release/intro.md",
 		activeMatch: "^/release/",
-	},	
+	},
 	// {
 	// 	text: "Blog",
 	// 	link: "/blog/intro.md",
