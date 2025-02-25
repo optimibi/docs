@@ -1,9 +1,10 @@
 ---
 title: MDX Functions
-permalink: /documentation/Advanced/MDX Functions/
+permalink: /documentation/Advanced/MDX-Functions/
 tags:
-description: 
 ---
+
+
 # MDX Functions
 
 MDX (Multidimensional Expressions) is a language for multidimensional data analysis, primarily used in OLAP (On-Line Analytical Processing) systems for multidimensional data querying, analysis, statistics, and reporting. Optimibi utilizes MDX functions and MDX query statements to access, aggregate, filter, and compute multidimensional data. The calculated metrics in Optimibi are defined and computed through MDX functions and MDX query statements.
