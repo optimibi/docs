@@ -1,9 +1,7 @@
 ---
 title: MDX Functions
 permalink: /documentation/Advanced/MDX-Functions/
-tags:
 ---
-
 
 # MDX Functions
 
