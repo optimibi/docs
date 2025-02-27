@@ -10,7 +10,7 @@ description:
 DELETE /plugin/datafor-modeler/api/connection/deletebyname
 
 Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
+1.Current user's type cannot be SYS_Reader
 2.Current user needs administrative privileges to the connection.
 
 ### Params
