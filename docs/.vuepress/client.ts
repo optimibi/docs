@@ -19,7 +19,7 @@ export default defineClientConfig({
 		// app.component('CustomComponent', CustomComponent)
 		router.beforeEach((to, from, next) => {
 			if (to.path === "/" || to.path === "/documentation") {
-				next("/documentation/TK3azSid/"); // 访问首页时自动重定向
+				next("/documentation/welcome/"); // 访问首页时自动重定向
 			} else {
 				next();
 			}
