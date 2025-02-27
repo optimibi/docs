@@ -68,3 +68,6 @@ img{
   position: relative;
   border: 1px solid #f0f0f0;
 }
+p.create-time{
+  display: none;
+}
