@@ -13,7 +13,7 @@ export const enNavbar = defineNavbarConfig([
 	},
 	{
 		text: "Release notes",
-		link: "/release/intro.md",
+		link: "/release/100 v6.06 Release Notes.md",
 		activeMatch: "^/release/",
 	},
 	// {
