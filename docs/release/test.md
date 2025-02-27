@@ -1,66 +1,9 @@
 ---
 title: v6.06 Release Notes
-permalink: /release/606/
+permalink: /release/test/
 ---
 
 
 # **v6.06 Release Notes**
 
-The **v6.06** update brings significant improvements to charting capabilities, system performance, and overall user experience. Below are the key enhancements and fixes introduced in this release:
-
-## **1. Enhanced Coordinate Chart Functionality**
-- Added support for **scroll bars**, **zooming**, and **automatic layout adjustments** for elements such as **Legends, Axis Labels, Axis Titles, and Gridlines**.
-- Improved usability and readability, making data visualization more intuitive and responsive.
-
-   <div align="left"><img src="./images/1720103692310.png" width="67%" /></div>
-
-## **2. X-Axis Data Type Support**
-- Introduced **"Continuous"** and **"Categorical"** data types for the X-axis:
-  - **Continuous**: Suitable for numerical or time-series data.
-  - **Categorical**: Suitable for discrete categories.
-- Enhances the flexibility of data visualization and improves chart interpretation.
-
-   <div align="left"><img src="./images/1720103883321.png" width="100%" /></div>
-   
-   <div align="left"><img src="./images/1720103912539.png" width="100%" /></div>
-
-## **3. Negative Value Display Optimization**
-- Improved rendering for charts that support negative values, including:
-  - **Waterfall Charts**
-  - **Ratio Stack Charts**
-- Ensures correct alignment and visual representation of negative data points.
-
-   <div align="left"><img src="./images/1720104017593.png" width="67%" /></div>
-
-## **4. Chart Tooltip Enhancements**
-- Optimized tooltips for better accuracy and readability when hovering over chart elements.
-- Improved support for dynamic data updates in tooltips.
-
-## **5. Table Pagination Query Performance Optimization**
-- Enhanced query execution for paginated tables, reducing loading time and improving responsiveness.
-
-## **6. New System Parameters Introduced**
-- Added system-level parameters for enhanced customization and automation:
-  - `#{system.username}`: Retrieves the logged-in user’s name.
-  - `#{system.role}`: Returns the user’s primary role.
-  - `#{system.roles_array}`: Provides an array of all assigned roles.
-  - `#{system.locale}`: Identifies the system’s language and region settings.
-- These parameters facilitate dynamic filtering and system integration.
-
-## **7. SQL Query Optimization for Null Value Filtering**
-- Improved handling of `NULL` values in filtering operations, enhancing query performance and accuracy.
-
-## **8. Indicator Filtering Performance Boost**
-- Optimized filtering logic for indicators, leading to faster and more efficient data processing.
-
-## **9. Improved Sorting for Multiple Fact Tables**
-- Addressed errors and performance issues related to sorting across multiple fact tables.
-- Ensures stable and accurate sorting in complex analytical queries.
-
-## **10. License Management Updates**
-- Implemented updates to license handling and validation processes.
-- Improved system stability related to license verification.
-
-## **11. Additional Optimizations and Bug Fixes**
-- Various UI/UX enhancements for a smoother experience.
-- Minor bug fixes and performance improvements across different modules.
+ Minor bug fixes and performance improvements across different modules.
