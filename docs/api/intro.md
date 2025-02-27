@@ -1,7 +1,7 @@
 ﻿---
 title: Start page
 createTime: 2025/02/10 17:14:56
-permalink: /api/6tPT1m9obCfPwO7kZ/
+permalink: /api/index/
 author: Optimibi
 tags:
   - API

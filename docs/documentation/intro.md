@@ -1,7 +1,7 @@
 ---
 title: Welcome to Optimibi 
 createTime: 2025/02/10 17:14:56
-permalink: /documentation/TK3azSid/
+permalink: /documentation/welcome/
 author: Optimibi
 ---
 
