@@ -69,5 +69,5 @@ img{
   border: 1px solid #f0f0f0;
 }
 p.create-time{
-  display: none;
+  display: none!important;
 }
