@@ -151,48 +151,48 @@ export const apiNote = defineNoteConfig({
 		{
 			text: "Extention Plugins",
 			collapsed: true,
-			prefix: "/api/Extention Plugins/",
+			prefix: "/api/Extension Plugins/",
 			items: [
 				{
 					text: "White Label",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/White Label/",
+					prefix: "/api/Extension Plugins/White Label/",
 					items: "auto",
 				},
 				{
 					text: "Audit",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/Audit/",
+					prefix: "/api/Extension Plugins/Audit/",
 					items: "auto",
 				},
 				{
 					text: "Backup",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/Backup/",
+					prefix: "/api/Extension Plugins/Backup/",
 					items: "auto",
 				},
 				{
 					text: "LDAP",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/LDAP/",
+					prefix: "/api/Extension Plugins/LDAP/",
 					items: "auto",
 				},
 				{
 					text: "OAuth2",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/OAuth2/",
+					prefix: "/api/Extension Plugins/OAuth2/",
 					items: "auto",
 				},
 				{
 					text: "SAML2",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/SAML2/",
+					prefix: "/api/Extension Plugins/SAML2/",
 					items: "auto",
 				},
 				{
 					text: "Cas",
 					collapsed: true,
-					prefix: "/api/Extention Plugins/Cas/",
+					prefix: "/api/Extension Plugins/Cas/",
 					items: "auto",
 				}
 			]
