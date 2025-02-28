@@ -19,7 +19,7 @@ Preconditions:
 {
   "idp_sso_url": "https://login.microsoftonline.com/1fdff6f1-4338-4212-bdc7-4544f8c9b2f6/saml2",
   "idp_entity_id": "https://sts.windows.net/1fdff6f1-4338-4212-bdc7-4544f8c9b2f6/",
-  "idp_certificate": "-----BEGIN CERTIFICATE-----\nMIIC1DCCAdigAwIBAgIQExQlgAyX1rRDnlWzQl3+TjANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQD\nEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yNDEyMjUwNjI4\nMTZaFw0yNzEyMjUwNjI4MTVaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQg\nU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzn2MrkOZ0/ek\nZVaN+Y1KTXhSe/CakJ8QYni02+YGFoNagubRy99tWW1OBWf4Vxb///KR9VwgU4N1G+VI5njASZvf\n8rPByqVTk3ax5cGNuVrfqIUZIhbqfWStDWN51OAYI4nxBbPUmyDSqIE/5/OrVjNuEVvhRbU7AJzP\n1eI/G8oZDstGP8pFrgbeSPanY6B2lJU/EITGGSQC1KoU2eo47h6nJrWTbV9AwdMwis8FYd1z+bHL\nxCvWjckyrlA6bGNVb4HhTbqIaVic7V9VQq/29Eqcx8OyLsROcW73aLlBrkU3e2oe70RysZnJKetu\nOgfPLBjb1QWxlElYFPyj7fNErQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBsGz8+VVBJ+mj1g3oa\nKgrQDDYZ1SMGGZp665vTtosAc3kW1TIHDYXs5T3A/7YqB4Cbb4/K9UKLksKqouxyP3gMeiEQYxKG\nQWAyo8KuAfZpJp2vVAcaUil8x9sBvthiXzXLbgAy2a/X3sAovYjD4Isgg3uhPbqq7oGfyrTMvw9R\n62+BBypdB/wfV+AUHwYF8G5Ate4EESdhPAMSJBp4P40kG/MvhsqNWaNPaPiEieXmy85Rp48rnZDS\nyIUfUZR7sFkVrumwuAe0vzQ94DSLPpp2CoryL/4Tla67zlKsq1EbPTVELngkT6D22q1VQ29ivUEr\nS6OVVx93CK/8CZXnCyii\n-----END CERTIFICATE-----\n",
+  "idp_certificate": "-----BEGIN CERTIFICATE-----MIIC1DCXXXXXXyX1yii-----END CERTIFICATE-----",
   "sp_entity_id": "bi",
   "allowed_clock_skew": 2,
   "message_lifetime": "2",
