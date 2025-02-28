@@ -1,6 +1,6 @@
 ---
-title: Get grantedList for a rule
-permalink: /api/Data Security/Rows/Get grantedList for a rule/
+title: Get configList for a rule
+permalink: /api/Data Security/Rows/Get configList for a rule/
 tags: ["api","Data Security"]
 description: 
 ---
