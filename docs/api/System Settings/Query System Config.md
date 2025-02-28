@@ -1,6 +1,6 @@
 ---
-title: Set olap config
-permalink: /api/System Settings/Set olap config/
+title: Query System Config
+permalink: /api/System Settings/Query System Config/
 tags: ["api","System Settings"]
 description: 
 ---
