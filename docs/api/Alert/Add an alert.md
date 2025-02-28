@@ -5,7 +5,7 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## POST Add  an alert
+## POST Add an alert
 
 POST /plugin/datafor/api/alert/add
 

@@ -1,6 +1,6 @@
 ---
-title: Save CAS config
-permalink: /api/Extension Plugins/Cas/Save CAS config/
+title: Query CAS config
+permalink: /api/Extension Plugins/Cas/Query CAS config/
 tags: ["api","Extension Plugins","Authentication","Cas"]
 description: 
 ---
