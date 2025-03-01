@@ -1,5 +1,5 @@
 ---
-title: OPTIMIBI Subscription Agreement 
+title: OPTIMIBI Subscription Agreement (North America/LatAm/APAC) 
 permalink: /documentation/Best/Subscription-Agreement /
 tags:
 ---
@@ -13,8 +13,6 @@ tags:
 
 ---
 
-## OPTIMIBI Subscription Agreement
-
 **CAREFULLY READ ALL THE TERMS AND CONDITIONS OF THIS OPTIMIBI SUBSCRIPTION AGREEMENT (THIS “AGREEMENT”).**  
 BY AGREEING TO AN ORDER FORM INCORPORATING THIS AGREEMENT, CLICKING “I ACCEPT”, “CREATE”; PROCEEDING WITH THE INSTALLATION OF THE OPTIMIBI ENTERPRISE SOFTWARE; OR USING THE SOFTWARE, YOU, AS AN AUTHORIZED REPRESENTATIVE OF YOUR COMPANY ON WHOSE BEHALF YOU INSTALL AND/OR USE THE SOFTWARE (“SUBSCRIBER”), ARE ACKNOWLEDGING YOU HAVE READ, UNDERSTAND AND ACCEPT THIS AGREEMENT AND AGREE TO BE BOUND BY ITS TERMS.  
 
@@ -22,7 +20,6 @@ IN THE EVENT OF A CONFLICT BETWEEN THIS AGREEMENT, AN OPTIMIBI ORDER FORM OR SOW
 
 THE EFFECTIVE DATE OF THIS AGREEMENT SHALL BE THE SUBSCRIPTION START DATE SET ON THE ORDER FORM (“EFFECTIVE DATE”).
 
----
 
 ## 1. Scope of Agreement
 
@@ -44,7 +41,6 @@ Software and Services ordered for a specific use case (“Project”) will be sp
 - **Order Form**: An ordering document specifying the Software and/or Services to be provided.  
 - Each **Order Form** or **SOW**, once executed by an authorized representative, constitutes a separate agreement subject to this Agreement unless modified in the Order Form or SOW.
 
----
 
 ## 2. Grant of Limited License
 
@@ -62,7 +58,6 @@ All rights not expressly granted are **reserved**.
   [www.optimibi.com/thirdpartylicenses](www.optimibi.com/thirdpartylicenses).
 - OPTIMIBI ensures that Open-Source Software, when used as delivered and unmodified, does not require disclosure or licensing of the Subscriber’s proprietary source code.
 
----
 
 ## 3. License Restrictions and Usage Limit Compliance
 
@@ -80,7 +75,6 @@ Subscriber **may not**:
 - **Excessive Use** beyond licensed limits may result in additional **Upgraded License Fees**.
 - OPTIMIBI may suspend or terminate access for non-payment of Upgraded License Fees.
 
----
 
 ## 4. Fees and Payments
 
@@ -93,7 +87,6 @@ Subscriber **may not**:
 - Subscriber may purchase through an authorized **Reseller** or **Payment Processor**.
 - Subscriber’s payment relationship with a Reseller/Processor is independent of OPTIMIBI.
 
----
 
 ## 5. Confidentiality
 
@@ -107,7 +100,6 @@ Confidentiality does **not** apply to information that:
 
 The receiving party must use **reasonable care** to protect Confidential Information and may **only disclose if legally required**.
 
----
 
 ## 6. Warranties and Disclaimer
 
@@ -125,7 +117,6 @@ Each party warrants that:
 - **No Warranties**: OPTIMIBI disclaims **all implied warranties**.
 - **No Guarantee of Uninterrupted Operation**.
 
----
 
 ## 7. Indemnification
 
@@ -136,7 +127,6 @@ Exceptions include:
 - **Modifications by Subscriber**.
 - **Breach of Agreement by Subscriber**.
 
----
 
 ## 8. Limitation of Liability
 
@@ -144,7 +134,6 @@ Exceptions include:
 - **Liability cap**: Fees paid in the **last 12 months**.
 - Exceptions: **Fraud, gross negligence, confidentiality breach**.
 
----
 
 ## 9. Term and Termination
 
@@ -154,7 +143,6 @@ Exceptions include:
   - **Software access ceases**.
   - **Fees remain due** (unless OPTIMIBI breached).
 
----
 
 ## 10. General Provisions
 
@@ -163,6 +151,5 @@ Exceptions include:
 - **No Assignment**: Without prior written consent.
 - **Entire Agreement**: Supersedes all prior agreements.
 
----
 
 ## END OF DOCUMENT
