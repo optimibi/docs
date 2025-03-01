@@ -1,12 +1,12 @@
 ---
-title: OPTIMIBI Subscription Agreement (North America/LatAm/APAC) 
+title: Subscription Agreement (North America/LatAm/APAC) 
 permalink: /documentation/Best/Subscription-Agreement /
 tags:
 ---
 
 
 
-# OPTIMIBI Subscription Agreement (North America/LatAm/APAC)
+# Subscription Agreement (North America/LatAm/APAC)
 
 **Version 1.0 (Current)**  
 **Effective February 28th, 2025**
