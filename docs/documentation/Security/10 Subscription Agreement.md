@@ -1,6 +1,6 @@
 ---
 title: Subscription Agreement (North America/LatAm/APAC) 
-permalink: /documentation/Best/Subscription-Agreement /
+permalink: /documentation/Security/Subscription-Agreement /
 tags:
 ---
 
