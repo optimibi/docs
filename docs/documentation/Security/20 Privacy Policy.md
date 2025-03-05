@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-permalink: /documentation/Security/Privacy-Policy /
+permalink: /documentation/Security/Privacy-Policy/
 tags:
 ---
 
