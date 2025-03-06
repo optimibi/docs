@@ -12,8 +12,10 @@ description:
 ```html
 /plugin/datafor/api/alert/add
 ```
-**Authorization**
-[Authorization](/api/index/#_5-authentication-security)
+
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
 **Content Type**  
 `application/json`
