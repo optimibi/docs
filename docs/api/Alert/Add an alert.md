@@ -5,17 +5,18 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## Add an alert
-
-**Method**
-
+**Method**  
 `POST`
 
 **Request URL**
-
 ```html
 /plugin/datafor/api/alert/add
 ```
+**Authorization**
+[Authorization](/api/index/#_5-authentication-security)
+
+**Content Type**  
+`application/json`
 
 ---
 
@@ -24,10 +25,10 @@ description:
 
 **Note**
 - For **table** or **cross table** components, remove the following properties in `queryModel` if they appear:
-    - `datafor.query.paging.size`
-    - `datafor.query.paging.start`
-    - `datafor.query.paging.subset.start`
-    - `datafor.query.paging.subset.size`
+  - `datafor.query.paging.size`
+  - `datafor.query.paging.start`
+  - `datafor.query.paging.subset.start`
+  - `datafor.query.paging.subset.size`
 
 ---
 
@@ -37,9 +38,9 @@ description:
 {
   "pagePath": "/public/test.datafor",
   "componentId": "C739239F-4B54-6C90-8389-BF77F713AA98",
-  "componentTitle": "经营情况",
+  "componentTitle": "Business Overview",
   "enabled": "1",
-  "name": "测试预警",
+  "name": "Test Alert",
   "title": "",
   "rule": {
     "logical": "and",
@@ -152,7 +153,7 @@ description:
       "datafor.query.pick.row": "0,5000",
       "datafor.secret.appKey": "",
       "datafor.olap.result.formatter": "mix",
-      "datafor.client.timezone": "Asia/Shanghai",
+      "datafor.client.timezone": "Australia/Melbourne",
       "datafor.client.locale": "en",
       "datafor.source.format": "true"
     },
@@ -185,8 +186,8 @@ description:
     "toUsers": ["admin", "peter"],
     "ccUsers": ["sally"],
     "bccUsers": ["linda"],
-    "subject": "标题",
-    "content": "富文本内容或普通文本内容${value}"
+    "subject": "Subject",
+    "content": "Rich text content or plain text content ${value}"
   }
 }
 ```
@@ -195,134 +196,113 @@ description:
 
 ## **Body Parameters**
 
-| Name                                        | Location | Type     | Required | Description                                                      |
-|---------------------------------------------|----------|---------:|:--------|------------------------------------------------------------------|
-| body                                        | body     | object   | No       | Overall JSON payload                                             |
-| **enabled**                                 | body     | string   | **Yes**  | `1` (true) or `0` (false)                                        |
-| **name**                                    | body     | string   | **Yes**  | Alert name                                                        |
-| **title**                                   | body     | string   | **Yes**  | Alert title (can be empty string)                                 |
-| **rule**                                    | body     | object   | **Yes**  | Rule definition                                                  |
-| ┣━ **logical**                              | body     | string   | **Yes**  | `and` / `or`                                                     |
-| ┗━ **conditions**                           | body     | [object] | **Yes**  | Condition objects                                                |
-| ┗━ **id**                                   | body     | string   | **Yes**  | Measure/metric ID                                                |
-| ┗━ **uniqueName**                           | body     | string   | **Yes**  | Unique measure identifier                                        |
-| ┗━ **comparator**                           | body     | string   | **Yes**  | `<` / `>` / `<=` / `>=` / `==` / `!=` / `between` / ...          |
-| ┗━ value                                    | body     | [integer]| No       | Used by comparators expecting numeric values                     |
-| ┗━ inclusiveLeft                            | body     | boolean  | No       | For `between`/`not between`                                      |
-| ┗━ inclusiveRight                           | body     | boolean  | No       | For `between`/`not between`                                      |
-| ┗━ match                                    | body     | string   | No       | `any` / `all` (default: `any`)                                   |
-| **qm**                                      | body     | object   | **Yes**  | Query configuration object                                       |
-| ┣━ **queryModel**                           | body     | object   | **Yes**  | Axes, details, measures, etc.                                    |
-| ┃━ **axes**                                 | body     | object   | **Yes**  | Defines `FILTER`, `COLUMNS`, `ROWS` axes                         |
-| ┃━ **FILTER**                               | body     | object   | **Yes**  | Filter axis configuration                                        |
-| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ **location**                            | body     | string   | **Yes**  | `FILTER`                                                         |
-| ┃━━ **hierarchies**                         | body     | [object] | **Yes**  | Hierarchy definitions                                            |
-| ┃━━━ name                                   | body     | string   | No       | Hierarchy name                                                   |
-| ┃━━━ levels                                 | body     | object   | No       | Contains the level objects                                      |
-| ┃━━━ **the_date@@MONTHS**                  | body     | object   | **Yes**  | Example level                                                    |
-| ┃━━━━ name                                  | body     | string   | **Yes**  | Level name                                                       |
-| ┃━━━━ caption                               | body     | string   | **Yes**  | Level caption                                                    |
-| ┃━━━━ mdx                                   | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━━━ **selection**                         | body     | object   | **Yes**  | Defines members, parameter, etc.                                 |
-| ┃━━━━━ type                                 | body     | string   | **Yes**  | e.g., `INCLUSION`                                                |
-| ┃━━━━━ members                              | body     | [object] | **Yes**  | Members of the selection                                        |
-| ┃━━━━━ parameterName                        | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━━━ aggregators                           | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━━━ filters                               | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━━ cmembers                               | body     | object   | No       | Calculated members                                               |
-| ┃━━━ schema                                 | body     | string   | No       | Schema name                                                      |
-| ┃━━━ cube                                   | body     | string   | No       | Cube name                                                        |
-| ┃━━━ id                                     | body     | string   | No       | Hierarchy ID                                                     |
-| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
-| ┃━ **COLUMNS**                              | body     | object   | **Yes**  | Columns axis configuration                                       |
-| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ **filterAxis**                          | body     | boolean  | **Yes**  | Whether to apply a filter                                        |
-| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ **location**                            | body     | string   | **Yes**  | `COLUMNS`                                                        |
-| ┃━━ **hierarchies**                         | body     | [string] | **Yes**  | Array of hierarchies                                             |
-| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
-| ┃━ **ROWS**                                 | body     | object   | **Yes**  | Rows axis configuration                                          |
-| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ **location**                            | body     | string   | **Yes**  | `ROWS`                                                           |
-| ┃━━ **hierarchies**                         | body     | [object] | **Yes**  | Rows hierarchy definitions                                       |
-| ┃━━━ name                                   | body     | string   | No       | Hierarchy name                                                   |
-| ┃━━━ levels                                 | body     | object   | No       | Contains the level objects                                      |
-| ┃━━━ **product_family**                     | body     | object   | **Yes**  | Example level                                                    |
-| ┃━━━━ name                                  | body     | string   | **Yes**  | Level name                                                       |
-| ┃━━━━ caption                               | body     | string   | **Yes**  | Caption                                                          |
-| ┃━━━━ mdx                                   | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━━━ **selection**                         | body     | object   | **Yes**  | Selection object                                                 |
-| ┃━━━━ aggregators                           | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━━━ filters                               | body     | [string] | **Yes**  | N/A                                                              |
-| ┃━━━━ sort                                  | body     | integer  | **Yes**  | Sort order                                                       |
-| ┃━━━ cmembers                               | body     | object   | No       | Calculated members                                               |
-| ┃━━━ filters                                | body     | [string] | No       | Additional filters                                               |
-| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
-| ┣━ **visualTotals**                         | body     | boolean  | **Yes**  | Enable or disable visual totals                                  |
-| ┣━ visualTotalsPattern                      | body     | null     | **Yes**  | N/A                                                              |
-| ┣━ **lowestLevelsOnly**                     | body     | boolean  | **Yes**  | Only lowest levels or not                                        |
-| ┣━ **details**                              | body     | object   | **Yes**  | Additional detail settings                                       |
-| ┃━ axis                                     | body     | string   | **Yes**  | e.g., `COLUMNS`                                                  |
-| ┃━ location                                 | body     | string   | **Yes**  | e.g., `BOTTOM`                                                   |
-| ┃━ **measures**                             | body     | [object] | **Yes**  | Measure definitions                                              |
-| ┃━━ caption                                 | body     | string   | No       | e.g., `store_sales`                                              |
-| ┃━━ name                                    | body     | string   | No       | e.g., `sales_fact.store_sales`                                   |
-| ┃━━ uniqueName                              | body     | string   | No       | e.g., `[Measures].[sales_fact.store_sales]`                      |
-| ┃━━ id                                      | body     | string   | No       | Unique measure ID                                                |
-| ┃━━ type                                    | body     | string   | No       | e.g., `EXACT`                                                    |
-| ┃━━ sort                                    | body     | integer  | No       | Sort order                                                       |
-| ┣━ **calculatedMeasures**                   | body     | [string] | **Yes**  | Calculated measures array                                        |
-| ┣━ **calculatedMembers**                    | body     | [string] | **Yes**  | Calculated members array                                        |
-| ┣━ **queryType**                            | body     | string   | **Yes**  | e.g., `OLAP`                                                     |
-| ┣━ **properties**                           | body     | object   | **Yes**  | Misc. properties                                                 |
-| ┃━━ datafor.query.pick.row                  | body     | string   | No       | e.g., `0,5000`                                                   |
-| ┃━━ datafor.secret.appKey                   | body     | string   | No       | App key                                                          |
-| ┃━━ datafor.olap.result.formatter           | body     | string   | No       | e.g., `mix`                                                      |
-| ┃━━ datafor.client.timezone                 | body     | string   | No       | e.g., `Asia/Shanghai`                                            |
-| ┃━━ datafor.client.locale                   | body     | string   | No       | e.g., `en`                                                       |
-| ┃━━ datafor.source.format                   | body     | string   | No       | e.g., `true`                                                     |
-| ┣━ **parameters**                           | body     | object   | **Yes**  | Query parameters                                                 |
-| ┣━ **plugins**                              | body     | object   | **Yes**  | Plugin-related configuration                                     |
-| ┣━ mdx                                      | body     | null     | **Yes**  | N/A                                                              |
-| ┣━ **name**                                 | body     | string   | **Yes**  | Same as `componentId`                                            |
-| ┣━ **metadata**                             | body     | object   | **Yes**  | Metadata object                                                  |
-| ┣━ **type**                                 | body     | string   | **Yes**  | e.g., `QUERYMODEL`                                               |
-| ┗━ **cube**                                 | body     | object   | **Yes**  | Cube definition                                                  |
-| ┗━ uniqueName                               | body     | string   | **Yes**  | e.g., `[workshop-model].[...]`                                   |
-| ┗━ name                                     | body     | string   | **Yes**  | Cube name                                                        |
-| ┗━ connection                               | body     | string   | **Yes**  | Connection name                                                  |
-| ┗━ catalog                                  | body     | string   | **Yes**  | Catalog name                                                     |
-| ┗━ schema                                   | body     | string   | **Yes**  | Schema name                                                      |
-| ┗━ caption                                  | body     | string   | **Yes**  | Cube caption                                                     |
-| ┗━ visible                                  | body     | boolean  | **Yes**  | Cube visibility                                                 |
-| **cron**                                    | body     | object   | **Yes**  | Scheduling config                                                |
-| ┣━ **complexJobTrigger**                    | body     | object   | **Yes**  | Complex trigger settings                                         |
-| ┃━━ endTime                                 | body     | null     | **Yes**  | N/A                                                              |
-| ┃━━ **startTime**                           | body     | string   | **Yes**  | e.g., `2024-08-07T12:00:00.000+08:00`                            |
-| ┃━━ **uiPassParam**                         | body     | string   | **Yes**  | e.g., `WEEKLY`                                                   |
-| ┃━━ **daysOfWeek**                          | body     | [string] | **Yes**  | e.g., `["0"]` for Sunday                                         |
-| **channels**                                | body     | [string] | **Yes**  | e.g., `["email"]`                                                |
-| **emailConfig**                             | body     | object   | **Yes**  | Email alert configuration                                        |
-| ┣━ **toUsers**                              | body     | [string] | **Yes**  | Usernames to send to                                             |
-| ┣━ **ccUsers**                              | body     | [string] | **Yes**  | CC recipients                                                    |
-| ┣━ **bccUsers**                             | body     | [string] | **Yes**  | BCC recipients                                                   |
-| ┣━ **subject**                              | body     | string   | **Yes**  | Email subject                                                    |
-| ┗━ **content**                              | body     | string   | **Yes**  | Email body (rich text or plain text)                             |
-| **pagePath**                                | body     | string   | **Yes**  | Full page path (e.g., `/public/...`)                             |
-| **componentId**                             | body     | string   | **Yes**  | Component ID                                                     |
-| **componentTitle**                          | body     | string   | **Yes**  | Component title                                                  |
+| Name                                   | Location | Type      | Required | Description                                                                                          |
+|----------------------------------------|----------|-----------|----------|------------------------------------------------------------------------------------------------------|
+| **body**                               | body     | object    | No       | Overall JSON payload                                                                                 |
+| ├── **pagePath**                       | body     | string    | **Yes**  | The full page path (e.g., `/public/test.datafor`)                                                    |
+| ├── **componentId**                    | body     | string    | **Yes**  | The component ID                                                                                     |
+| ├── **componentTitle**                 | body     | string    | **Yes**  | The component title                                                                                  |
+| ├── **enabled**                        | body     | string    | **Yes**  | Whether the alert is enabled: `1` (true) or `0` (false)                                              |
+| ├── **name**                           | body     | string    | **Yes**  | The alert name                                                                                       |
+| ├── **title**                          | body     | string    | **Yes**  | The alert title (can be empty)                                                                       |
+| ├── **rule**                           | body     | object    | **Yes**  | Rule configuration object                                                                            |
+| │   ├── **logical**                    | body     | string    | **Yes**  | Logical operator combining conditions (`and`, `or`)                                                  |
+| │   └── **conditions**                 | body     | [object]  | **Yes**  | Array of condition objects                                                                           |
+| │       ├── **id**                     | body     | string    | **Yes**  | The measure/metric ID                                                                                |
+| │       ├── **uniqueName**             | body     | string    | **Yes**  | The unique measure identifier                                                                        |
+| │       ├── **comparator**             | body     | string    | **Yes**  | Comparison operator (`>`, `<`, `<=`, `>=`, `==`, `!=`, `between`, `in`, etc.)                        |
+| │       ├── **value**                  | body     | [integer] | No       | Numeric array for comparators that require values                                                    |
+| │       ├── **inclusiveLeft**          | body     | boolean   | No       | For `between`/`not between` – whether the left boundary is inclusive                                 |
+| │       ├── **inclusiveRight**         | body     | boolean   | No       | For `between`/`not between` – whether the right boundary is inclusive                                |
+| │       └── **match**                  | body     | string    | No       | Specifies whether to match `any` or `all` values (default: `any`)                                    |
+| ├── **qm**                             | body     | object    | **Yes**  | Query configuration wrapper                                                                          |
+| │   ├── **queryModel**                 | body     | object    | **Yes**  | Defines axes, measures, and other OLAP settings                                                      |
+| │   │   ├── **axes**                   | body     | object    | **Yes**  | Axes definition (`FILTER`, `COLUMNS`, `ROWS`)                                                        |
+| │   │   │   ├── **FILTER**             | body     | object    | **Yes**  | Filter-axis definition                                                                               |
+| │   │   │   │   ├── mdx                | body     | null      | **Yes**  | Not applicable (set to `null`)                                                                       |
+| │   │   │   │   ├── filters            | body     | [string]  | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── sortOrder          | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── sortEvaluationLiteral | body  | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── hierarchizeMode    | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── **location**       | body     | string    | **Yes**  | Must be `FILTER`                                                                                     |
+| │   │   │   │   ├── **hierarchies**    | body     | [object]  | **Yes**  | Hierarchy objects                                                                                    |
+| │   │   │   │   │   ├── **name**       | body     | string    | No       | Hierarchy name                                                                                       |
+| │   │   │   │   │   ├── **levels**     | body     | object    | No       | Contains level objects                                                                               |
+| │   │   │   │   │   ├── **cmembers**   | body     | object    | No       | Calculated members (if any)                                                                          |
+| │   │   │   │   │   ├── **schema**     | body     | string    | No       | Schema name (e.g., `workshop-model`)                                                                 |
+| │   │   │   │   │   ├── **cube**       | body     | string    | No       | Cube name (e.g., `workshop-model`)                                                                   |
+| │   │   │   │   │   └── **id**         | body     | string    | No       | Hierarchy ID                                                                                         |
+| │   │   │   │   └── **nonEmpty**       | body     | boolean   | **Yes**  | Whether to exclude empty cells                                                                       |
+| │   │   │   ├── **COLUMNS**            | body     | object    | **Yes**  | Columns-axis configuration                                                                           |
+| │   │   │   │   ├── mdx                | body     | null      | **Yes**  | Not applicable (set to `null`)                                                                       |
+| │   │   │   │   ├── filters            | body     | [string]  | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── sortOrder          | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── **filterAxis**     | body     | boolean   | **Yes**  | Whether to treat this as a filter axis                                                               |
+| │   │   │   │   ├── sortEvaluationLiteral | body  | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── hierarchizeMode    | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── **location**       | body     | string    | **Yes**  | Must be `COLUMNS`                                                                                    |
+| │   │   │   │   ├── **hierarchies**    | body     | [string]  | **Yes**  | Array of hierarchies (empty in this example)                                                         |
+| │   │   │   │   └── **nonEmpty**       | body     | boolean   | **Yes**  | Whether to exclude empty cells                                                                       |
+| │   │   │   ├── **ROWS**               | body     | object    | **Yes**  | Rows-axis configuration                                                                              |
+| │   │   │   │   ├── mdx                | body     | null      | **Yes**  | Not applicable (set to `null`)                                                                       |
+| │   │   │   │   ├── filters            | body     | [string]  | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── sortOrder          | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── sortEvaluationLiteral | body  | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── hierarchizeMode    | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   │   │   ├── **location**       | body     | string    | **Yes**  | Must be `ROWS`                                                                                       |
+| │   │   │   │   ├── **hierarchies**    | body     | [object]  | **Yes**  | Row hierarchy definitions                                                                            |
+| │   │   │   │   └── **nonEmpty**       | body     | boolean   | **Yes**  | Whether to exclude empty cells                                                                       |
+| │   │   ├── **visualTotals**           | body     | boolean   | **Yes**  | Whether to enable visual totals                                                                      |
+| │   │   ├── visualTotalsPattern        | body     | null      | **Yes**  | Not used in this example                                                                             |
+| │   │   ├── **lowestLevelsOnly**       | body     | boolean   | **Yes**  | Whether to show only the lowest hierarchy levels                                                     |
+| │   │   ├── **details**                | body     | object    | **Yes**  | Detail settings                                                                                      |
+| │   │   │   ├── **axis**               | body     | string    | **Yes**  | Axis for details (e.g., `COLUMNS`)                                                                   |
+| │   │   │   ├── **location**           | body     | string    | **Yes**  | Location for details (e.g., `BOTTOM`)                                                                |
+| │   │   │   └── **measures**           | body     | [object]  | **Yes**  | A list of measure definitions                                                                        |
+| │   │   │       ├── **caption**        | body     | string    | No       | Measure caption (e.g., `store_sales`)                                                                |
+| │   │   │       ├── **name**           | body     | string    | No       | Internal measure name (e.g., `sales_fact.store_sales`)                                               |
+| │   │   │       ├── **uniqueName**     | body     | string    | No       | Unique measure identifier (e.g., `[Measures].[sales_fact.store_sales]`)                              |
+| │   │   │       ├── **id**             | body     | string    | No       | Unique measure ID                                                                                    |
+| │   │   │       ├── **type**           | body     | string    | No       | Type of measure match (e.g., `EXACT`)                                                                |
+| │   │   │       └── **sort**           | body     | integer   | No       | Sorting priority                                                                                     |
+| │   │   ├── **calculatedMeasures**     | body     | [string]  | **Yes**  | Array of calculated measures (empty if none)                                                         |
+| │   │   ├── **calculatedMembers**      | body     | [string]  | **Yes**  | Array of calculated members (empty if none)                                                          |
+| │   │   ├── **queryType**              | body     | string    | **Yes**  | Type of query (e.g., `OLAP`)                                                                         |
+| │   │   ├── **properties**             | body     | object    | **Yes**  | Misc. query properties                                                                               |
+| │   │   │   ├── **datafor.query.pick.row**         | body | string  | No    | Row picking range (e.g., `0,5000`)                                                                   |
+| │   │   │   ├── **datafor.secret.appKey**          | body | string  | No    | App key                                                                                              |
+| │   │   │   ├── **datafor.olap.result.formatter**   | body | string  | No    | OLAP result format (e.g., `mix`)                                                                     |
+| │   │   │   ├── **datafor.client.timezone**         | body | string  | No    | Timezone (e.g., `Australia/Melbourne`)                                                                     |
+| │   │   │   ├── **datafor.client.locale**           | body | string  | No    | Locale (e.g., `en`)                                                                                  |
+| │   │   │   └── **datafor.source.format**           | body | string  | No    | Whether to format the source (e.g., `true`)                                                          |
+| │   │   ├── **parameters**             | body     | object    | **Yes**  | Query parameters (empty if none)                                                                     |
+| │   │   ├── **plugins**                | body     | object    | **Yes**  | Plugin-related configuration (empty if none)                                                         |
+| │   │   ├── mdx                        | body     | null      | **Yes**  | Not applicable (set to `null`)                                                                       |
+| │   │   ├── **name**                   | body     | string    | **Yes**  | Matches the component ID                                                                             |
+| │   │   ├── **metadata**               | body     | object    | **Yes**  | Metadata object                                                                                      |
+| │   │   ├── **type**                   | body     | string    | **Yes**  | Query model type (e.g., `QUERYMODEL`)                                                                |
+| │   │   └── **cube**                   | body     | object    | **Yes**  | Cube definition                                                                                      |
+| │   │       ├── **uniqueName**         | body     | string    | **Yes**  | Full unique name, e.g., `[workshop-model].[workshop-model]...`                                       |
+| │   │       ├── **name**               | body     | string    | **Yes**  | Cube name (e.g., `workshop-model`)                                                                   |
+| │   │       ├── **connection**         | body     | string    | **Yes**  | Connection name (e.g., `workshop-model`)                                                             |
+| │   │       ├── **catalog**            | body     | string    | **Yes**  | Catalog name (often the same as the cube name)                                                       |
+| │   │       ├── **schema**             | body     | string    | **Yes**  | Schema name (e.g., `workshop-model`)                                                                 |
+| │   │       ├── **caption**            | body     | string    | **Yes**  | Cube caption                                                                                         |
+| │   │       └── **visible**            | body     | boolean   | **Yes**  | Whether the cube is visible                                                                          |
+| ├── **cron**                           | body     | object    | **Yes**  | Scheduling configuration                                                                             |
+| │   └── **complexJobTrigger**          | body     | object    | **Yes**  | Detailed scheduling settings                                                                          |
+| │       ├── endTime                    | body     | null      | **Yes**  | Not used if no end time is set                                                                       |
+| │       ├── **startTime**              | body     | string    | **Yes**  | Start time (e.g., `2024-08-07T12:00:00.000+08:00`)                                                    |
+| │       ├── **uiPassParam**            | body     | string    | **Yes**  | Scheduling frequency (e.g., `WEEKLY`)                                                                |
+| │       └── **daysOfWeek**             | body     | [string]  | **Yes**  | Days of week for `WEEKLY` (e.g., `["0"]` = Sunday)                                                    |
+| ├── **channels**                       | body     | [string]  | **Yes**  | Alert channels (e.g., `["email"]`)                                                                   |
+| ├── **emailConfig**                    | body     | object    | **Yes**  | Email alert configuration                                                                            |
+| │   ├── **toUsers**                    | body     | [string]  | **Yes**  | Recipient usernames (e.g., `["admin", "peter"]`)                                                     |
+| │   ├── **ccUsers**                    | body     | [string]  | **Yes**  | CC recipients (e.g., `["sally"]`)                                                                    |
+| │   ├── **bccUsers**                   | body     | [string]  | **Yes**  | BCC recipients (e.g., `["linda"]`)                                                                   |
+| │   ├── **subject**                    | body     | string    | **Yes**  | Email subject (e.g., `Subject`)                                                                      |
+| │   └── **content**                    | body     | string    | **Yes**  | Email body (plain or rich text, e.g., `Rich text content ...`)                                       |
+| └── **componentTitle**                 | body     | string    | **Yes**  | The component title                                                                                  |
 
 ---
 
@@ -354,7 +334,7 @@ description:
 
 ### **Response Data Schema (HTTP 200)**
 
-| Name      | Type    | Required | Description    |
-|-----------|---------|---------:|----------------|
-| `msg`     | string  | No       | Message string |
-| `success` | boolean | **Yes**  | Request status |
+| Name      | Type    | Required | Description         |
+|-----------|---------|----------|---------------------|
+| `msg`     | string  | No       | Message string      |
+| `success` | boolean | **Yes**  | Request status      |
