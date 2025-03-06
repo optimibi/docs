@@ -5,19 +5,33 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## POST Add an alert
+## Add an alert
 
-POST /plugin/datafor/api/alert/add
+**Method**
 
-Preconditions:The cuccunt user's type cannot be SYS_Reader
+`POST`
 
-1.Only table or cross table need to remove  the properties in queryModel
-datafor.query.paging.size
-datafor.query.paging.start
-datafor.query.paging.subset.start
-datafor.query.paging.subset.size
+**Request URL**
 
-> Body Parameters
+```html
+/plugin/datafor/api/alert/add
+```
+
+---
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+
+**Note**
+- For **table** or **cross table** components, remove the following properties in `queryModel` if they appear:
+    - `datafor.query.paging.size`
+    - `datafor.query.paging.start`
+    - `datafor.query.paging.subset.start`
+    - `datafor.query.paging.subset.size`
+
+---
+
+## **Request Body Example**
 
 ```json
 {
@@ -28,15 +42,13 @@ datafor.query.paging.subset.size
   "name": "测试预警",
   "title": "",
   "rule": {
-    "logical": "and/or",
+    "logical": "and",
     "conditions": [
       {
         "id": "sales_fact.store_sales.1717310261398",
         "uniqueName": "[Measures].[store_sales]",
         "comparator": ">=",
-        "value": [
-          1
-        ],
+        "value": [1],
         "match": "any"
       }
     ]
@@ -165,184 +177,165 @@ datafor.query.paging.subset.size
       "endTime": null,
       "startTime": "2024-08-07T12:00:00.000+08:00",
       "uiPassParam": "WEEKLY",
-      "daysOfWeek": [
-        "0"
-      ]
+      "daysOfWeek": ["0"]
     }
   },
-  "channels": [
-    "email"
-  ],
+  "channels": ["email"],
   "emailConfig": {
-    "toUsers": [
-      "admin",
-      "peter"
-    ],
-    "ccUsers": [
-      "sally"
-    ],
-    "bccUsers": [
-      "linda"
-    ],
+    "toUsers": ["admin", "peter"],
+    "ccUsers": ["sally"],
+    "bccUsers": ["linda"],
     "subject": "标题",
     "content": "富文本内容或普通文本内容${value}"
   }
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» enabled|body|string| yes |1true0false|
-|» name|body|string| yes |none|
-|» title|body|string| yes |none|
-|» rule|body|object| yes |none|
-|»» logical|body|string| yes |none|
-|»» conditions|body|[object]| yes |none|
-|»»» id|body|string| yes |none|
-|»»» uniqueName|body|string| yes |none|
-|»»» comparator|body|string| yes |none|
-|»»» value|body|[integer]| no |none|
-|»»» inclusiveLeft|body|boolean| no |when comparator is between or not between need|
-|»»» inclusiveRight|body|boolean| no |when comparator is between or not between need|
-|»»» match|body|string| no |any/all，default is any|
-|» qm|body|object| yes |none|
-|»» queryModel|body|object| yes |none|
-|»»» axes|body|object| yes |none|
-|»»»» FILTER|body|object| yes |none|
-|»»»»» mdx|body|null| yes |none|
-|»»»»» filters|body|[string]| yes |none|
-|»»»»» sortOrder|body|null| yes |none|
-|»»»»» sortEvaluationLiteral|body|null| yes |none|
-|»»»»» hierarchizeMode|body|null| yes |none|
-|»»»»» location|body|string| yes |none|
-|»»»»» hierarchies|body|[object]| yes |none|
-|»»»»»» name|body|string| no |none|
-|»»»»»» levels|body|object| no |none|
-|»»»»»»» the_date@@MONTHS|body|object| yes |none|
-|»»»»»»»» name|body|string| yes |none|
-|»»»»»»»» caption|body|string| yes |none|
-|»»»»»»»» mdx|body|null| yes |none|
-|»»»»»»»» selection|body|object| yes |none|
-|»»»»»»»»» type|body|string| yes |none|
-|»»»»»»»»» members|body|[object]| yes |none|
-|»»»»»»»»»» uniqueName|body|string| no |none|
-|»»»»»»»»»» caption|body|null| no |none|
-|»»»»»»»»» parameterName|body|null| yes |none|
-|»»»»»»»» aggregators|body|[string]| yes |none|
-|»»»»»»»» filters|body|[string]| yes |none|
-|»»»»»» cmembers|body|object| no |none|
-|»»»»»» schema|body|string| no |none|
-|»»»»»» cube|body|string| no |none|
-|»»»»»» id|body|string| no |none|
-|»»»»» nonEmpty|body|boolean| yes |none|
-|»»»» COLUMNS|body|object| yes |none|
-|»»»»» mdx|body|null| yes |none|
-|»»»»» filters|body|[string]| yes |none|
-|»»»»» sortOrder|body|null| yes |none|
-|»»»»» filterAxis|body|boolean| yes |none|
-|»»»»» sortEvaluationLiteral|body|null| yes |none|
-|»»»»» hierarchizeMode|body|null| yes |none|
-|»»»»» location|body|string| yes |none|
-|»»»»» hierarchies|body|[string]| yes |none|
-|»»»»» nonEmpty|body|boolean| yes |none|
-|»»»» ROWS|body|object| yes |none|
-|»»»»» mdx|body|null| yes |none|
-|»»»»» filters|body|[string]| yes |none|
-|»»»»» sortOrder|body|null| yes |none|
-|»»»»» sortEvaluationLiteral|body|null| yes |none|
-|»»»»» hierarchizeMode|body|null| yes |none|
-|»»»»» location|body|string| yes |none|
-|»»»»» hierarchies|body|[object]| yes |none|
-|»»»»»» name|body|string| no |none|
-|»»»»»» levels|body|object| no |none|
-|»»»»»»» product_family|body|object| yes |none|
-|»»»»»»»» name|body|string| yes |none|
-|»»»»»»»» caption|body|string| yes |none|
-|»»»»»»»» mdx|body|null| yes |none|
-|»»»»»»»» selection|body|object| yes |none|
-|»»»»»»»» aggregators|body|[string]| yes |none|
-|»»»»»»»» filters|body|[string]| yes |none|
-|»»»»»»»» sort|body|integer| yes |none|
-|»»»»»» cmembers|body|object| no |none|
-|»»»»»» filters|body|[string]| no |none|
-|»»»»» nonEmpty|body|boolean| yes |none|
-|»»» visualTotals|body|boolean| yes |none|
-|»»» visualTotalsPattern|body|null| yes |none|
-|»»» lowestLevelsOnly|body|boolean| yes |none|
-|»»» details|body|object| yes |none|
-|»»»» axis|body|string| yes |none|
-|»»»» location|body|string| yes |none|
-|»»»» measures|body|[object]| yes |none|
-|»»»»» caption|body|string| no |none|
-|»»»»» name|body|string| no |none|
-|»»»»» uniqueName|body|string| no |none|
-|»»»»» id|body|string| no |none|
-|»»»»» type|body|string| no |none|
-|»»»»» sort|body|integer| no |none|
-|»»» calculatedMeasures|body|[string]| yes |none|
-|»»» calculatedMembers|body|[string]| yes |none|
-|»» queryType|body|string| yes |none|
-|»» properties|body|object| yes |none|
-|»»» datafor.query.pick.row|body|string| no |none|
-|»»» datafor.secret.appKey|body|string| no |none|
-|»»» datafor.olap.result.formatter|body|string| no |none|
-|»»» datafor.client.timezone|body|string| no |none|
-|»»» datafor.client.locale|body|string| no |none|
-|»»» datafor.source.format|body|string| no |none|
-|»» parameters|body|object| yes |none|
-|»» plugins|body|object| yes |none|
-|»» mdx|body|null| yes |none|
-|»» name|body|string| yes |it is the componentId|
-|»» metadata|body|object| yes |none|
-|»» type|body|string| yes |none|
-|»» cube|body|object| yes |none|
-|»»» uniqueName|body|string| yes |none|
-|»»» name|body|string| yes |none|
-|»»» connection|body|string| yes |none|
-|»»» catalog|body|string| yes |none|
-|»»» schema|body|string| yes |none|
-|»»» caption|body|string| yes |none|
-|»»» visible|body|boolean| yes |none|
-|» cron|body|object| yes |none|
-|»» complexJobTrigger|body|object| yes |none|
-|»»» endTime|body|null| yes |none|
-|»»» startTime|body|string| yes |none|
-|»»» uiPassParam|body|string| yes |none|
-|»»» daysOfWeek|body|[string]| yes |none|
-|» channels|body|[string]| yes |none|
-|» emailConfig|body|object| yes |none|
-|»» toUsers|body|[string]| yes |none|
-|»» ccUsers|body|[string]| yes |none|
-|»» bccUsers|body|[string]| yes |none|
-|»» subject|body|string| yes |none|
-|»» content|body|string| yes |none|
-|» pagePath|body|string| yes |the full path of the page|
-|» componentId|body|string| yes |none|
-|» componentTitle|body|string| yes |none|
+## **Body Parameters**
 
-#### Enum
+| Name                                        | Location | Type     | Required | Description                                                      |
+|---------------------------------------------|----------|---------:|:--------|------------------------------------------------------------------|
+| body                                        | body     | object   | No       | Overall JSON payload                                             |
+| **enabled**                                 | body     | string   | **Yes**  | `1` (true) or `0` (false)                                        |
+| **name**                                    | body     | string   | **Yes**  | Alert name                                                        |
+| **title**                                   | body     | string   | **Yes**  | Alert title (can be empty string)                                 |
+| **rule**                                    | body     | object   | **Yes**  | Rule definition                                                  |
+| ┣━ **logical**                              | body     | string   | **Yes**  | `and` / `or`                                                     |
+| ┗━ **conditions**                           | body     | [object] | **Yes**  | Condition objects                                                |
+| ┗━ **id**                                   | body     | string   | **Yes**  | Measure/metric ID                                                |
+| ┗━ **uniqueName**                           | body     | string   | **Yes**  | Unique measure identifier                                        |
+| ┗━ **comparator**                           | body     | string   | **Yes**  | `<` / `>` / `<=` / `>=` / `==` / `!=` / `between` / ...          |
+| ┗━ value                                    | body     | [integer]| No       | Used by comparators expecting numeric values                     |
+| ┗━ inclusiveLeft                            | body     | boolean  | No       | For `between`/`not between`                                      |
+| ┗━ inclusiveRight                           | body     | boolean  | No       | For `between`/`not between`                                      |
+| ┗━ match                                    | body     | string   | No       | `any` / `all` (default: `any`)                                   |
+| **qm**                                      | body     | object   | **Yes**  | Query configuration object                                       |
+| ┣━ **queryModel**                           | body     | object   | **Yes**  | Axes, details, measures, etc.                                    |
+| ┃━ **axes**                                 | body     | object   | **Yes**  | Defines `FILTER`, `COLUMNS`, `ROWS` axes                         |
+| ┃━ **FILTER**                               | body     | object   | **Yes**  | Filter axis configuration                                        |
+| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ **location**                            | body     | string   | **Yes**  | `FILTER`                                                         |
+| ┃━━ **hierarchies**                         | body     | [object] | **Yes**  | Hierarchy definitions                                            |
+| ┃━━━ name                                   | body     | string   | No       | Hierarchy name                                                   |
+| ┃━━━ levels                                 | body     | object   | No       | Contains the level objects                                      |
+| ┃━━━ **the_date@@MONTHS**                  | body     | object   | **Yes**  | Example level                                                    |
+| ┃━━━━ name                                  | body     | string   | **Yes**  | Level name                                                       |
+| ┃━━━━ caption                               | body     | string   | **Yes**  | Level caption                                                    |
+| ┃━━━━ mdx                                   | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━━━ **selection**                         | body     | object   | **Yes**  | Defines members, parameter, etc.                                 |
+| ┃━━━━━ type                                 | body     | string   | **Yes**  | e.g., `INCLUSION`                                                |
+| ┃━━━━━ members                              | body     | [object] | **Yes**  | Members of the selection                                        |
+| ┃━━━━━ parameterName                        | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━━━ aggregators                           | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━━━ filters                               | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━━ cmembers                               | body     | object   | No       | Calculated members                                               |
+| ┃━━━ schema                                 | body     | string   | No       | Schema name                                                      |
+| ┃━━━ cube                                   | body     | string   | No       | Cube name                                                        |
+| ┃━━━ id                                     | body     | string   | No       | Hierarchy ID                                                     |
+| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
+| ┃━ **COLUMNS**                              | body     | object   | **Yes**  | Columns axis configuration                                       |
+| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ **filterAxis**                          | body     | boolean  | **Yes**  | Whether to apply a filter                                        |
+| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ **location**                            | body     | string   | **Yes**  | `COLUMNS`                                                        |
+| ┃━━ **hierarchies**                         | body     | [string] | **Yes**  | Array of hierarchies                                             |
+| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
+| ┃━ **ROWS**                                 | body     | object   | **Yes**  | Rows axis configuration                                          |
+| ┃━━ mdx                                     | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ filters                                 | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━ sortOrder                               | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ sortEvaluationLiteral                   | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ hierarchizeMode                         | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ **location**                            | body     | string   | **Yes**  | `ROWS`                                                           |
+| ┃━━ **hierarchies**                         | body     | [object] | **Yes**  | Rows hierarchy definitions                                       |
+| ┃━━━ name                                   | body     | string   | No       | Hierarchy name                                                   |
+| ┃━━━ levels                                 | body     | object   | No       | Contains the level objects                                      |
+| ┃━━━ **product_family**                     | body     | object   | **Yes**  | Example level                                                    |
+| ┃━━━━ name                                  | body     | string   | **Yes**  | Level name                                                       |
+| ┃━━━━ caption                               | body     | string   | **Yes**  | Caption                                                          |
+| ┃━━━━ mdx                                   | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━━━ **selection**                         | body     | object   | **Yes**  | Selection object                                                 |
+| ┃━━━━ aggregators                           | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━━━ filters                               | body     | [string] | **Yes**  | N/A                                                              |
+| ┃━━━━ sort                                  | body     | integer  | **Yes**  | Sort order                                                       |
+| ┃━━━ cmembers                               | body     | object   | No       | Calculated members                                               |
+| ┃━━━ filters                                | body     | [string] | No       | Additional filters                                               |
+| ┃━━ nonEmpty                                | body     | boolean  | **Yes**  | Exclude empty cells                                              |
+| ┣━ **visualTotals**                         | body     | boolean  | **Yes**  | Enable or disable visual totals                                  |
+| ┣━ visualTotalsPattern                      | body     | null     | **Yes**  | N/A                                                              |
+| ┣━ **lowestLevelsOnly**                     | body     | boolean  | **Yes**  | Only lowest levels or not                                        |
+| ┣━ **details**                              | body     | object   | **Yes**  | Additional detail settings                                       |
+| ┃━ axis                                     | body     | string   | **Yes**  | e.g., `COLUMNS`                                                  |
+| ┃━ location                                 | body     | string   | **Yes**  | e.g., `BOTTOM`                                                   |
+| ┃━ **measures**                             | body     | [object] | **Yes**  | Measure definitions                                              |
+| ┃━━ caption                                 | body     | string   | No       | e.g., `store_sales`                                              |
+| ┃━━ name                                    | body     | string   | No       | e.g., `sales_fact.store_sales`                                   |
+| ┃━━ uniqueName                              | body     | string   | No       | e.g., `[Measures].[sales_fact.store_sales]`                      |
+| ┃━━ id                                      | body     | string   | No       | Unique measure ID                                                |
+| ┃━━ type                                    | body     | string   | No       | e.g., `EXACT`                                                    |
+| ┃━━ sort                                    | body     | integer  | No       | Sort order                                                       |
+| ┣━ **calculatedMeasures**                   | body     | [string] | **Yes**  | Calculated measures array                                        |
+| ┣━ **calculatedMembers**                    | body     | [string] | **Yes**  | Calculated members array                                        |
+| ┣━ **queryType**                            | body     | string   | **Yes**  | e.g., `OLAP`                                                     |
+| ┣━ **properties**                           | body     | object   | **Yes**  | Misc. properties                                                 |
+| ┃━━ datafor.query.pick.row                  | body     | string   | No       | e.g., `0,5000`                                                   |
+| ┃━━ datafor.secret.appKey                   | body     | string   | No       | App key                                                          |
+| ┃━━ datafor.olap.result.formatter           | body     | string   | No       | e.g., `mix`                                                      |
+| ┃━━ datafor.client.timezone                 | body     | string   | No       | e.g., `Asia/Shanghai`                                            |
+| ┃━━ datafor.client.locale                   | body     | string   | No       | e.g., `en`                                                       |
+| ┃━━ datafor.source.format                   | body     | string   | No       | e.g., `true`                                                     |
+| ┣━ **parameters**                           | body     | object   | **Yes**  | Query parameters                                                 |
+| ┣━ **plugins**                              | body     | object   | **Yes**  | Plugin-related configuration                                     |
+| ┣━ mdx                                      | body     | null     | **Yes**  | N/A                                                              |
+| ┣━ **name**                                 | body     | string   | **Yes**  | Same as `componentId`                                            |
+| ┣━ **metadata**                             | body     | object   | **Yes**  | Metadata object                                                  |
+| ┣━ **type**                                 | body     | string   | **Yes**  | e.g., `QUERYMODEL`                                               |
+| ┗━ **cube**                                 | body     | object   | **Yes**  | Cube definition                                                  |
+| ┗━ uniqueName                               | body     | string   | **Yes**  | e.g., `[workshop-model].[...]`                                   |
+| ┗━ name                                     | body     | string   | **Yes**  | Cube name                                                        |
+| ┗━ connection                               | body     | string   | **Yes**  | Connection name                                                  |
+| ┗━ catalog                                  | body     | string   | **Yes**  | Catalog name                                                     |
+| ┗━ schema                                   | body     | string   | **Yes**  | Schema name                                                      |
+| ┗━ caption                                  | body     | string   | **Yes**  | Cube caption                                                     |
+| ┗━ visible                                  | body     | boolean  | **Yes**  | Cube visibility                                                 |
+| **cron**                                    | body     | object   | **Yes**  | Scheduling config                                                |
+| ┣━ **complexJobTrigger**                    | body     | object   | **Yes**  | Complex trigger settings                                         |
+| ┃━━ endTime                                 | body     | null     | **Yes**  | N/A                                                              |
+| ┃━━ **startTime**                           | body     | string   | **Yes**  | e.g., `2024-08-07T12:00:00.000+08:00`                            |
+| ┃━━ **uiPassParam**                         | body     | string   | **Yes**  | e.g., `WEEKLY`                                                   |
+| ┃━━ **daysOfWeek**                          | body     | [string] | **Yes**  | e.g., `["0"]` for Sunday                                         |
+| **channels**                                | body     | [string] | **Yes**  | e.g., `["email"]`                                                |
+| **emailConfig**                             | body     | object   | **Yes**  | Email alert configuration                                        |
+| ┣━ **toUsers**                              | body     | [string] | **Yes**  | Usernames to send to                                             |
+| ┣━ **ccUsers**                              | body     | [string] | **Yes**  | CC recipients                                                    |
+| ┣━ **bccUsers**                             | body     | [string] | **Yes**  | BCC recipients                                                   |
+| ┣━ **subject**                              | body     | string   | **Yes**  | Email subject                                                    |
+| ┗━ **content**                              | body     | string   | **Yes**  | Email body (rich text or plain text)                             |
+| **pagePath**                                | body     | string   | **Yes**  | Full page path (e.g., `/public/...`)                             |
+| **componentId**                             | body     | string   | **Yes**  | Component ID                                                     |
+| **componentTitle**                          | body     | string   | **Yes**  | Component title                                                  |
 
-|Name|Value|
-|---|---|
-|»» logical|and|
-|»» logical|or|
-|»»» comparator|<|
-|»»» comparator|>|
-|»»» comparator|<=|
-|»»» comparator|>=|
-|»»» comparator|==|
-|»»» comparator|!=|
-|»»» comparator|between|
-|»»» comparator|not between|
-|»»» comparator|in|
-|»»» comparator|not in|
-|»»» comparator|is empty|
-|»»» comparator|is not empty|
+---
 
-> Response Examples
+## **Enum Values**
+
+| Name            | Value                                                                         |
+|-----------------|-------------------------------------------------------------------------------|
+| `rule.logical`  | `and`, `or`                                                                   |
+| `comparator`    | `<`, `>`, `<=`, `>=`, `==`, `!=`, `between`, `not between`, `in`, `not in`, `is empty`, `is not empty` |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -351,17 +344,17 @@ datafor.query.paging.subset.size
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description    |
+|-----------|---------|---------:|----------------|
+| `msg`     | string  | No       | Message string |
+| `success` | boolean | **Yes**  | Request status |
