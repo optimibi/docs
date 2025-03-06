@@ -1,11 +1,11 @@
 ---
-title: Basic Operations for Page Design
-permalink: /documentation/Start/Basic-Operations-for-Page-Design/
+title: Basic Operations for Report Design
+permalink: /documentation/Start/Basic-Operations-for-Report-Design/
 tags: ["Design"]
-description: "Basic Operations for Page Design."
+description: "Basic Operations for Report Design."
 ---
 
-# **Basic Operations for Page Design**
+# **Basic Operations for Report Design**
 
 OptimiBI provides powerful and flexible dashboard and report creation capabilities, allowing users to efficiently manage and adjust visualization components on the canvas. This document introduces key operations, including adding, deleting, resizing, moving, aligning, distributing, layering, switching types, and copying components, helping users optimize their data visualization design.
 
