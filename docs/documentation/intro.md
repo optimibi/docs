@@ -26,10 +26,10 @@ Optimibi is built to simplify data-driven decision-making through:
 ## **Get Started with Optimibi**
 If you're new to Optimibi, here’s how you can quickly get up to speed:
 
-1. **[Optimibi Overview](#)** – Learn how Optimibi transforms data analytics.
-2. **[Connecting Your Data](#)** – Step-by-step guide to integrating databases and data sources.
-3. **[Creating Your First Report](#)** – Learn how to build and share insightful reports.
-4. **[Optimizing Performance](#)** – Best practices for handling large-scale data efficiently.
+1. [**Optimibi Overview**](https://help.optimibi.com/documentation/Start/Optimibi-Overview/) – Learn how Optimibi transforms data analytics.
+2. [**Connecting Your Data**](https://help.optimibi.com/documentation/Datasource/Configuring-MySQL-Data-Source/) – Step-by-step guide to integrating databases and data sources.
+3. [**Creating an Analysis Model**](https://help.optimibi.com/documentation/Model/Creating-an-Analysis-Model/) - Building a model for analysis by defining dimensions, relationships, calculated fields, etc.
+4. [**Creating Your First Report**](https://help.optimibi.com/documentation/Start/Create-Your-First-Analysis-Report/)** – Learn how to build and share insightful reports.
 
 
 ## **Support & Community**
