@@ -1,5 +1,5 @@
 ﻿---
-title: Optimibi API
+title: Optimibi API Overview
 createTime: 2025/02/10 17:14:56
 permalink: /api/index/
 author: Optimibi
@@ -9,9 +9,8 @@ tags:
 description: 
 ---
 
-# **Optimibi API Documentation**
 
-## **Introduction**
+# **Optimibi API Overview**
 
 Optimibi provides a robust set of APIs that enable seamless interaction with its platform, allowing users to programmatically manage and automate various functionalities. These APIs cover a wide range of features, including **user and role management**, **access control**, **file and folder operations**, **data modeling**, **system configuration**, **user personalization**, and **parameter management**.
 
@@ -104,8 +103,8 @@ Optimibi supports multiple authentication mechanisms to ensure **secure and cont
 
 **Example (Request Headers):**
 
-```
-httpCopyEditCookie: session-flushed=true;
+```http
+Cookie: session-flushed=true;
         JSESSIONID=72B613231EB93BA9EB9DF9417E1B0F67;
         session-expiry=1741238288603;
         server-time=1741231088603
@@ -126,11 +125,7 @@ Supported login mechanisms include:
 
 **Example (Request Headers):**
 
-```
-http
-
-
-CopyEdit
+```http
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 ```
 
@@ -143,15 +138,10 @@ Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 
 **Example Usage:**
 
-```
-http
-
-
-CopyEdit
+```http
 https://your-optimibi-url/api/endpoint?token=<YOUR_VALID_JWT_TOKEN>
 ```
 
-------
 
 ## **6. Best Practices for API Security**
 
