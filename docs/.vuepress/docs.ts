@@ -129,11 +129,17 @@ export const documentationNote = defineNoteConfig({
 			items: "auto",
 		},
 		{
-			text: "Best",
+			text: "Best Practices",
 			collapsed: true,
 			prefix: "/documentation/Best/",
 			items: "auto",
 		},
+		{
+			text: "Security & Compliance",
+			collapsed: true,
+			prefix: "/documentation/Security/",
+			items: "auto",
+		},		
 	],
 });
 
