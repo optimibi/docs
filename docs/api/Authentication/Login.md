@@ -21,14 +21,14 @@ Typically `application/x-www-form-urlencoded` when submitting form data (though 
 
 ---
 
-### **Parameters** (x-www-form-urlencoded)
+### **Parameters Schema**
 
 | Name          | Location | Type   | Required | Description                                         |
 |---------------|----------|--------|----------|-----------------------------------------------------|
 | **j_username**| body     | string | No       | The username for login (e.g., `admin`)             |
 | **j_password**| body     | string | No       | The password for login (e.g., `password`)          |
 
-**Example**
+### **Request Example**
 ```
 j_username: admin
 j_password: password

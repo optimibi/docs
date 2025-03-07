@@ -5,12 +5,28 @@ tags: ["api","Recent"]
 description: 
 ---
 
-## GET Get recent
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/user-settings/recent
+**Request URL**
+```html
+/plugin/datafor-modeler/api/user-settings/recent
+```
 
-> Response Examples
+**Authorization**  
+Authentication is required to use this API. For details on the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
+---
+
+## **Description**
+This API retrieves a list of recently accessed items for the current user. It provides quick access to previously viewed resources.
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 [
   {
@@ -21,18 +37,18 @@ GET /plugin/datafor-modeler/api/user-settings/recent
 ]
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» fullPath|string|true|none||none|
-|» lastUse|integer|true|none||none|
-|» title|string|true|none||none|
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `fullPath` | string  | **Yes**  | The absolute path of the accessed resource. |
+| `lastUse`  | integer | **Yes**  | The timestamp (in milliseconds) of the last access. |
+| `title`    | string  | **Yes**  | The display name of the accessed resource. |

@@ -27,7 +27,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name          | Location | Type   | Required | Description |
 |--------------|----------|--------|----------|-------------|
@@ -36,7 +36,8 @@ Use of this API requires authentication. For details about the authentication me
 | ├── `pairs`  | body     | string | **No**   | A JSON string containing a list of schema-table pairs that specify the target tables. |
 | ├── `includeField` | body | string | **No**   | Boolean (`"true"`/`"false"`) indicating whether to include field metadata in the response. |
 
-#### **Body Example**
+### **Request Example**
+
 ```yaml
 connection: foodmart
 pairs: '[{"schema":"public","table":"customer"},{"schema":"public","table":"inventory_fact_1997"},{"schema":"public","table":"sales_fact_1997"},{"schema":"public","table":"store"},{"schema":"public","table":"time_by_day"},{"schema":"public","table":"warehouse"},{"schema":"public","table":"warehouse_class"},{"schema":"public","table":"product_class"},{"schema":"public","table":"product"}]'

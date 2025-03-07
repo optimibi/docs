@@ -37,7 +37,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 {
@@ -51,7 +51,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-## **Body Parameters Table**
+### **Body Parameters Schema**
 
 | Name          | Location | Type    | Required | Description |
 |--------------|----------|---------|----------|-------------|

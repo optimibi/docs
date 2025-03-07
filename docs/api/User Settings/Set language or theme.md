@@ -5,11 +5,24 @@ tags: ["api","User Settings"]
 description: 
 ---
 
-## POST Set language or theme
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/user-settings/display
+**Request URL**
+```html
+/plugin/datafor-modeler/api/user-settings/display
+```
 
-> Body Parameters
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
+
+**Content Type**  
+`application/json`
+
+---
+
+### **Request Example**
 
 ```json
 [
@@ -24,13 +37,17 @@ POST /plugin/datafor-modeler/api/user-settings/display
 ]
 ```
 
-### Params
+### **Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|array[object]| no |none|
+| Name            | Location | Type         | Required | Description |
+|-----------------|----------|--------------|----------|-------------|
+| body            | body     | array[object]| no       | none        |
+| ├── id          | body     | string       | yes      | The setting ID (e.g., `language`, `theme`) |
+| ├── value       | body     | string       | yes      | The value for the setting (e.g., `en`, `light`) |
 
-> Response Examples
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -38,16 +55,16 @@ POST /plugin/datafor-modeler/api/user-settings/display
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description        | Data schema |
+|------------------|-------------------------------------------------------------------------|--------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | The request was successful. | Inline      |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
+| Name     | Type    | Required | Restrictions | Description |
+|----------|---------|----------|--------------|-------------|
+| `success`| boolean | **Yes**  | none         | Whether the operation was successful. |

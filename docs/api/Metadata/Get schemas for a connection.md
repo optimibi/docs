@@ -27,7 +27,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name          | Location | Type   | Required | Description |
 |--------------|----------|--------|----------|-------------|
@@ -35,7 +35,8 @@ Use of this API requires authentication. For details about the authentication me
 | `body`       | body     | object | **No**   | The request payload containing the connection name. |
 | ├── `connection` | body | string | **No**   | The name of the database connection for which schemas will be retrieved. |
 
-#### **Body Example**
+### **Request Example**
+
 ```yaml
 connection: foodmart
 ```

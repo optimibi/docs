@@ -5,28 +5,6 @@ tags: ["api","Extension Plugins","Authentication","OAuth2"]
 description: 
 ---
 
-## POST Save OAuth2 config
-
-POST /plugin/datafor-oauth2/api/update
-
-Preconditions:
-1. install datafor-oauth2 plugin
-2. The current user's user type must be Administrator
-
-> Body Parameters
-
-```json
-{
-  "auth_url": "https://accounts.google.com/o/oauth2/v2/auth",
-  "token_url": "https://oauth2.googleapis.com/token",
-  "info_url": "https://www.googleapis.com/oauth2/v2/userinfo",
-  "client_id": "1062332036927-2h1kbo2j1ti9j1v2sa6---
-title: Save OAuth2 config
-permalink: /api/Extension Plugins/OAuth2/Save OAuth2 config/
-tags: ["api","Extension Plugins","Authentication","OAuth2"]
-description:
----
-
 **Method**  
 `POST`
 
@@ -59,7 +37,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 {
@@ -94,7 +72,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-## **Body Parameters Table**
+### **Body Parameters Schema**
 
 | Name          | Location | Type    | Required | Description |
 |--------------|----------|---------|----------|-------------|

@@ -25,14 +25,14 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters** (x-www-form-urlencoded)
+### **Parameters Schema**
 
 | Name              | Location | Type   | Required | Description                  |
 |-------------------|----------|--------|----------|------------------------------|
 | **pagePath**      | body     | string | No       | Full page path (e.g., `/public/test.datafor`) |
 | **componentId**   | body     | string | No       | Identifier of the component  |
 
-**Example**
+### **Request Example**
 ```
 pagePath: /public/test.datafor
 componentId: C739239F-4B54-6C90-8389-BF77F713AA98
@@ -72,24 +72,24 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
       },
       "pagePath": "/public/test.datafor",
       "pageExists": true,
-      "pagePathTitle": "/公共/test",
-      "pageTitle": "测试",
+      "pagePathTitle": "/Public/test",
+      "pageTitle": "test",
       "title": "",
       "enabled": "1",
       "nextRun": 1739678400000,
       "emailConfig": {
         "ccUsers": ["sally"],
-        "subject": "标题",
+        "subject": "alert",
         "executor": "admin",
         "bccUsers": ["linda"],
         "toUsers": ["ada", "peter"],
-        "content": "富文本内容或普通文本内容"
+        "content": "html or text"
       },
       "jobid": "admin\tAlertTaskAction\t64afc643-ea02-11ef-85a8-14755bc39e02",
       "channels": ["email"],
-      "componentTitle": "经营情况",
+      "componentTitle": "test",
       "executor": "admin",
-      "name": "测试预警",
+      "name": "alert1",
       "state": "NORMAL",
       "qm": {
         "mdx": null,

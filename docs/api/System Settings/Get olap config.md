@@ -5,17 +5,32 @@ tags: ["api","System Settings"]
 description: 
 ---
 
-## GET Get olap config
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/modeler/olap/config/meta
+**Request URL**
+```html
+/plugin/datafor/api/modeler/olap/config/meta
+```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|editable|query|string| no |none|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
+
+### Parameters
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| editable  | query   | string | no       | Specifies whether the configuration is editable |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -26,62 +41,62 @@ GET /plugin/datafor/api/modeler/olap/config/meta
       "defaults": "true",
       "editable": true,
       "name": "EnableSumBottom",
-      "zhdesc": "合计位于底部",
+      "zhdesc": "Total at the bottom",
       "range": "true,false",
       "type": "Boolean",
       "value": "true",
-      "desc": "controls which decide sum line on bottom or top."
+      "desc": "Controls whether the sum line appears at the bottom or top."
     },
     {
       "code": "mondrian.olap.NullMemberCaption",
       "defaults": "",
       "editable": true,
       "name": "NullMemberCaption",
-      "zhdesc": "Null成员标题",
+      "zhdesc": "Null member title",
       "range": "",
       "type": "String",
       "value": "",
-      "desc": "how a null member value is represented in the result output"
+      "desc": "Defines how a null member value is represented in the result output."
     },
     {
       "code": "mondrian.olap.InfinityRepresentation",
       "defaults": "Infinity",
       "editable": true,
       "name": "InfinityRepresentation",
-      "zhdesc": "Infinity名称",
+      "zhdesc": "Infinity name",
       "range": "",
       "type": "String",
       "value": "Infinity",
-      "desc": "how Infinity value is represented in the result output"
+      "desc": "Defines how the Infinity value is represented in the result output."
     },
     {
       "code": "mondrian.result.limit",
       "defaults": "0",
       "editable": true,
       "name": "ResultLimit",
-      "zhdesc": "查询结果行及层级成员的最大数量",
+      "zhdesc": "Maximum number of query result rows and hierarchical members",
       "range": "",
       "type": "Integer",
       "value": "500000",
-      "desc": "if set to a value greater than zero, limits the maximum size of a result set"
+      "desc": "Limits the maximum size of a result set when set to a value greater than zero."
     },
     {
       "code": "mondrian.rolap.queryTimeout",
       "defaults": "0",
       "editable": true,
       "name": "QueryTimeout",
-      "zhdesc": "查询超时时间(秒)",
+      "zhdesc": "Query timeout duration (seconds)",
       "range": "",
       "type": "Integer",
       "value": "300",
-      "desc": "the timeout value (in seconds) for queries"
+      "desc": "Defines the timeout value (in seconds) for queries."
     },
     {
       "code": "mondrian.query.limit",
       "defaults": "40",
       "editable": true,
       "name": "QueryLimit",
-      "zhdesc": "最大并发查询数",
+      "zhdesc": "Maximum concurrent queries",
       "range": "",
       "type": "Integer",
       "value": "200",
@@ -92,37 +107,43 @@ GET /plugin/datafor/api/modeler/olap/config/meta
       "defaults": "1000",
       "editable": true,
       "name": "MaxRows",
-      "range": "sql最大数据行数",
+      "range": "Maximum number of SQL rows",
       "type": "Integer",
       "value": "1000",
-      "desc": "limit on the number of rows from sql"
+      "desc": "Limits the number of rows retrieved from SQL."
     }
   ],
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» data|[object]|true|none||none|
-|»» code|string|true|none||none|
-|»» defaults|string|true|none||none|
-|»» editable|boolean|true|none||none|
-|»» name|string|true|none||none|
-|»» zhdesc|string|false|none||none|
-|»» range|string|false|none||none|
-|»» type|string|true|none||none|
-|»» value|string|true|none||none|
-|»» desc|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description    |
+|-----------|---------|---------:|----------------|
+| `msg`     | string  | No       | Response message |
+| `data`    | array   | **Yes**  | List of OLAP configuration settings |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |
+
+#### **Data Object Schema**
+
+| Name      | Type    | Required | Description    |
+|-----------|---------|---------:|----------------|
+| `code`    | string  | **Yes**  | Configuration code identifier |
+| `defaults` | string  | **Yes**  | Default value of the configuration |
+| `editable` | boolean | **Yes**  | Indicates whether the configuration is editable |
+| `name`    | string  | **Yes**  | Configuration name |
+| `zhdesc`  | string  | No       | Chinese description of the configuration |
+| `range`   | string  | No       | Valid value range for the configuration |
+| `type`    | string  | **Yes**  | Data type of the configuration |
+| `value`   | string  | **Yes**  | Current value of the configuration |
+| `desc`    | string  | **Yes**  | Description of the configuration |
+

@@ -21,7 +21,7 @@ The current user must have administrator authority over the folder or file.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 {

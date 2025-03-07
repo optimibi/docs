@@ -5,13 +5,29 @@ tags: ["api","System Settings"]
 description: 
 ---
 
-## POST Set System Config
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/system/settings/update
+**Request URL**
+```html
+/plugin/datafor/api/system/settings/update
+```
 
-no need to set all keys ,but you can choose some
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+**Preconditions**
+- Not all configuration keys need to be set; you can choose specific ones to update.
+
+---
+
+### **Request Example**
 
 ```json
 {
@@ -29,24 +45,27 @@ no need to set all keys ,but you can choose some
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» locale-country|body|string| no |do not use|
-|» cors-requests-allowed|body|string| no |none|
-|» cors-requests-exposed-headers|body|string| no |none|
-|» cors-requests-allowed-domains|body|string| no |none|
-|» cors-requests-allowed-methods|body|string| no |none|
-|» cors-requests-allow-credentials|body|string| no |none|
-|» fully-qualified-server-url|body|string| no |none|
-|» allowRegister|body|string| no |none|
-|» cors-requests-allowed-headers|body|string| no |none|
-|» locale-language|body|string| no |do not use|
-|» cors-root-config-is-abstract|body|string| no |none|
+### **Body Parameters Schema**
 
-> Response Examples
+| Name                                      | Type   | Required | Description                                      |
+|-------------------------------------------|--------|---------:|--------------------------------------------------|
+| `locale-country`                          | string | No       | **Do not use**                                   |
+| `cors-requests-allowed`                   | string | No       | Indicates whether CORS requests are allowed     |
+| `cors-requests-exposed-headers`           | string | No       | Headers exposed in CORS responses               |
+| `cors-requests-allowed-domains`           | string | No       | Allowed domains for CORS requests               |
+| `cors-requests-allowed-methods`           | string | No       | Allowed HTTP methods for CORS requests          |
+| `cors-requests-allow-credentials`         | string | No       | Indicates whether credentials are allowed in CORS requests |
+| `fully-qualified-server-url`              | string | No       | Fully qualified server URL                      |
+| `allowRegister`                           | string | No       | Indicates whether user registration is allowed  |
+| `cors-requests-allowed-headers`           | string | No       | Headers allowed in CORS requests                |
+| `locale-language`                         | string | No       | **Do not use**                                   |
+| `cors-root-config-is-abstract`            | string | No       | Indicates whether the CORS root configuration is abstract |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -55,18 +74,17 @@ no need to set all keys ,but you can choose some
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» code|string|false|none||none|
-|» msg|string|false|none||none|
+| Name      | Type    | Required | Description                          |
+|-----------|---------|---------:|--------------------------------------|
+| `code`    | string  | No       | Response status code                |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |

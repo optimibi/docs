@@ -21,7 +21,7 @@ The current user must have write permissions in the target directory.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```yaml
 importDir: /public

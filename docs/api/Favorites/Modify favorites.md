@@ -21,7 +21,7 @@ This API requires authentication.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 [

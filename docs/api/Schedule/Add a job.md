@@ -5,12 +5,28 @@ tags: ["api","Schedule"]
 description: 
 ---
 
-## POST Add a job
+**Method**  
+`POST`
 
-POST /api/scheduler/job
+**Request URL**
+```html
+/api/scheduler/job
+```
 
-> Body Parameters
+**Authorization**  
+Authentication is **required** to use this API.
 
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+## **Description**
+This API schedules a new job for execution. The job can be configured with parameters, scheduling options, and input/output file paths.
+
+---
+
+### **Request Example**
 ```json
 {
   "jobName": "Update_Logging_Datamart",
@@ -29,28 +45,46 @@ POST /api/scheduler/job
 }
 ```
 
-### Params
+### **Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» jobName|body|string| yes |none|
-|» overwriteFile|body|string| no |none|
-|» simpleJobTrigger|body|object| no |none|
-|»» uiPassParam|body|string| yes |none|
-|»» repeatInterval|body|integer| yes |none|
-|»» repeatCount|body|integer| yes |none|
-|»» startTime|body|string| yes |none|
-|»» endTime|body|null| yes |none|
-|» inputFile|body|string| no |none|
-|» outputFile|body|string| no |none|
-|» timeZone|body|string| yes |none|
-|» jobParameters|body|[string]| no |none|
+| Name                | Location | Type       | Required | Description |
+|---------------------|----------|------------|----------|-------------|
+| `jobName`          | body     | string     | **Yes**  | The name of the job to be scheduled. |
+| `overwriteFile`    | body     | string     | No       | Specifies whether to overwrite the existing output file. |
+| `simpleJobTrigger` | body     | object     | No       | Defines the job execution trigger. |
+| ├── `uiPassParam`  | body     | string     | **Yes**  | Execution mode (e.g., `RUN_ONCE`). |
+| ├── `repeatInterval` | body   | integer    | **Yes**  | The time interval between executions (in milliseconds). |
+| ├── `repeatCount`  | body     | integer    | **Yes**  | The number of times the job should repeat (`0` for no repeats). |
+| ├── `startTime`    | body     | string     | **Yes**  | The scheduled start time of the job (`ISO 8601` format). |
+| ├── `endTime`      | body     | null       | **Yes**  | The scheduled end time of the job (if applicable). |
+| `inputFile`        | body     | string     | No       | The file path of the input job file (`.kjb` or `.ktr`). |
+| `outputFile`       | body     | string     | No       | The output directory where results will be stored. |
+| `timeZone`         | body     | string     | **Yes**  | The time zone used for scheduling the job (e.g., `Etc/UCT`). |
+| `jobParameters`    | body     | array      | No       | Additional parameters to pass to the job. |
 
-> Response Examples
+---
 
-### Responses
+## **Response Examples**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **Successful Response (HTTP 200)**
+```json
+{
+  "success": true
+}
+```
+
+### **Failure Response (Example)**
+```json
+{
+  "msg": "Invalid job configuration",
+  "success": false
+}
+```
+
+---
+
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |

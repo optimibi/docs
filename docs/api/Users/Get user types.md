@@ -5,11 +5,22 @@ tags: ["api","Users"]
 description: 
 ---
 
-## GET Get user types
 
-GET /plugin/datafor-auth/api/roles/types
+**Method**  
+`GET`
 
-> Response Examples
+**Request URL**
+```html
+/plugin/datafor-auth/api/roles/types
+```
+
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
+
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -32,21 +43,23 @@ GET /plugin/datafor-auth/api/roles/types
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                  | Description | Data Schema |
+|------------------|--------------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | none        | Inline      |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» data|object|true|none||none|
-|»» total|integer|true|none||none|
-|»» success|boolean|true|none||none|
-|»» list|[object]|true|none||none|
-|»»» authority|string|true|none||none|
-|» success|boolean|true|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name        | Type    | Required | Description                            |
+|-------------|---------|----------|----------------------------------------|
+| `data`      | object  | Yes      | Contains response data.                |
+| ├── `total` | integer | Yes      | Total number of user types available.  |
+| ├── `success` | boolean | Yes      | Indicates whether the request was successful. |
+| ├── `list`   | [object] | Yes      | List of available user types.           |
+| ├── └── `authority` | string  | Yes  | Name of the user authority type (e.g., `SYS_Reader`). |
+| `success`   | boolean | Yes      | Overall success status of the request. |

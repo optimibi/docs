@@ -5,27 +5,45 @@ tags: ["api","System Settings"]
 description: 
 ---
 
-## POST Init locale
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/core/initLocale
+**Request URL**
+```html
+/plugin/datafor/api/core/initLocale
+```
 
-after login,call this immediatly
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+**Preconditions**
+- This API should be called immediately after login to initialize the locale settings.
+
+---
+
+### **Request Example**
 
 ```yaml
 clientLocale: zh-CN
 
 ```
 
-### Params
+### Parameters
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» clientLocale|body|string| no |BCP47|
+| Name           | Location | Type   | Required | Description                 |
+|---------------|----------|--------|----------|-----------------------------|
+| body          | body     | object | no       | Request body                |
+| ├── clientLocale | body     | string | no       | Locale setting in BCP47 format |
 
-> Response Examples
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -35,18 +53,19 @@ clientLocale: zh-CN
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» islogged|boolean|false|none||none|
-|» locale|string|true|none||the one really effect|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description                          |
+|-----------|---------|---------:|--------------------------------------|
+| `islogged` | boolean | No       | Indicates if the user is logged in  |
+| `locale`  | string  | **Yes**  | The effective locale after initialization |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |
+

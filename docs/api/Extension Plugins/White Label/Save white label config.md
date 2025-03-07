@@ -27,7 +27,7 @@ The current user must have **Administrator** privileges.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```yaml
 login_title: Access and manage your instances from this account

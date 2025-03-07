@@ -29,7 +29,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name            | Location | Type    | Required | Description |
 |----------------|----------|---------|----------|-------------|
@@ -40,7 +40,8 @@ Use of this API requires authentication. For details about the authentication me
 | ├── `includeCaption` | body | boolean | **No**   | Whether to include captions for table names. |
 | ├── `all`      | body     | boolean | **No**   | If `true`, the user must be an **administrator** of the connection. |
 
-#### **Body Example**
+### **Request Example**
+
 ```yaml
 connection: foodmart
 schema: public

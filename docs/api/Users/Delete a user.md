@@ -5,27 +5,38 @@ tags: ["api","Users"]
 description: 
 ---
 
-## POST Delete a user
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/delete
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/delete
+```
 
-Preconditions:The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. The current user's user type must be **Administrator**.
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+### **Request Example**
 
 ```yaml
 username: dev
-
 ```
 
-### Params
+### **Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» username|body|string| yes |none|
+| Name            | Location | Type     | Required | Description                         |
+|-----------------|----------|----------|----------|-------------------------------------|
+| body            | body     | object   | no       | none                                |
+| ├── username    | body     | string   | yes      | The username of the user to delete. |
 
-> Response Examples
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -34,16 +45,17 @@ username: dev
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description        | Data schema |
+|------------------|-------------------------------------------------------------------------|--------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | The request was successful. | Inline      |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
+| Name     | Type    | Required | Restrictions | Description |
+|----------|---------|----------|--------------|-------------|
+| `success`| boolean | **Yes**  | none         | Whether the operation was successful. |
+| `username`| string | **No**  | none         | The username of the deleted user. |

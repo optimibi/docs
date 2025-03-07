@@ -5,11 +5,23 @@ tags: ["api","Users"]
 description: 
 ---
 
-## GET Get user's own information
+**Method**  
+`GET`
 
-GET /plugin/datafor-auth/api/user/detail
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/detail
+```
 
-> Response Examples
+**Authorization**  
+The current user must be authenticated to access their own information.
+
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -29,26 +41,26 @@ GET /plugin/datafor-auth/api/user/detail
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description        | Data schema |
+|------------------|-------------------------------------------------------------------------|--------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | The request was successful. | Inline      |
 
-HTTP Status Code **200**
+### **Responses Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» data|object|true|none||none|
-|»» user|object|true|none||none|
-|»»» dept|string|false|none||none|
-|»»» email|string|false|none||none|
-|»»» enabled|string|true|none||none|
-|»»» mobile|string|false|none||none|
-|»»» name|string|true|none||none|
-|»»» password|string|true|none||md5|
-|»»» title|string|false|none||none|
-|»»» username|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name            | Type    | Required | Restrictions     | Description                    |
+|-----------------|---------|----------|------------------|--------------------------------|
+| `data`          | object  | **Yes**  | none             | Contains user details.         |
+| `» user`        | object  | **Yes**  | none             | Contains user's personal info. |
+| `»» dept`       | string  | **No**   | none             | The user's department.         |
+| `»» email`      | string  | **No**   | none             | The user's email address.      |
+| `»» enabled`    | string  | **Yes**  | none             | The user's account status.     |
+| `»» mobile`     | string  | **No**   | none             | The user's mobile number.      |
+| `»» name`       | string  | **Yes**  | none             | The user's full name.          |
+| `»» password`   | string  | **Yes**  | MD5 hash         | The user's password (hashed).  |
+| `»» title`      | string  | **No**   | none             | The user's title.              |
+| `»» username`   | string  | **Yes**  | none             | The user's username.           |
+| `success`       | boolean | **Yes**  | none             | Whether the operation was successful. |

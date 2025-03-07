@@ -25,7 +25,7 @@ No request body is typically used with a `GET` request. Parameters are provided 
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name               | Location | Type   | Required | Description                                           |
 |--------------------|----------|--------|----------|-------------------------------------------------------|

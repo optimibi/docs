@@ -21,7 +21,7 @@ The current user must have read access to the specified folder or file.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 {

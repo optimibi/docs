@@ -5,27 +5,44 @@ tags: ["api","Authentication","Token"]
 description: 
 ---
 
-## POST Delete a token
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/token/delete
+**Request URL**
+```html
+`/plugin/datafor-modeler/api/token/delete`
+```
 
-Preconditions:The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+**Preconditions**
+- The current user's type must be **Administrator**.
+
+---
+
+### **Request Example**
 
 ```yaml
 name: ERP
-
 ```
 
-### Params
+### **Params**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» name|body|string| no |none|
+| Name | Location | Type   | Required | Description |
+|------|----------|--------|----------|-------------|
+| body | body     | object | no       | Token deletion payload |
+| » name | body   | string | no       | The name of the token to delete |
 
-> Response Examples
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -33,17 +50,17 @@ name: ERP
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description     | Data schema |
+|------------------|-------------------------------------------------------------------------|-----------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||true/false|
-|» msg|string|true|none||error message|
+| Name    | Type    | Required | Restrictions | Title      | Description        |
+|---------|---------|---------:|--------------|------------|--------------------|
+| `success` | boolean | **Yes**  | none         | Success    | Indicates success (true/false) |
+| `msg`     | string  | No       | none         | Message    | Error message if applicable |

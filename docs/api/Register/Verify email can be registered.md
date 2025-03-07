@@ -5,43 +5,68 @@ tags: ["api","Users","Register"]
 description: 
 ---
 
-## POST Verify email can be registered
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/isRightEmailForAdd
-
-> Body Parameters
-
-```yaml
-email: a@a.com
-
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/isRightEmailForAdd
 ```
 
-### Params
+**Authorization**  
+Authentication is **not required** to use this API.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» email|body|string| yes |none|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
 
+## **Description**
+This API verifies whether an email address can be used for registration. It checks if the provided email is valid and not already registered in the system.
+
+---
+
+### **Request Example**
+```yaml
+email: a@a.com
+```
+
+### **Parameters Schema**
+
+| Name    | Location | Type   | Required | Description |
+|---------|----------|--------|----------|-------------|
+| `email` | body    | string | **Yes**  | The email address to be verified for registration eligibility. |
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+### **Failure Response (Example)**
+```json
+{
+  "msg": "Email is already registered",
+  "success": false
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
 
-### Responses Data Schema
+## **HTTP Responses**
 
-HTTP Status Code **200**
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» msg|string|false|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `success` | boolean | **Yes**  | Indicates whether the email is available for registration. |
+| `msg`     | string  | No       | Response message (only present when the email cannot be used). |

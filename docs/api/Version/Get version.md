@@ -5,17 +5,29 @@ tags: ["api","Version"]
 description: 
 ---
 
-## GET Get version
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/version/info
+**Request URL**
+```html
+/plugin/datafor/api/version/info
+```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|refresh|query|string| no |none|
+---
 
-> Response Examples
+### **Parameters Schema**
+
+| Name       | Location | Type     | Required | Description |
+|------------|----------|----------|----------|-------------|
+| `refresh`  | query    | string   | no       | Specifies whether to refresh the version information. |
+
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -34,25 +46,27 @@ GET /plugin/datafor/api/version/info
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                  | Description | Data Schema |
+|------------------|--------------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | none        | Inline      |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» current|object|true|none||none|
-|»» buildId|string|true|none||none|
-|»» branch|string|true|none||none|
-|»» version|string|true|none||none|
-|» success|boolean|true|none||none|
-|» newest|object|false|none||none|
-|»» buildId|string|false|none||none|
-|»» branch|string|false|none||none|
-|»» version|string|false|none||none|
-|» status|integer|true|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name           | Type    | Required | Description                            |
+|----------------|---------|----------|----------------------------------------|
+| `current`      | object  | Yes      | Contains information about the current version. |
+| ├── `buildId`  | string  | Yes      | The build ID of the current version.   |
+| ├── `branch`   | string  | Yes      | The branch of the current version.     |
+| ├── `version`  | string  | Yes      | The version number of the current build. |
+| `success`      | boolean | Yes      | Overall success status of the request. |
+| `newest`       | object  | No       | Contains information about the newest available version. |
+| ├── `buildId`  | string  | No       | The build ID of the newest version.    |
+| ├── `branch`   | string  | No       | The branch of the newest version.      |
+| ├── `version`  | string  | No       | The version number of the newest version. |
+| `status`       | integer | Yes      | The status of the version check. A negative value typically indicates an issue. |

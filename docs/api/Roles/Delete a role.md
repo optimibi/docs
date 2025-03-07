@@ -5,44 +5,75 @@ tags: ["api","Roles"]
 description: 
 ---
 
-## POST Delete a role
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/roles/delete
-
-Preconditions:The current user's user type must be Administrator
-
-> Body Parameters
-
-```yaml
-authority: DEV
-
+**Request URL**
+```html
+/plugin/datafor-auth/api/roles/delete
 ```
 
-### Params
+**Authorization**  
+Authentication is **required** to use this API. The current user **must have Administrator privileges**.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» authority|body|string| yes |none|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
 
+## **Preconditions**
+- The current user's **user type must be "Administrator"** to execute this API.
+
+---
+
+## **Description**
+This API deletes an existing user role from the system. Only users with administrative privileges can perform this operation.
+
+---
+
+### **Request Example**
+```yaml
+authority: DEV
+```
+
+### **Parameters Schema**
+
+| Name        | Location | Type   | Required | Description |
+|------------|----------|--------|----------|-------------|
+| `authority` | body    | string | **Yes**  | The name of the role to be deleted. |
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+### **Failure Response (Example)**
+```json
+{
+  "msg": "Role not found",
+  "success": false
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
 
-### Responses Data Schema
+## **HTTP Responses**
 
-HTTP Status Code **200**
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `success` | boolean | **Yes**  | Indicates whether the role was successfully deleted. |
+| `msg`     | string  | No       | Response message (only present when the request fails). |
+
+---

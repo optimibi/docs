@@ -5,12 +5,28 @@ tags: ["api","Users","Register"]
 description: 
 ---
 
-## POST Verify register code
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/verifyRegisterCode
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/verifyRegisterCode
+```
 
-> Body Parameters
+**Authorization**  
+Authentication is **not required** to use this API.
 
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+## **Description**
+This API verifies whether a given registration code is valid for the provided email address. The registration code is typically sent to the user's email during the signup process.
+
+---
+
+### **Request Example**
 ```json
 {
   "email": "a@a.com",
@@ -18,41 +34,44 @@ POST /plugin/datafor-auth/api/user/verifyRegisterCode
 }
 ```
 
-### Params
+### **Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» email|body|string| yes |none|
-|» code|body|string| yes |none|
+| Name    | Location | Type   | Required | Description |
+|---------|----------|--------|----------|-------------|
+| `email` | body    | string | **Yes**  | The email address used for registration. |
+| `code`  | body    | string | **Yes**  | The registration verification code sent to the email. |
 
-> Response Examples
+---
 
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "success": true
 }
 ```
 
+### **Failure Response (HTTP 200)**
 ```json
 {
-  "msg": "email already existed",
+  "msg": "Email already existed",
   "code": 409,
   "success": false
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `msg`     | string  | No       | Response message (only present when the request fails). |
+| `success` | boolean | **Yes**  | Indicates whether the verification was successful. |

@@ -5,43 +5,68 @@ tags: ["api","Users","Register"]
 description: 
 ---
 
-## POST Verify username can be registered
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/isRightUsernameForAdd
-
-> Body Parameters
-
-```yaml
-username: admin
-
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/isRightUsernameForAdd
 ```
 
-### Params
+**Authorization**  
+Authentication is **not required** to use this API.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» username|body|string| yes |case insensitive|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
 
+## **Description**
+This API checks whether a given username can be used for registration. The verification is **case-insensitive**, meaning uppercase and lowercase variations of the same username are treated identically.
+
+---
+
+### **Request Example**
+```yaml
+username: admin
+```
+
+### **Parameters Schema**
+
+| Name       | Location | Type   | Required | Description |
+|------------|----------|--------|----------|-------------|
+| `username` | body    | string | **Yes**  | The username to be verified (case-insensitive). |
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+### **Failure Response (Example)**
+```json
+{
+  "msg": "Username already exists",
+  "success": false
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
 
-### Responses Data Schema
+## **HTTP Responses**
 
-HTTP Status Code **200**
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» msg|string|false|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `success` | boolean | **Yes**  | Indicates whether the username is available for registration. |
+| `msg`     | string  | No       | Response message (only present when the username cannot be used). |

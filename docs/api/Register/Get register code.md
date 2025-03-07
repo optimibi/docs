@@ -5,54 +5,67 @@ tags: ["api","Users","Register"]
 description: 
 ---
 
-## POST Get register code
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/sendRegisterCode
-
-> Body Parameters
-
-```yaml
-email: a@a.com
-locale: en-US
-
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/sendRegisterCode
 ```
 
-### Params
+**Authorization**  
+Authentication is **not required** to use this API.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» email|body|string| yes |none|
-|» locale|body|string| no |none|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
 
+## **Description**
+This API sends a registration verification code to the specified email address. The code is used for user registration and must be entered within a valid time frame.
+
+---
+
+## **Parameters**
+
+### **Body Parameters Schema**
+| Name     | Location | Type   | Required | Description |
+|----------|----------|--------|----------|-------------|
+| `email`  | body    | string | **Yes**  | The recipient email address where the registration code will be sent. |
+| `locale` | body    | string | No       | The preferred language and region format (e.g., `en-US`). |
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "success": true
 }
 ```
 
+### **Failure Response (HTTP 200)**
 ```json
 {
-  "msg": "email already sent,if not received,please send 1 min later",
+  "msg": "email already sent, if not received, please send 1 min later",
   "code": "send.later",
   "success": false
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» code|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `msg`     | string  | No       | Response message (only present when the request is unsuccessful). |
+| `code`    | string  | No       | Error code indicating the reason for failure. |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful. |

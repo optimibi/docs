@@ -5,13 +5,23 @@ tags: ["api","Users"]
 description: 
 ---
 
-## POST Add or modify a user
+**Method**  
+`POST`
 
-POST /plugin/datafor-auth/api/user/insertOrUpdate
+**Request URL**
+```html
+/plugin/datafor-auth/api/user/insertOrUpdate
+```
 
-Preconditions:The current user's user type must be Administrator or update the user‘s own information
+**Authorization**  
+Use of this API requires authentication. The current user's user type must be **Administrator**, or they must be updating their own information.
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+### **Request Example**
 
 ```yaml
 username: dev
@@ -24,33 +34,34 @@ dept: IT
 title: Manager
 usertype: SYS_Creator
 enabled: "1"
-
 ```
 
-### Params
+### **Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» username|body|string| yes |none|
-|» password|body|string| no |none|
-|» roles|body|string| no |use & to separate multiple roles|
-|» name|body|string| yes |none|
-|» mobile|body|string| no |none|
-|» email|body|string| yes |none|
-|» dept|body|string| no |none|
-|» title|body|string| no |none|
-|» usertype|body|string| yes |none|
-|» enabled|body|string| yes |none|
+| Name            | Location | Type     | Required | Description                                 |
+|-----------------|----------|----------|----------|---------------------------------------------|
+| body            | body     | object   | no       | none                                        |
+| ├── username    | body     | string   | yes      | The username of the user.                  |
+| ├── password    | body     | string   | no       | The password for the user.                 |
+| ├── roles       | body     | string   | no       | Use `&` to separate multiple roles.        |
+| ├── name        | body     | string   | yes      | The name of the user.                      |
+| ├── mobile      | body     | string   | no       | The mobile number of the user.             |
+| ├── email       | body     | string   | yes      | The email address of the user.             |
+| ├── dept        | body     | string   | no       | The department the user belongs to.        |
+| ├── title       | body     | string   | no       | The title of the user.                     |
+| ├── usertype    | body     | string   | yes      | The type of user (e.g., SYS_Creator).      |
+| ├── enabled     | body     | string   | yes      | Whether the user is enabled (1 for enabled, 0 for disabled). |
 
 #### Enum
 
-|Name|Value|
-|---|---|
-|» enabled|0|
-|» enabled|1|
+| Name    | Value |
+|---------|-------|
+| enabled | 0     |
+| enabled | 1     |
 
-> Response Examples
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -59,17 +70,17 @@ enabled: "1"
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description        | Data schema |
+|------------------|-------------------------------------------------------------------------|--------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | The request was successful. | Inline      |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» username|string|false|none||none|
+| Name     | Type    | Required | Restrictions | Description |
+|----------|---------|----------|--------------|-------------|
+| `success`| boolean | **Yes**  | none         | Whether the operation was successful. |
+| `username`| string | **No**  | none         | The username of the added or modified user. |

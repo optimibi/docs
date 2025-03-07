@@ -18,7 +18,7 @@ The current user must have read privileges for the specified connection.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```json
 {

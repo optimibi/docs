@@ -5,11 +5,24 @@ tags: ["api","System Settings"]
 description: 
 ---
 
-## GET Query System Config
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/system/settings/query
+**Request URL**
+```html
+/plugin/datafor/api/system/settings/query
+```
 
-> Response Examples
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
+
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -31,29 +44,35 @@ GET /plugin/datafor/api/system/settings/query
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|false|none||none|
-|» data|object|true|none||none|
-|»» locale-country|string|true|none||none|
-|»» cors-requests-allowed|string|true|none||none|
-|»» cors-requests-exposed-headers|string|true|none||none|
-|»» cors-requests-allowed-domains|string|true|none||none|
-|»» cors-requests-allowed-methods|string|true|none||none|
-|»» cors-requests-allow-credentials|string|true|none||none|
-|»» fully-qualified-server-url|string|true|none||none|
-|»» allowRegister|string|true|none||none|
-|»» cors-requests-allowed-headers|string|true|none||none|
-|»» locale-language|string|true|none||none|
-|»» cors-root-config-is-abstract|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description                          |
+|-----------|---------|---------:|--------------------------------------|
+| `code`    | string  | No       | Response status code                |
+| `data`    | object  | **Yes**  | System configuration settings        |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |
+
+#### **Data Object Schema**
+
+| Name                                      | Type    | Required | Description                                      |
+|-------------------------------------------|---------|---------:|--------------------------------------------------|
+| `locale-country`                          | string  | **Yes**  | Country-specific locale setting                 |
+| `cors-requests-allowed`                   | string  | **Yes**  | Whether CORS requests are allowed               |
+| `cors-requests-exposed-headers`           | string  | **Yes**  | Headers exposed in CORS requests                |
+| `cors-requests-allowed-domains`           | string  | **Yes**  | Allowed domains for CORS requests               |
+| `cors-requests-allowed-methods`           | string  | **Yes**  | Allowed HTTP methods for CORS requests          |
+| `cors-requests-allow-credentials`         | string  | **Yes**  | Whether credentials are allowed in CORS requests |
+| `fully-qualified-server-url`              | string  | **Yes**  | Fully qualified server URL                      |
+| `allowRegister`                           | string  | **Yes**  | Whether user registration is allowed            |
+| `cors-requests-allowed-headers`           | string  | **Yes**  | Headers allowed in CORS requests                |
+| `locale-language`                         | string  | **Yes**  | Language-specific locale setting                |
+| `cors-root-config-is-abstract`            | string  | **Yes**  | Whether the CORS root configuration is abstract |
+

@@ -27,7 +27,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name          | Location | Type    | Required | Description |
 |--------------|----------|---------|----------|-------------|
@@ -38,7 +38,8 @@ Use of this API requires authentication. For details about the authentication me
 | ├── `columns` | body    | string  | **No**   | JSON array of columns to be retrieved. If `detail` is not empty, it means a calculated column. |
 | ├── `limit`  | body     | string  | **No**   | The maximum number of rows to return. |
 
-#### **Body Example**
+### **Request Example**
+
 ```yaml
 connection: foodmart
 schema: foodmart

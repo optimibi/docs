@@ -26,7 +26,7 @@ No request body is typically used with `DELETE`. Parameters are provided via que
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name  | Location | Type   | Required | Description                    |
 |-------|----------|--------|----------|--------------------------------|

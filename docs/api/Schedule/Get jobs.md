@@ -5,12 +5,27 @@ tags: ["api","Schedule"]
 description: 
 ---
 
-## GET Get jobs
+**Method**  
+`GET`
 
-GET /api/scheduler/getJobs
+**Request URL**
+```html
+/api/scheduler/getJobs
+```
 
-> Response Examples
+**Authorization**  
+Authentication is **required** to use this API.
 
+---
+
+## **Description**
+This API retrieves a list of scheduled jobs, including details such as job parameters, execution schedules, and status.
+
+---
+
+## **Response Examples**
+
+### **Successful Response (HTTP 200)**
 ```json
 {
   "job": [
@@ -54,33 +69,33 @@ GET /api/scheduler/getJobs
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                              | Description | Data Schema |
+|------------------|----------------------------------------------------------------------|-------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)              | Request was successful | Inline |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» job|[object]|true|none||none|
-|»» groupName|string|false|none||none|
-|»» jobId|string|false|none||none|
-|»» jobName|string|false|none||none|
-|»» jobParams|object|false|none||none|
-|»»» jobParams|[object]|true|none||none|
-|»»»» name|string|true|none||none|
-|»»»» value|string|true|none||none|
-|»» jobTrigger|object|false|none||none|
-|»»» @type|string|true|none||none|
-|»»» duration|string|true|none||none|
-|»»» startTime|string|true|none||none|
-|»»» repeatCount|string|true|none||none|
-|»»» repeatInterval|string|true|none||none|
-|»» lastRun|string|false|none||none|
-|»» nextRun|string|false|none||none|
-|»» state|string|false|none||none|
-|»» userName|string|false|none||none|
+| Name          | Type     | Required | Description |
+|--------------|---------|----------|-------------|
+| `job`        | array   | **Yes**  | List of scheduled jobs. |
+| ├── `groupName` | string  | No       | The user group associated with the job. |
+| ├── `jobId`     | string  | No       | The unique identifier of the job. |
+| ├── `jobName`   | string  | No       | The name of the scheduled job. |
+| ├── `jobParams` | object  | No       | The parameters associated with the job. |
+| │   ├── `jobParams` | array  | **Yes**  | List of job parameters. |
+| │   │   ├── `name`  | string  | **Yes**  | The parameter name. |
+| │   │   ├── `value` | string  | **Yes**  | The parameter value. |
+| ├── `jobTrigger`  | object  | No       | The job execution trigger details. |
+| │   ├── `@type`       | string  | **Yes**  | The type of trigger (`simpleJobTrigger`). |
+| │   ├── `duration`    | string  | **Yes**  | The duration of the job execution. |
+| │   ├── `startTime`   | string  | **Yes**  | The scheduled start time of the job (`ISO 8601` format). |
+| │   ├── `repeatCount` | string  | **Yes**  | The number of times the job should repeat (`-1` for indefinite). |
+| │   ├── `repeatInterval` | string  | **Yes**  | The interval between job executions (in seconds). |
+| ├── `lastRun`  | string  | No       | The timestamp of the last job execution. |
+| ├── `nextRun`  | string  | No       | The timestamp of the next scheduled execution. |
+| ├── `state`    | string  | No       | The current state of the job (`NORMAL`, `PAUSED`, etc.). |
+| ├── `userName` | string  | No       | The username of the job owner. |

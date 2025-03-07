@@ -25,7 +25,7 @@ No request body is typically sent with a GET request.
 
 ---
 
-### **Parameters**
+### **Parameters Schema**
 
 | Name    | Location | Type   | Required | Description                      |
 |---------|----------|--------|----------|----------------------------------|

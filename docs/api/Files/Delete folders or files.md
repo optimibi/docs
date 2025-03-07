@@ -21,7 +21,7 @@ The current user must have administrator privileges for the folder or file.
 
 ---
 
-## **Body Parameters**
+### **Request Example**
 
 ```
 3be29d39-1504-424b-8115-be940e7c9145,3be29d39-1504-424b-8115-be940e7c9146

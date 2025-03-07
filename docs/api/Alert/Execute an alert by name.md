@@ -27,15 +27,15 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters** (x-www-form-urlencoded)
+### **Parameters Schema**
 
 | Name    | Location | Type   | Required | Description                         |
 |---------|----------|--------|----------|-------------------------------------|
 | **name**| body     | string | No       | Name of the alert to be executed    |
 
-**Example**
+### **Request Example**
 ```
-name: 测试预警
+name: alert1
 ```
 
 ---

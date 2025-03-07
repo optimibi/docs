@@ -5,13 +5,29 @@ tags: ["api","Authentication","Token"]
 description: 
 ---
 
-## POST Add or modify a token
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/token/update
+**Request URL**
+```html
+/plugin/datafor-modeler/api/token/update
+```
 
-Preconditions:The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
+
+---
+
+**Preconditions**
+- The current user's type must be **Administrator**.
+
+---
+
+### **Request Example**
 
 ```json
 {
@@ -33,26 +49,27 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Params
+### **Body Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» name|body|string| yes |应用名称，不能重复，和报表文件名一样不能使用的特殊字符|
-|» secret|body|string| yes |公钥|
-|» token_name|body|string| yes |url中存放token的参数名，默认token|
-|» expire|body|integer| yes |second|
-|» fieldmap|body|object| yes |none|
-|»» username|body|string| yes |none|
-|»» name|body|string| yes |none|
-|»» email|body|string| yes |none|
-|» algorithm|body|string| yes |HS256,HS384,HS512,RS256,RS384,RS512,ES256,ES384,ES512|
-|» enable|body|string| yes |0false1true|
-|» inituser|body|string| yes |0false1true|
-|» initroles|body|[string]| yes |like SYS_Reader|
-|» initpwd|body|string| no |when not empty,will create new user autolly, be used as the default password|
+| Name           | Type       | Required | Description                                        |
+|---------------|------------|---------:|--------------------------------------------------|
+| `name`        | string     | **Yes**  | Application name (must be unique, no special characters) |
+| `token_name`  | string     | **Yes**  | Parameter name storing the token in the URL (default: `token`) |
+| `secret`      | string     | **Yes**  | Public key used for authentication              |
+| `expire`      | integer    | **Yes**  | Expiration time in seconds                      |
+| `fieldmap`    | object     | **Yes**  | Field mapping for token attributes              |
+| ├── `username` | string     | **Yes**  | Mapped username field                           |
+| ├── `name`     | string     | **Yes**  | Mapped name field                               |
+| ├── `email`    | string     | **Yes**  | Mapped email field                              |
+| `algorithm`   | string     | **Yes**  | Token encryption algorithm (`HS256`, `HS384`, `HS512`, etc.) |
+| `enable`      | string     | **Yes**  | Whether token authentication is enabled (`1` for true, `0` for false) |
+| `inituser`    | string     | **Yes**  | Whether to initialize a user (`1` for true, `0` for false) |
+| `initroles`   | [string]   | **Yes**  | Initial roles assigned (e.g., `SYS_Reader`) |
+| `initpwd`     | string     | No       | Default password for automatically created users if not empty |
 
-> Response Examples
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -61,17 +78,18 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description                          |
+|-----------|---------|---------:|--------------------------------------|
+| `msg`     | string  | No       | Response message                     |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |
+

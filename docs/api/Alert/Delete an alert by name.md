@@ -27,15 +27,16 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-## **Body Parameters** (x-www-form-urlencoded)
+### **Body Parameters Schema**
 
 | Name | Location        | Type   | Required | Description                            |
 |------|-----------------|--------|----------|----------------------------------------|
 | **name** | form-data / body | string | No       | The name of the alert to be deleted     |
 
-**Example**
-```
-name=test
+### **Request Example**
+
+```yaml
+name: test
 ```
 
 ---

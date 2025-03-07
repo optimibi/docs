@@ -15,8 +15,7 @@ description:
 
 ---
 
-### **Body Parameters**
-
+### **Request Example**
 ```json
 {
   "smtpHost": "smtp.a.com",

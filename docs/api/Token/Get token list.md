@@ -5,13 +5,29 @@ tags: ["api","Authentication","Token"]
 description: 
 ---
 
-## GET Get token list
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/token/list
+**Request URL**
+```html
+/plugin/datafor-modeler/api/token/list
+```
 
-Preconditions:The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Response Examples
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+- The current user's user type **must** be `Administrator`.
+
+---
+
+### **Response Examples**
 
 ```json
 {
@@ -41,32 +57,32 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description        | Data schema |
+|------------------|-------------------------------------------------------------------------|--------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                  | The request was successful. | Inline      |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» data|[object]|true|none||none|
-|»» initroles|[string]|false|none||none|
-|»» fieldmap|object|false|none||none|
-|»»» name|string|true|none||none|
-|»»» email|string|true|none||none|
-|»»» username|string|true|none||none|
-|»» inituser|string|false|none||none|
-|»» enable|string|false|none||none|
-|»» expire|integer|false|none||none|
-|»» name|string|false|none||none|
-|»» token_name|string|false|none||none|
-|»» secret|string|false|none||none|
-|»» creatorId|integer|false|none||none|
-|»» lastModifiedDate|integer|false|none||none|
-|»» createdDate|integer|false|none||none|
-|»» algorithm|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name            | Type     | Required | Restrictions | Description       |
+|-----------------|----------|----------|--------------|-------------------|
+| `data`          | [object] | **Yes**  | none         | List of token data objects. |
+| ├── `initroles` | [string] | **No**  | none         | List of initial roles assigned to the token. |
+| ├── `fieldmap`  | object   | **No**  | none         | Mapping of token fields. |
+| │   ├── `name`  | string   | **Yes**  | none         | Field name for `name`. |
+| │   ├── `email` | string   | **Yes**  | none         | Field name for `email`. |
+| │   ├── `username` | string   | **Yes**  | none         | Field name for `username`. |
+| ├── `inituser`  | string   | **No**  | none         | Initial user ID. |
+| ├── `enable`    | string   | **No**  | none         | Token enable status (`1` for enabled). |
+| ├── `expire`    | integer  | **No**  | none         | Token expiration time in seconds. |
+| ├── `name`      | string   | **No**  | none         | Name of the token. |
+| ├── `token_name`| string   | **No**  | none         | Token name. |
+| ├── `secret`    | string   | **No**  | none         | Secret key for the token. |
+| ├── `creatorId` | integer  | **No**  | none         | ID of the creator. |
+| ├── `lastModifiedDate` | long     | **No** | none   | Last modified timestamp. |
+| ├── `createdDate` | long     | **No** | none      | Creation timestamp. |
+| ├── `algorithm` | string   | **No**  | none         | Token algorithm used (e.g., `HS256`). |
+| `success`       | boolean  | **Yes**  | none         | Indicates if the request was successful (`true` or `false`). |

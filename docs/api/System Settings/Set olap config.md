@@ -5,14 +5,29 @@ tags: ["api","System Settings"]
 description: 
 ---
 
-## POST Set olap config
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/modeler/olap/config/updateBatch
+**Request URL**
+```html
+/plugin/datafor/api/modeler/olap/config/updateBatch
+```
 
-Preconditions:The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/x-www-form-urlencoded`
 
+---
+
+**Preconditions**
+- The current user's type must be **Administrator**.
+
+---
+
+### **Request Example**
 ```json
 [
   {
@@ -22,13 +37,16 @@ Preconditions:The current user's user type must be Administrator
 ]
 ```
 
-### Params
+### **Body Parameters Schema**
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|array[object]| no |none|
+| Name   | Type   | Required | Description                              |
+|--------|--------|---------:|------------------------------------------|
+| `code` | string | **Yes**  | Configuration code identifier           |
+| `value` | string | **Yes**  | New value for the specified configuration |
 
-> Response Examples
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -37,17 +55,18 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | Request was successful | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description                          |
+|-----------|---------|---------:|--------------------------------------|
+| `msg`     | string  | No       | Response message                     |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful |
+
