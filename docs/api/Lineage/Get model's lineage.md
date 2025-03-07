@@ -2,22 +2,34 @@
 title: Get model's lineage
 permalink: /api/Lineage/Get model's lineage/
 tags: ["api","Lineage","Models"]
-description: 
+description:
 ---
 
-## GET Get model's lineage
+**Method**  
+`GET`
 
-GET /datafor/plugin/datafor-modeler/api/lineage/schema
+**Request URL**
+```html
+/datafor/plugin/datafor-modeler/api/lineage/schema
+```
 
-### Params
+**Authorization**  
+The current user must have read access to the specified model.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|includeOthers|query|string| no |none|
-|schema|query|string| no |none|
+---
 
-> Response Examples
+## **Query Parameters**
 
+| Name           | Location | Type   | Required | Description |
+|---------------|----------|--------|----------|-------------|
+| `includeOthers` | query    | string | No       | Whether to include additional related objects. |
+| `schema`      | query    | string | No       | The name of the model to retrieve lineage for. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "data": [
@@ -31,20 +43,29 @@ GET /datafor/plugin/datafor-modeler/api/lineage/schema
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description                              |
+|------------------|---------------------------------------------------------|------------------------------------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Model lineage retrieved successfully.   |
+| 400              | Bad Request                                             | Invalid request format or missing parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks the required permissions. |
+| 404              | Not Found                                               | Specified model does not exist. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» data|[object]|true|none||none|
-|»» schema|string|false|none||none|
-|»» files|[string]|false|none||none|
-|»» otherFiles|[string]|false|none||none|
-|» success|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name             | Type          | Required | Description |
+|-----------------|--------------|----------|-------------|
+| `success`       | boolean      | Yes      | `true` if the request was successful, `false` otherwise. |
+| `data`          | array[object] | Yes      | List of model lineage details. |
+| `data[].schema` | string        | No       | Name of the schema (model). |
+| `data[].files`  | array[string] | No       | List of files associated with the schema. |
+| `data[].otherFiles` | array[string] | No   | Additional related files. |
+| `msg`           | string        | No       | Response message (if applicable). |
+

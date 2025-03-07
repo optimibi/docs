@@ -2,14 +2,26 @@
 title: Get favorites
 permalink: /api/Favorites/Get favorites/
 tags: ["api","Favorites"]
-description: 
+description:
 ---
 
-## GET Get favorites
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/user-settings/favorites
+**Request URL**
+```html
+/plugin/datafor-modeler/api/user-settings/favorites
+```
 
-> Response Examples
+**Authorization**  
+This API requires authentication.
+
+**Content Type**  
+`application/json`
+
+---
+
+## **Response Examples**
 
 ```json
 [
@@ -21,18 +33,22 @@ GET /plugin/datafor-modeler/api/user-settings/favorites
 ]
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Request successful. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» fullPath|string|true|none||none|
-|» lastUse|integer|true|none||none|
-|» title|string|true|none||none|
+## **Response Data Schema**
+
+| Name       | Type    | Required | Description |
+|------------|--------|----------|-------------|
+| `fullPath` | string | **Yes**  | The full path of the favorite item. |
+| `lastUse`  | integer | **Yes**  | Timestamp of the last use. |
+| `title`    | string | **Yes**  | Title of the favorite item. |

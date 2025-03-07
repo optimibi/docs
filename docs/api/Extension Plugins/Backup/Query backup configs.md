@@ -2,32 +2,52 @@
 title: Query backup configs
 permalink: /api/Extension Plugins/Backup/Query backup configs/
 tags: ["api","Extension Plugins","Backup"]
-description: 
+description:
 ---
 
-## POST Query backup configs
+**Method**  
+`POST`
 
-POST /plugin/datafor-backup/api/query
-
-Preconditions:The current user's user type must be Administrator
-
-> Body Parameters
-
-```yaml
-{}
-
+**Request URL**
+```html
+/plugin/datafor-backup/api/query
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Cookie|header|string| yes |none|
-|Content-Type|header|string| yes |none|
-|body|body|object| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
+**Preconditions**
+- The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
+
+```json
+{}
+```
+(Empty body request)
+
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
 ```json
 {
   "msg": "",
@@ -53,32 +73,16 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Backup configuration query successful. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» data|[object]|true|none||none|
-|»» cron|string|false|none||none|
-|»» add_by|string|false|none||none|
-|»» trigger|string|false|none||none|
-|»» nextRun|integer|false|none||none|
-|»» jobid|string|false|none||none|
-|»» update_time|string|false|none||none|
-|»» folder|string|false|none||none|
-|»» enable|string|true|none||none|
-|»» name|string|true|none||none|
-|»» id|string|true|none||none|
-|»» state|string|true|none||none|
-|»» update_by|string|false|none||none|
-|»» config|string|true|none||none|
-|»» add_time|string|true|none||none|
-|» success|boolean|true|none||none|
+---

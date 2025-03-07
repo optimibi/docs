@@ -2,78 +2,47 @@
 title: Get file tree
 permalink: /api/Files/Get file tree/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## GET Get file tree
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/repo/files/tree
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/tree
+```
 
-List all folders and files in the specified path in a tree structure.
+**Authorization**  
+The current user must have appropriate permissions to access file structures.
 
-### Params
+**Content Type**  
+`application/json`
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|pathId|query|string| no |none|
-|showHidden|query|string| no |none|
+---
 
-> Response Examples
+## **Query Parameters**
 
+| Name        | Location | Type   | Required | Description |
+|------------|----------|--------|----------|-------------|
+| `pathId`   | query   | string | No       | The ID of the folder to retrieve the file tree from. |
+| `showHidden` | query   | string | No       | Whether to include hidden files and folders. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "file": {
     "name": "public",
     "id": "44153c42-e4c4-4cce-8ca7-f9025ea7e1ab",
     "createdDate": "1636119568448",
-    "creatorId": null,
-    "lastModifiedDate": "",
-    "fileSize": -1,
     "folder": true,
     "path": "/public",
     "hidden": false,
-    "notSchedulable": false,
-    "aclNode": false,
-    "versioned": false,
-    "versionId": null,
-    "locked": false,
-    "lockOwner": null,
-    "lockMessage": null,
-    "lockDate": "",
-    "owner": null,
-    "ownerTenantPath": null,
-    "versioningEnabled": false,
-    "versionCommentEnabled": false,
-    "ownerType": -1,
-    "title": "Public",
-    "description": null,
-    "locale": "zh",
-    "originalParentFolderPath": null,
-    "deletedDate": "",
-    "localePropertiesMapEntries": [
-      {
-        "locale": "default",
-        "properties": [
-          {
-            "key": "file.title",
-            "value": "Public"
-          },
-          {
-            "key": "jcr:primaryType",
-            "value": "nt:unstructured"
-          },
-          {
-            "key": "file.description",
-            "value": ""
-          }
-        ]
-      }
-    ],
-    "repositoryFileAclDto": null,
-    "pathTitle": null,
-    "accessMap": null,
-    "metadata": null,
-    "metadataMap": {}
+    "title": "Public"
   },
   "children": [
     {
@@ -81,58 +50,11 @@ List all folders and files in the specified path in a tree structure.
         "name": "workshop.datafor",
         "id": "2f5a2686-50ed-4104-a459-a300013ac2ca",
         "createdDate": "1722844149655",
-        "creatorId": "admin",
-        "lastModifiedDate": "1722844149655",
         "fileSize": 322,
         "folder": false,
         "path": "/public/workshop.datafor",
         "hidden": false,
-        "notSchedulable": false,
-        "aclNode": false,
-        "versioned": false,
-        "versionId": null,
-        "locked": false,
-        "lockOwner": null,
-        "lockMessage": null,
-        "lockDate": "",
-        "owner": null,
-        "ownerTenantPath": null,
-        "versioningEnabled": false,
-        "versionCommentEnabled": false,
-        "ownerType": -1,
-        "title": "workshop",
-        "description": "workshop",
-        "locale": "zh",
-        "originalParentFolderPath": null,
-        "deletedDate": "",
-        "localePropertiesMapEntries": [
-          {
-            "locale": "default",
-            "properties": [
-              {
-                "key": "file.title",
-                "value": "workshop"
-              },
-              {
-                "key": "jcr:primaryType",
-                "value": "nt:unstructured"
-              },
-              {
-                "key": "contentCreator",
-                "value": "admin"
-              },
-              {
-                "key": "file.description",
-                "value": "workshop"
-              }
-            ]
-          }
-        ],
-        "repositoryFileAclDto": null,
-        "pathTitle": "/Public/workshop",
-        "accessMap": null,
-        "metadata": null,
-        "metadataMap": {}
+        "title": "workshop"
       },
       "children": []
     }
@@ -140,93 +62,41 @@ List all folders and files in the specified path in a tree structure.
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | File tree retrieved successfully. |
+| 400              | Bad Request                                             | Invalid parameters provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks permission to access file tree. |
+| 404              | Not Found                                               | Folder not found. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» file|object|true|none||none|
-|»» name|string|true|none||none|
-|»» id|string|true|none||none|
-|»» createdDate|string|true|none||none|
-|»» creatorId|null|true|none||none|
-|»» lastModifiedDate|string|true|none||none|
-|»» fileSize|integer¦null|true|none||none|
-|»» folder|boolean|true|none||none|
-|»» path|string|true|none||none|
-|»» hidden|boolean|true|none||none|
-|»» notSchedulable|boolean¦null|true|none||none|
-|»» aclNode|boolean¦null|true|none||none|
-|»» versioned|boolean¦null|true|none||none|
-|»» versionId|null|true|none||none|
-|»» locked|boolean|true|none||none|
-|»» lockOwner|null|true|none||none|
-|»» lockMessage|null|true|none||none|
-|»» lockDate|string¦null|true|none||none|
-|»» owner|null|true|none||none|
-|»» ownerTenantPath|null|true|none||none|
-|»» versioningEnabled|boolean¦null|true|none||none|
-|»» versionCommentEnabled|boolean¦null|true|none||none|
-|»» ownerType|integer|true|none||none|
-|»» title|string|true|none||none|
-|»» description|null|true|none||none|
-|»» locale|string¦null|true|none||none|
-|»» originalParentFolderPath|null|true|none||none|
-|»» deletedDate|string¦null|true|none||none|
-|»» localePropertiesMapEntries|[object]¦null|true|none||none|
-|»»» locale|string|false|none||none|
-|»»» properties|[object]|false|none||none|
-|»»»» key|string|true|none||none|
-|»»»» value|string|true|none||none|
-|»» repositoryFileAclDto|null|true|none||none|
-|»» pathTitle|null|true|none||none|
-|»» accessMap|null|true|none||none|
-|»» metadata|null|true|none||none|
-|»» metadataMap|object|true|none||none|
-|» children|[object]|true|none||none|
-|»» file|object|false|none||none|
-|»»» name|string|true|none||none|
-|»»» id|string|true|none||none|
-|»»» createdDate|string|true|none||none|
-|»»» creatorId|string|true|none||none|
-|»»» lastModifiedDate|string|true|none||none|
-|»»» fileSize|integer¦null|true|none||none|
-|»»» folder|boolean|true|none||none|
-|»»» path|string|true|none||none|
-|»»» hidden|boolean|true|none||none|
-|»»» notSchedulable|boolean|true|none||none|
-|»»» aclNode|boolean|true|none||none|
-|»»» versioned|boolean|true|none||none|
-|»»» versionId|null|true|none||none|
-|»»» locked|boolean|true|none||none|
-|»»» lockOwner|null|true|none||none|
-|»»» lockMessage|null|true|none||none|
-|»»» lockDate|string¦null|true|none||none|
-|»»» owner|null|true|none||none|
-|»»» ownerTenantPath|null|true|none||none|
-|»»» versioningEnabled|boolean¦null|true|none||none|
-|»»» versionCommentEnabled|boolean¦null|true|none||none|
-|»»» ownerType|integer|true|none||none|
-|»»» title|string|true|none||none|
-|»»» description|string¦null|true|none||none|
-|»»» locale|string¦null|true|none||none|
-|»»» originalParentFolderPath|null|true|none||none|
-|»»» deletedDate|string|true|none||none|
-|»»» localePropertiesMapEntries|[object]|true|none||none|
-|»»»» locale|string|false|none||none|
-|»»»» properties|[object]|false|none||none|
-|»»»»» key|string|true|none||none|
-|»»»»» value|string|true|none||none|
-|»»» repositoryFileAclDto|null|true|none||none|
-|»»» pathTitle|string|true|none||none|
-|»»» accessMap|null|true|none||none|
-|»»» metadata|null|true|none||none|
-|»»» metadataMap|object|true|none||none|
-|»» children|[string]|false|none||none|
+## **Response Data Schema**
+
+| Name                | Type      | Required | Description |
+|---------------------|----------|----------|-------------|
+| `file`             | object    | **Yes**  | Root folder details. |
+| `file.name`        | string    | **Yes**  | Name of the folder. |
+| `file.id`          | string    | **Yes**  | Unique ID of the folder. |
+| `file.createdDate` | string    | **Yes**  | Creation timestamp. |
+| `file.folder`      | boolean   | **Yes**  | Indicates if the entity is a folder. |
+| `file.path`        | string    | **Yes**  | Full path of the folder. |
+| `file.hidden`      | boolean   | **Yes**  | Indicates if the folder is hidden. |
+| `file.title`       | string    | **Yes**  | Display title of the folder. |
+| `children`         | array     | **Yes**  | List of child folders and files. |
+| `children.file`    | object    | **Yes**  | File or folder details. |
+| `children.file.name` | string  | **Yes**  | Name of the file or folder. |
+| `children.file.id`   | string  | **Yes**  | Unique ID of the file or folder. |
+| `children.file.createdDate` | string | **Yes**  | Creation timestamp. |
+| `children.file.fileSize` | integer | No   | File size in bytes (null for folders). |
+| `children.file.folder` | boolean | **Yes**  | Indicates if it is a folder. |
+| `children.file.path`   | string  | **Yes**  | Full path of the file or folder. |
+| `children.file.hidden` | boolean | **Yes**  | Indicates if the file or folder is hidden. |
+| `children.file.title`  | string  | **Yes**  | Display title of the file or folder. |
+| `children.children`    | array   | No      | Nested child elements (if any). |

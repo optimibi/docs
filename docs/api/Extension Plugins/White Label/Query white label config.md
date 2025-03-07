@@ -1,16 +1,29 @@
 ---
-title: Query white label config
+title: Query White Label Config
 permalink: /api/Extension Plugins/White Label/Query white label config/
 tags: ["api","Extension Plugins","White Label"]
-description: 
+description:
 ---
 
-## POST Query white label config
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/core/wl/query
+**Request URL**
+```html
+/plugin/datafor/api/core/wl/query
+```
 
-> Response Examples
+**Authorization**  
+No authentication required.
 
+**Content Type**  
+`application/json`
+
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
 ```json
 {
   "code": "200",
@@ -25,23 +38,26 @@ POST /plugin/datafor/api/core/wl/query
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | White label configuration retrieved successfully. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|true|none||none|
-|» data|object|true|none||none|
-|»» main_subtitle|string|true|none||none|
-|»» enable_start|string|true|none||none|
-|»» login_copyright|string|true|none||none|
-|»» enable_help|string|true|none||none|
-|»» main_title|string|true|none||none|
-|» success|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name                        | Type    | Required | Description |
+|-----------------------------|---------|----------|-------------|
+| `code`                      | string  | **Yes**  | Response status code. |
+| `data`                      | object  | **Yes**  | White label configuration data. |
+| **» main_subtitle**          | string  | **Yes**  | Subtitle displayed below the main title. |
+| **» enable_start**           | string  | **Yes**  | Whether the start page is enabled (`true` or `false`). |
+| **» login_copyright**        | string  | **Yes**  | Copyright text displayed on the login page. |
+| **» enable_help**            | string  | **Yes**  | Whether the help feature is enabled (`true` or `false`). |
+| **» main_title**             | string  | **Yes**  | Main title displayed in the UI. |
+| `success`                   | boolean | **Yes**  | `true` if the request was successful. |

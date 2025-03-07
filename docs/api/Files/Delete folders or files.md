@@ -2,46 +2,67 @@
 title: Delete folders or files
 permalink: /api/Files/Delete folders or files/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## POST Delete folders or files
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/repo/files/deleteBatch
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/deleteBatch
+```
 
-Preconditions:The current user has administrator authority of the folder or file
+**Authorization**  
+The current user must have administrator privileges for the folder or file.
 
-> Body Parameters
+**Content Type**  
+`text/plain`
+
+---
+
+## **Body Parameters**
 
 ```
 3be29d39-1504-424b-8115-be940e7c9145,3be29d39-1504-424b-8115-be940e7c9146
-
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|string| no |none|
+## **Params**
 
-> Response Examples
+| Name   | Location | Type   | Required | Description |
+|--------|----------|--------|----------|-------------|
+| `body` | body     | string | No       | Comma-separated list of file or folder IDs to delete. |
 
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Request successful. |
+| 400              | Bad Request                                             | Invalid input provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks required permissions. |
+| 404              | Not Found                                               | File or folder not found. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `success` | boolean | **Yes**  | `true` if deletion was successful, otherwise `false`. |

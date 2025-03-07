@@ -2,18 +2,42 @@
 title: Query CAS config
 permalink: /api/Extension Plugins/Cas/Query CAS config/
 tags: ["api","Extension Plugins","Authentication","Cas"]
-description: 
+description:
 ---
 
-## POST Query CAS config
+**Method**  
+`POST`
 
-POST /plugin/datafor-cas/api/query
+**Request URL**
+```html
+/plugin/datafor-cas/api/query
+```
 
-Preconditions:
-1. install datafor-cas plugin
-2. The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+1. The `datafor-cas` plugin must be installed.
+2. The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
 
 ```json
 {
@@ -21,18 +45,15 @@ Preconditions:
   "login_url": "https://127.0.0.1:8443/cas/login",
   "enable": "1",
   "inituser": "1",
-  "initpwd": "pwd123"
+  "initpwd": "password"
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Title|Description|
-|---|---|---|---|---|---|
-|body|body|object| no ||none|
+## **Response Examples**
 
-> Response Examples
-
+### ✅ Success Response (200 OK)
 ```json
 {
   "code": "200",
@@ -56,27 +77,14 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|true|none||none|
-|» data|object|true|none||none|
-|»» initroles|[string]|true|none||none|
-|»» logout_url|string|true|none||none|
-|»» center_url|string|true|none||none|
-|»» login_url|string|true|none||none|
-|»» inituser|string|true|none||none|
-|»» initpwd|string|false|none||none|
-|»» enable|string|true|none||none|
-|»» ignoreList|[string]|true|none||none|
-|»» type|string|true|none||none|
-|» success|boolean|true|none||none|
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | CAS configuration retrieved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |

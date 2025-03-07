@@ -1,22 +1,37 @@
 ---
-title: Get file or folder's acl
+title: Get file or folder's ACL
 permalink: /api/Files/Get file or folder's acl/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## GET Get file or folder's acl
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/repo/files/acl
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/acl
+```
 
-### Params
+**Authorization**  
+The current user must have appropriate permissions to access ACL information.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|pathId|query|string| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
+## **Query Parameters**
+
+| Name    | Location | Type   | Required | Description |
+|---------|----------|--------|----------|-------------|
+| `pathId` | query   | string | No       | The ID of the file or folder to retrieve ACL information. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "aces": [
@@ -25,18 +40,14 @@ GET /plugin/datafor-modeler/api/repo/files/acl
       "tenantPath": null,
       "modifiable": true,
       "recipientType": 0,
-      "permissions": [
-        4
-      ]
+      "permissions": [4]
     },
     {
       "recipient": "Administrator",
       "tenantPath": null,
       "modifiable": false,
       "recipientType": 1,
-      "permissions": [
-        4
-      ]
+      "permissions": [4]
     }
   ],
   "id": "2f5a2686-50ed-4104-a459-a300013ac2ca",
@@ -47,26 +58,33 @@ GET /plugin/datafor-modeler/api/repo/files/acl
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | ACL information retrieved successfully. |
+| 400              | Bad Request                                             | Invalid parameters provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks permission to access ACL. |
+| 404              | Not Found                                               | File or folder not found. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» aces|[object]|true|none||none|
-|»» recipient|string|true|none||none|
-|»» tenantPath|null|true|none||none|
-|»» modifiable|boolean|true|none||none|
-|»» recipientType|integer|true|none||none|
-|»» permissions|[integer]|true|none||none|
-|» id|string|true|none||none|
-|» owner|string|true|none||none|
-|» tenantPath|null|true|none||none|
-|» ownerType|integer|true|none||none|
-|» entriesInheriting|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name                | Type      | Required | Description |
+|---------------------|----------|----------|-------------|
+| `aces`             | array     | **Yes**  | List of access control entries. |
+| `aces.recipient`   | string    | **Yes**  | Name of the user or role. |
+| `aces.tenantPath`  | null      | **Yes**  | Tenant path (if applicable). |
+| `aces.modifiable`  | boolean   | **Yes**  | Indicates if permissions can be modified. |
+| `aces.recipientType` | integer | **Yes**  | Type of recipient (e.g., user or role). |
+| `aces.permissions` | array     | **Yes**  | List of permission levels assigned. |
+| `id`               | string    | **Yes**  | Unique ID of the file or folder. |
+| `owner`            | string    | **Yes**  | Owner of the file or folder. |
+| `tenantPath`       | null      | **Yes**  | Tenant path information (if applicable). |
+| `ownerType`        | integer   | **Yes**  | Type of the owner. |
+| `entriesInheriting` | boolean  | **Yes**  | Indicates if ACL entries inherit from a parent. |

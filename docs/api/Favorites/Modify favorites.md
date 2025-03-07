@@ -2,14 +2,26 @@
 title: Modify favorites
 permalink: /api/Favorites/Modify favorites/
 tags: ["api","Favorites"]
-description: 
+description:
 ---
 
-## POST Modify favorites
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/user-settings/favorites
+**Request URL**
+```html
+/plugin/datafor-modeler/api/user-settings/favorites
+```
 
-> Body Parameters
+**Authorization**  
+This API requires authentication.
+
+**Content Type**  
+`application/json`
+
+---
+
+## **Body Parameters**
 
 ```json
 [
@@ -21,14 +33,19 @@ POST /plugin/datafor-modeler/api/user-settings/favorites
 ]
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|array[object]| no |none|
+## **Params**
 
-> Response Examples
+| Name       | Location | Type          | Required | Description |
+|------------|----------|---------------|----------|-------------|
+| `body`     | body     | array[object] | No       | Array of favorite items to modify. |
 
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "data": "[{\"fullPath\":\"/public/workshop.datafor\",\"title\":\"workshop\",\"lastUse\":1722844154850}]",
@@ -36,17 +53,22 @@ POST /plugin/datafor-modeler/api/user-settings/favorites
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Request successful. |
+| 400              | Bad Request                                             | Invalid input provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» data|string|true|none||none|
-|» success|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `data`    | string | **Yes**  | JSON string of modified favorites. |
+| `success` | boolean | **Yes**  | `true` if modification is successful, otherwise `false`. |

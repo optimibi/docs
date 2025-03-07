@@ -2,75 +2,45 @@
 title: Search
 permalink: /api/Files/Search/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## GET Search
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/repo/files/search
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/search
+```
 
-### Params
+**Authorization**  
+The current user must have read access to the files or folders.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|word|query|string| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
+## **Query Parameters**
+
+| Name  | Location | Type   | Required | Description                     |
+|-------|----------|--------|----------|---------------------------------|
+| `word` | query   | string | No       | The keyword to search for. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "file": {
     "name": "public",
     "id": "44153c42-e4c4-4cce-8ca7-f9025ea7e1ab",
     "createdDate": "1636119568448",
-    "creatorId": null,
-    "lastModifiedDate": "",
-    "fileSize": -1,
     "folder": true,
     "path": "/public",
-    "hidden": false,
-    "notSchedulable": false,
-    "aclNode": false,
-    "versioned": false,
-    "versionId": null,
-    "locked": false,
-    "lockOwner": null,
-    "lockMessage": null,
-    "lockDate": "",
-    "owner": null,
-    "ownerTenantPath": null,
-    "versioningEnabled": false,
-    "versionCommentEnabled": false,
-    "ownerType": -1,
-    "title": "Public",
-    "description": null,
-    "locale": "zh",
-    "originalParentFolderPath": null,
-    "deletedDate": "",
-    "localePropertiesMapEntries": [
-      {
-        "locale": "default",
-        "properties": [
-          {
-            "key": "file.title",
-            "value": "Public"
-          },
-          {
-            "key": "jcr:primaryType",
-            "value": "nt:unstructured"
-          },
-          {
-            "key": "file.description",
-            "value": ""
-          }
-        ]
-      }
-    ],
-    "repositoryFileAclDto": null,
-    "pathTitle": null,
-    "accessMap": null,
-    "metadata": null,
-    "metadataMap": {}
+    "title": "Public"
   },
   "children": [
     {
@@ -79,57 +49,11 @@ GET /plugin/datafor-modeler/api/repo/files/search
         "id": "2f5a2686-50ed-4104-a459-a300013ac2ca",
         "createdDate": "1722844149655",
         "creatorId": "admin",
-        "lastModifiedDate": "1722844149655",
         "fileSize": 322,
         "folder": false,
         "path": "/public/workshop.datafor",
-        "hidden": false,
-        "notSchedulable": false,
-        "aclNode": false,
-        "versioned": false,
-        "versionId": null,
-        "locked": false,
-        "lockOwner": null,
-        "lockMessage": null,
-        "lockDate": "",
-        "owner": null,
-        "ownerTenantPath": null,
-        "versioningEnabled": false,
-        "versionCommentEnabled": false,
-        "ownerType": -1,
         "title": "workshop",
-        "description": "workshop",
-        "locale": "zh",
-        "originalParentFolderPath": null,
-        "deletedDate": "",
-        "localePropertiesMapEntries": [
-          {
-            "locale": "default",
-            "properties": [
-              {
-                "key": "file.title",
-                "value": "workshop"
-              },
-              {
-                "key": "jcr:primaryType",
-                "value": "nt:unstructured"
-              },
-              {
-                "key": "contentCreator",
-                "value": "admin"
-              },
-              {
-                "key": "file.description",
-                "value": "workshop"
-              }
-            ]
-          }
-        ],
-        "repositoryFileAclDto": null,
-        "pathTitle": "/Public/workshop",
-        "accessMap": null,
-        "metadata": null,
-        "metadataMap": {}
+        "description": "workshop"
       },
       "children": []
     }
@@ -137,8 +61,29 @@ GET /plugin/datafor-modeler/api/repo/files/search
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                 | Description                            |
+|------------------|---------------------------------------------------------|----------------------------------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Search executed successfully.         |
+| 400              | Bad Request                                             | Invalid search query.                 |
+| 401              | Unauthorized                                            | Authentication required.              |
+| 403              | Forbidden                                               | User lacks permission to search.      |
+| 500              | Internal Server Error                                   | Unexpected error occurred.            |
+
+---
+
+## **Response Data Schema**
+
+| Name      | Type     | Required | Description                           |
+|-----------|---------|----------|---------------------------------------|
+| `file`    | object  | **Yes**  | Root folder or file in the search results. |
+| `name`    | string  | **Yes**  | Name of the file or folder. |
+| `id`      | string  | **Yes**  | Unique identifier of the file or folder. |
+| `createdDate` | string | **Yes** | Timestamp when the file or folder was created. |
+| `folder`  | boolean | **Yes**  | `true` if it's a folder, `false` if it's a file. |
+| `path`    | string  | **Yes**  | Full path of the file or folder. |
+| `title`   | string  | No       | Title of the file or folder. |
+| `children` | array  | No       | List of child files or folders. |

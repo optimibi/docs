@@ -2,51 +2,66 @@
 title: Upload files
 permalink: /api/Files/Upload files/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## POST Upload file
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/repo/files/import
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/import
+```
 
-when only use importDir and fileUpload and smart true,if it is a new file or dir, the acl is uploader's administrator acl.If already existed,don't change acl.
+**Authorization**  
+The current user must have write permissions in the target directory.
 
-> Body Parameters
+**Content Type**  
+`multipart/form-data`
+
+---
+
+## **Body Parameters**
 
 ```yaml
 importDir: /public
-fileUpload: file://E:\E\datafor\001.datafor\temp\schema-Demo.zip
+fileUpload: file://D:\temp\schema-Demo.zip
 smart: "true"
-
 ```
 
-### Params
+| Name         | Location | Type   | Required | Description |
+|-------------|----------|--------|----------|-------------|
+| `importDir` | body     | string | No       | Default is `/public`. If empty, the file is uploaded to the root directory. |
+| `fileUpload` | body     | binary | **Yes**  | The file to upload. |
+| `smart`     | body     | boolean | No       | Default is `true`. If `true`, new files or directories inherit the uploader's administrator ACL, but existing files retain their ACL. |
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» importDir|body|string| no |default is /public,upload models can be empty|
-|» fileUpload|body|string(binary)| yes |none|
-|» smart|body|boolean| no |default is true,if it is a new file or dir, the acl is uploader's administrator acl.If already existed,don't change acl.|
+---
 
-> Response Examples
+## **Response Examples**
 
+#### ✅ **Success Response**
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description                                    |
+|------------------|---------------------------------------------------------|------------------------------------------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | File uploaded successfully.                    |
+| 400              | Bad Request                                             | Invalid request format or missing parameters. |
+| 401              | Unauthorized                                            | Authentication required.                      |
+| 403              | Forbidden                                               | User lacks permission to upload.              |
+| 500              | Internal Server Error                                   | Unexpected error occurred.                    |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `success` | boolean | **Yes**  | `true` if the upload was successful, `false` otherwise. |

@@ -2,18 +2,42 @@
 title: Save LDAP config
 permalink: /api/Extension Plugins/LDAP/Save LDAP config/
 tags: ["api","Extension Plugins","Authentication","LDAP"]
-description: 
+description:
 ---
 
-## POST Save LDAP config
+**Method**  
+`POST`
 
-POST /plugin/datafor-ldap/api/application/update
+**Request URL**
+```html
+/plugin/datafor-ldap/api/application/update
+```
 
-Preconditions:
-1. install datafor-ldap plugin
-2. The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+1. The `datafor-ldap` plugin must be installed.
+2. The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
 
 ```json
 {
@@ -32,41 +56,51 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Title|Description|
-|---|---|---|---|---|---|
-|body|body|object| no ||none|
-|» initial|body|string| yes | 前后关系,初始上下文工厂的类名|com.sun.jndi.ldap.LdapCtxFactory|
-|» url|body|string| yes ||ldap://127.0.0.1:389|
-|» authtype|body|string| yes ||simple / none|
-|» user_base|body|string| yes ||cn=${username},dc=imysh,dc=com|
-|» enable|body|string| yes ||1true0 false|
-|» inituser|body|string| yes ||1true0false|
-|» initroles|body|[string]| yes ||none|
-|» administrator|body|string| no | 管理员名称|cn=admin,dc=imysh,dc=com|
-|» secret|body|string| no | 管理员密码|Currently, the system does not perform any data retrieval. This setup is solely for testing LDAP authentication. In the future, we can enhance this functionality to automatically create users by fetching their LDAP roles, department emails, and other relevant information.|
-|» desc|body|string| no ||none|
+## **Body Parameters Table**
 
-> Response Examples
+| Name            | Location | Type      | Required | Description |
+|----------------|----------|-----------|----------|-------------|
+| `initial`      | body     | string    | Yes      | Initial LDAP context factory class name. Example: `com.sun.jndi.ldap.LdapCtxFactory` |
+| `url`          | body     | string    | Yes      | LDAP server URL. Example: `ldap://127.0.0.1:389` |
+| `authtype`     | body     | string    | Yes      | LDAP authentication type. Example: `simple` or `none` |
+| `user_base`    | body     | string    | Yes      | LDAP user base distinguished name (DN). Example: `cn=${username},dc=imysh,dc=com` |
+| `enable`       | body     | string    | Yes      | Enable LDAP authentication (`1` = true, `0` = false) |
+| `inituser`     | body     | string    | Yes      | Enable initial user creation (`1` = true, `0` = false) |
+| `initroles`    | body     | [string]  | Yes      | List of initial roles assigned to users. |
+| `administrator` | body    | string    | No       | LDAP administrator distinguished name (DN). Example: `cn=admin,dc=imysh,dc=com` |
+| `secret`      | body     | string    | No       | LDAP administrator password. This is used for authentication testing only. |
+| `desc`        | body     | string    | No       | Description of the LDAP configuration. |
 
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | LDAP configuration saved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+## **Response Data Schema (HTTP 200)**
+
+| Name      | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| `msg`     | string  | No       | Message string (if any error occurs). |
+| `success` | boolean | Yes      | `true` if the request was successful, `false` otherwise. |

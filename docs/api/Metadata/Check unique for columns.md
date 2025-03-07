@@ -2,17 +2,23 @@
 title: Check unique for columns
 permalink: /api/Metadata/Check unique for columns/
 tags: ["api","Metadata"]
-description: 
+description:
 ---
 
-## POST Check unique for columns
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/metadata/checkunique
+**Request URL**
+```html
+/plugin/datafor-modeler/api/metadata/checkunique
+```
 
-Preconditions:
-1.Current user needs read privileges to the connection.
+**Authorization**  
+The current user must have read privileges for the specified connection.
 
-> Body Parameters
+---
+
+## **Body Parameters**
 
 ```json
 {
@@ -26,19 +32,24 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Accept|header|string| no |none|
-|body|body|object| no |none|
-|» connection|body|string| yes |connection name|
-|» schema|body|string| yes |schema name|
-|» table|body|string| yes |table name|
-|» fields|body|[string]| yes |none|
+## **Params**
 
-> Response Examples
+| Name          | Location | Type      | Required | Description      |
+|--------------|----------|-----------|----------|------------------|
+| `Accept`     | header   | string    | No       | None             |
+| `body`       | body     | object    | No       | None             |
+| `connection` | body     | string    | Yes      | Connection name  |
+| `schema`     | body     | string    | Yes      | Schema name      |
+| `table`      | body     | string    | Yes      | Table name       |
+| `fields`     | body     | array[string] | Yes  | Column names to check for uniqueness |
 
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "code": "200",
@@ -47,19 +58,35 @@ Preconditions:
 }
 ```
 
-### Responses
+#### ❌ **Failure Response**
+```json
+{
+  "code": "400",
+  "data": false,
+  "success": false,
+  "msg": "Duplicate values found in specified columns"
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
 
-### Responses Data Schema
+## **HTTP Responses**
 
-HTTP Status Code **200**
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Columns checked successfully. |
+| 400              | Bad Request                                             | Invalid input or duplicate values found. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks required privileges. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||true:no error,false:error occur|
-|» data|boolean|true|none||true:unique,false:not unique|
-|» code|string|false|none||none|
-|» msg|string|false|none||error msg|
+---
+
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|----------|--------|----------|-------------|
+| `success` | boolean | Yes      | `true` if request was successful, `false` otherwise. |
+| `data`    | boolean | Yes      | `true` if columns are unique, `false` if duplicates exist. |
+| `code`    | string  | No       | Response status code (`200` for success, `400` for failure). |
+| `msg`     | string  | No       | Error message (if applicable). |

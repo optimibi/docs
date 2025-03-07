@@ -2,35 +2,46 @@
 title: Recaption a file or folder
 permalink: /api/Files/Recaption a file or folder/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## POST Recaption a file or folder
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/repo/files/recaption
-
-Preconditions:The current user has administrator authority of the folder or file
-
-> Body Parameters
-
-```yaml
-pathId: /public/workshop.datafor
-newName: workshop3
-
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/recaption
 ```
 
-### Params
+**Authorization**  
+The current user must have administrator authority over the folder or file.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|pathId|query|string| no |none|
-|newName|query|string| no |none|
-|body|body|object| no |none|
-|» pathId|body|string| no |none|
-|» newName|body|string| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
+## **Body Parameters**
+
+```json
+{
+  "pathId": "/public/workshop.datafor",
+  "newName": "workshop3"
+}
+```
+
+### **Params**
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| `pathId`  | body    | string | **Yes**  | The full path of the file or folder to rename. |
+| `newName` | body    | string | **Yes**  | The new name for the file or folder. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "code": 200,
@@ -38,17 +49,34 @@ newName: workshop3
 }
 ```
 
-### Responses
+#### ❌ **Failure Response**
+```json
+{
+  "code": 403,
+  "success": false,
+  "message": "Insufficient permissions"
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
 
-### Responses Data Schema
+## **HTTP Responses**
 
-HTTP Status Code **200**
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | File or folder renamed successfully. |
+| 400              | Bad Request                                             | Invalid parameters provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks permission to rename the file or folder. |
+| 404              | Not Found                                               | Specified file or folder not found. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|integer|false|none||none|
-|» success|boolean|true|none||none|
+---
+
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| `code`    | integer | **Yes**  | HTTP status code of the response. |
+| `success` | boolean | **Yes**  | Indicates whether the request was successful. |
+| `message` | string  | No       | Additional information about the response (if applicable). |

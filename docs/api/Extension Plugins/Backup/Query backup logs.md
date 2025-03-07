@@ -2,32 +2,51 @@
 title: Query backup logs
 permalink: /api/Extension Plugins/Backup/Query backup logs/
 tags: ["api","Extension Plugins","Backup"]
-description: 
+description:
 ---
 
-## POST Query backup logs
+**Method**  
+`POST`
 
-POST /plugin/datafor-backup/api/log/query
-
-Preconditions:The current user's user type must be Administrator
-
-> Body Parameters
-
-```yaml
-{}
-
+**Request URL**
+```html
+/plugin/datafor-backup/api/log/query
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Cookie|header|string| yes |none|
-|Content-Type|header|string| yes |none|
-|body|body|object| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
+**Preconditions**
+- The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
+
+```json
+{}
+```
+
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
 ```json
 {
   "msg": "",
@@ -50,29 +69,14 @@ Preconditions:The current user's user type must be Administrator
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» data|[object]|true|none||none|
-|»» cron|string|false|none||none|
-|»» update_time|string|false|none||none|
-|»» folder|string|false|none||none|
-|»» add_by|string|false|none||none|
-|»» backupid|string|false|none||none|
-|»» name|string|false|none||none|
-|»» id|string|false|none||none|
-|»» update_by|string|false|none||none|
-|»» config|string|false|none||none|
-|»» add_time|string|false|none||none|
-|»» status|string|false|none||none|
-|» success|boolean|true|none||none|
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Backup logs retrieved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |

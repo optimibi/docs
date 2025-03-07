@@ -5,37 +5,51 @@ tags: ["api","Metadata"]
 description: 
 ---
 
+**Method**  
+`POST`
 
-## POST Preview data by Columns
+**Request URL**  
+```html
+/plugin/datafor-modeler/api/metadata/previewcolumn
+```
 
-POST /plugin/datafor-modeler/api/metadata/previewcolumn
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-Preconditions:
-1.Current user needs read privileges to the connection.
+**Content Type**  
+`application/json`
 
-> Body Parameters
+---
 
+**Preconditions**
+- The current user needs **read privileges** to the database connection.
+
+---
+
+### **Parameters**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `body`       | body     | object  | **No**   | The request payload containing table and column details. |
+| ├── `connection` | body | string  | **No**   | The name of the database connection. |
+| ├── `schema` | body     | string  | **No**   | The schema containing the table. |
+| ├── `table`  | body     | string  | **No**   | The table from which data will be previewed. |
+| ├── `columns` | body    | string  | **No**   | JSON array of columns to be retrieved. If `detail` is not empty, it means a calculated column. |
+| ├── `limit`  | body     | string  | **No**   | The maximum number of rows to return. |
+
+#### **Body Example**
 ```yaml
 connection: foodmart
 schema: foodmart
 table: time_by_day
 columns: '[{"name":"day_of_month","detail":""},{"name":"fiscal_period","detail":""},{"name":"month_of_year","detail":""},{"name":"quarter","detail":""},{"name":"the_date","detail":""},{"name":"the_day","detail":""},{"name":"the_month","detail":""},{"name":"the_year","detail":""},{"name":"time_id","detail":""},{"name":"week_of_year","detail":""}]'
 limit: "50"
-
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» connection|body|string| no |none|
-|» schema|body|string| no |none|
-|» table|body|string| no |none|
-|» columns|body|string| no |when detail is not empty  means calculate column|
-|» limit|body|string| no |none|
-
-> Response Examples
+### **Response Examples**
 
 ```json
 {
@@ -70,208 +84,50 @@ limit: "50"
       "comments": "day_of_month",
       "originalColumnType": 5,
       "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
       "length": 4,
       "type": 5,
       "originalColumnTypeName": "int2",
-      "originalPrecision": 5,
-      "originalSigned": true,
-      "name": "day_of_month",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "day_of_month"
+      "name": "day_of_month"
     },
     {
       "typeDesc": "String",
       "comments": "fiscal_period",
       "originalColumnType": 12,
       "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
       "length": 30,
       "type": 2,
       "originalColumnTypeName": "varchar",
-      "originalPrecision": 30,
-      "originalSigned": false,
-      "name": "fiscal_period",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "fiscal_period"
-    },
-    {
-      "typeDesc": "Integer",
-      "comments": "month_of_year",
-      "originalColumnType": 5,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 4,
-      "type": 5,
-      "originalColumnTypeName": "int2",
-      "originalPrecision": 5,
-      "originalSigned": true,
-      "name": "month_of_year",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "month_of_year"
-    },
-    {
-      "typeDesc": "String",
-      "comments": "quarter",
-      "originalColumnType": 12,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 30,
-      "type": 2,
-      "originalColumnTypeName": "varchar",
-      "originalPrecision": 30,
-      "originalSigned": false,
-      "name": "quarter",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "quarter"
-    },
-    {
-      "typeDesc": "None",
-      "comments": "the_date",
-      "originalColumnType": 93,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": -1,
-      "type": 0,
-      "originalColumnTypeName": "timestamp",
-      "originalPrecision": 29,
-      "originalSigned": false,
-      "name": "the_date",
-      "originalScale": 6,
-      "storageType": 0,
-      "originName": "the_date"
-    },
-    {
-      "typeDesc": "String",
-      "comments": "the_day",
-      "originalColumnType": 12,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 30,
-      "type": 2,
-      "originalColumnTypeName": "varchar",
-      "originalPrecision": 30,
-      "originalSigned": false,
-      "name": "the_day",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "the_day"
-    },
-    {
-      "typeDesc": "String",
-      "comments": "the_month",
-      "originalColumnType": 12,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 30,
-      "type": 2,
-      "originalColumnTypeName": "varchar",
-      "originalPrecision": 30,
-      "originalSigned": false,
-      "name": "the_month",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "the_month"
-    },
-    {
-      "typeDesc": "Integer",
-      "comments": "the_year",
-      "originalColumnType": 5,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 4,
-      "type": 5,
-      "originalColumnTypeName": "int2",
-      "originalPrecision": 5,
-      "originalSigned": true,
-      "name": "the_year",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "the_year"
-    },
-    {
-      "typeDesc": "Integer",
-      "comments": "time_id",
-      "originalColumnType": 4,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 9,
-      "type": 5,
-      "originalColumnTypeName": "int4",
-      "originalPrecision": 10,
-      "originalSigned": true,
-      "name": "time_id",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "time_id"
-    },
-    {
-      "typeDesc": "Integer",
-      "comments": "week_of_year",
-      "originalColumnType": 4,
-      "originalNullable": 0,
-      "numberOfBinaryStringConversions": 0,
-      "length": 9,
-      "type": 5,
-      "originalColumnTypeName": "int4",
-      "originalPrecision": 10,
-      "originalSigned": true,
-      "name": "week_of_year",
-      "originalScale": 0,
-      "storageType": 0,
-      "originName": "week_of_year"
+      "name": "fiscal_period"
     }
   ],
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning | Description | Data schema |
+|------------------|---------|-------------|-------------|
+| `200`           | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | The request was successful, and the response contains preview data. | Inline |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» endQuote|string|true|none||none|
-|» data|[object]|true|none||none|
-|»» schema|string|true|none||none|
-|»» fields|[object]|true|none||none|
-|»»» typeDesc|string|true|none||none|
-|»»» locale.country|string|false|none||none|
-|»»» collatorLocale|string|false|none||none|
-|»»» numberOfBinaryStringConversions|integer|false|none||none|
-|»»» precision|integer|false|none||none|
-|»»» decimalFormat.currency.symbol|string|false|none||none|
-|»»» formatMask|string|false|none||none|
-|»»» type|integer|true|none||none|
-|»»» groupingSymbol|string|false|none||none|
-|»»» decimalFormat.currency.displayName|string|false|none||none|
-|»»» originalPrecision|integer|false|none||none|
-|»»» originalScale|integer|false|none||none|
-|»»» conversionMask|string|false|none||none|
-|»»» decimalSymbol|string|false|none||none|
-|»»» locale.language|string|false|none||none|
-|»»» originalNullable|integer|false|none||none|
-|»»» collatorStrength|integer|false|none||none|
-|»»» dataType|integer|true|none||1Number 2String 3Date 9Timestamp 11Time|
-|»»» length|integer|false|none||none|
-|»»» originColumnType|integer|true|none||none|
-|»»» originalColumnTypeName|string|true|none||none|
-|»»» originalSigned|boolean|false|none||none|
-|»»» name|string|true|none||none|
-|»»» storageType|integer|false|none||none|
-|»»» decimalFormat.currency.currencyCode|string|false|none||none|
-|»» table|string|true|none||none|
-|» success|boolean|true|none||none|
-|» startQuote|string|true|none||none|
+### **Response Data Schema (HTTP 200)**
+
+| Name      | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `msg`     | string  | **Yes**  | Message indicating the status of the request (e.g., `"success"`). |
+| `data`    | array   | **Yes**  | The previewed data in a tabular format. |
+| ├── `column_name` | mixed | **Yes** | The value of each column in the previewed data. |
+| `meta`    | array   | **Yes**  | Metadata about the columns returned in the preview. |
+| ├── `typeDesc` | string | **Yes** | Description of the column type (e.g., `"Integer"`, `"String"`). |
+| ├── `comments` | string | **Yes** | Column description or comment. |
+| ├── `originalColumnType` | integer | **Yes** | The original column type as per the database. |
+| ├── `originalNullable` | integer | **Yes** | Indicates if the column is nullable (`0` for not nullable, `1` for nullable). |
+| ├── `length` | integer | **Yes** | The length of the column. |
+| ├── `type` | integer | **Yes** | Internal representation of column type. |
+| ├── `originalColumnTypeName` | string | **Yes** | The original column type name in the database. |
+| ├── `name` | string | **Yes** | The column name. |
+| `success` | boolean | **Yes**  | A boolean flag indicating whether the request was processed successfully. |

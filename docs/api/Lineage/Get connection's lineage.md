@@ -2,23 +2,35 @@
 title: Get connection's lineage
 permalink: /api/Lineage/Get connection's lineage/
 tags: ["api","Lineage","Connections"]
-description: 
+description:
 ---
 
-## GET Get connection's lineage
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/lineage/connection
+**Request URL**
+```html
+/plugin/datafor-modeler/api/lineage/connection
+```
 
-### Params
+**Authorization**  
+The current user must have read authority over the connection.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|connection|query|string| no |none|
-|includeFiles|query|string| no |none|
-|includeOthers|query|string| no |none|
+---
 
-> Response Examples
+## **Query Parameters**
 
+| Name          | Location | Type   | Required | Description |
+|--------------|----------|--------|----------|-------------|
+| `connection`  | query    | string | No       | The name of the connection to retrieve lineage for. |
+| `includeFiles` | query    | string | No       | Whether to include associated files. |
+| `includeOthers` | query    | string | No       | Whether to include additional related objects. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
 ```json
 {
   "data": [
@@ -46,31 +58,39 @@ GET /plugin/datafor-modeler/api/lineage/connection
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description                              |
+|------------------|---------------------------------------------------------|------------------------------------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Connection lineage retrieved successfully. |
+| 400              | Bad Request                                             | Invalid request format or missing parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks the required permissions. |
+| 404              | Not Found                                               | Specified connection does not exist. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» data|[object]|true|none||none|
-|»» schemas|[object]|false|none||none|
-|»»» owner|string|false|none||none|
-|»»» ownerType|integer|false|none||none|
-|»»» lastModifiedDate|integer|false|none||none|
-|»»» dataSourceStr|string|false|none||none|
-|»»» name|string|false|none||none|
-|»»» files|[string]|false|none||none|
-|»»» otherFiles|[string]|false|none||none|
-|»»» title|string|false|none||none|
-|»»» dataSource|object|false|none||none|
-|»»»» canRead|boolean|true|none||none|
-|»»»» name|string|true|none||none|
-|»» name|string|false|none||none|
-|» msg|string|false|none||none|
+## **Response Data Schema**
+
+| Name               | Type           | Required | Description |
+|--------------------|---------------|----------|-------------|
+| `success`         | boolean        | Yes      | `true` if the request was successful, `false` otherwise. |
+| `data`            | array[object]  | Yes      | List of connection lineage details. |
+| `data[].schemas`  | array[object]  | No       | List of schemas associated with the connection. |
+| `data[].schemas[].owner`  | string  | No      | Owner of the schema. |
+| `data[].schemas[].ownerType`  | integer  | No      | Type of owner (e.g., 0 for user). |
+| `data[].schemas[].lastModifiedDate`  | integer  | No      | Last modification timestamp. |
+| `data[].schemas[].dataSourceStr`  | string  | No      | Data source connection string. |
+| `data[].schemas[].name`  | string  | No      | Name of the schema. |
+| `data[].schemas[].files`  | array[string]  | No      | List of files associated with the schema. |
+| `data[].schemas[].otherFiles`  | array[string]  | No      | Additional related files. |
+| `data[].schemas[].title`  | string  | No      | Title of the schema. |
+| `data[].schemas[].dataSource`  | object  | No      | Data source details. |
+| `data[].schemas[].dataSource.canRead`  | boolean  | Yes      | Whether the user has read access to the data source. |
+| `data[].schemas[].dataSource.name`  | string  | Yes      | Name of the data source. |
+| `data[].name`  | string  | No      | Name of the connection. |
+| `msg`          | string  | No      | Response message (if applicable). |
+

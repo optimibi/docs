@@ -5,24 +5,40 @@ tags: ["api","Dictionaries"]
 description: 
 ---
 
-## POST Get dictionaries
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/modeler/dict/query
-
-> Body Parameters
-
-```yaml
-{}
-
+**Request URL**
+```html
+/plugin/datafor/api/modeler/dict/query
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
+
+### **Parameters**
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| **body**  | body     | object | No       | Empty object `{}` |
+
+---
+
+## **Request Example**
+
+```json
+{}
+```
+
+---
+
+## **Response Example**
 
 ```json
 {
@@ -45,31 +61,29 @@ POST /plugin/datafor/api/modeler/dict/query
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» data|[object]|true|none||none|
-|»» default|string|false|none||none|
-|»» update_time|string|false|none||none|
-|»» datatype|string|false|none||none|
-|»» name|string|false|none||none|
-|»» id|string|false|none||none|
-|»» detail|string|false|none||none|
-|»» source|string|false|none||none|
-|»» type|string|false|none||none|
-|»» update_by|string|false|none||none|
-|»» add_time|string|false|none||none|
-|»» desc|string|false|none||none|
-|»» dbconn|string|false|none||none|
-|»» expire|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name       | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `msg`     | string | No       | Response message |
+| `data`    | array  | Yes      | List of dictionaries |
+| ├── `dbconn`      | string  | No  | Database connection name |
+| ├── `default`     | string  | No  | Default value |
+| ├── `update_time` | string  | No  | Last update timestamp |
+| ├── `expire`      | string  | No  | Expiration time in seconds |
+| ├── `name`        | string  | Yes | Dictionary name |
+| ├── `id`          | string  | Yes | Dictionary ID |
+| ├── `detail`      | string  | No  | Dictionary details (SQL query or values) |
+| ├── `type`        | string  | Yes | `1` for list, `2` for SQL |
+| ├── `update_by`   | string  | No  | Last updated by user |
+| ├── `add_time`    | string  | No  | Creation timestamp |
+| `success` | boolean | Yes     | Indicates if the operation was successful |
+

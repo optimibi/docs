@@ -2,19 +2,43 @@
 title: Save CAS config
 permalink: /api/Extension Plugins/Cas/Save CAS config/
 tags: ["api","Extension Plugins","Authentication","Cas"]
-description: 
+description:
 ---
 
-## POST Save CAS config
+**Method**  
+`POST`
 
-POST /plugin/datafor-cas/api/update
+**Request URL**
+```html
+/plugin/datafor-cas/api/update
+```
 
-Currently, the system only supports authentication via JASIG CAS
-Preconditions:
-1. install datafor-cas plugin
-2. The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+1. The `datafor-cas` plugin must be installed.
+2. The current user's user type **must be** `Administrator`.
+3. Currently, the system only supports authentication via **JASIG CAS**.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
 
 ```json
 {
@@ -23,50 +47,53 @@ Preconditions:
   "login_url": "http://127.0.0.1:8080/cas/login",
   "enable": "1",
   "inituser": "1",
-  "initpwd": "pwd123",
+  "initpwd": "password",
   "type": "jasig",
   "ignoreList": [
     "/plugin/datafor-modeler/api",
     "/Login"
+  ],
+  "includeList": [
+    "/plugin/datafor-secure/api"
   ]
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Title|Description|
-|---|---|---|---|---|---|
-|body|body|object| no ||none|
-|» center_url|body|string| yes ||none|
-|» logout_url|body|string| no ||default is center_url/logout|
-|» login_url|body|string| no ||default is center_url/login|
-|» enable|body|string| yes ||1true0false|
-|» inituser|body|string| yes ||1true0false，默认0|
-|» initroles|body|[string]| yes ||none|
-|» initpwd|body|string| no ||none|
-|» type|body|string| yes ||jasig，目前只支持这一种|
-|» ignoreList|body|[string]| no ||use contains to match|
-|» includeList|body|[string]| yes ||use contains to match|
+## **Body Parameters Description**
 
-> Response Examples
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `center_url` | body     | string  | Yes      | CAS server base URL. |
+| `logout_url` | body     | string  | No       | CAS logout URL (default: `center_url/logout`). |
+| `login_url`  | body     | string  | No       | CAS login URL (default: `center_url/login`). |
+| `enable`     | body     | string  | Yes      | Enable CAS authentication (`1` = true, `0` = false). |
+| `inituser`   | body     | string  | Yes      | Enable CAS user initialization (`1` = true, `0` = false, default: `0`). |
+| `initpwd`    | body     | string  | No       | Default password for newly initialized users. |
+| `type`       | body     | string  | Yes      | CAS type (`jasig`, currently the only supported type). |
+| `ignoreList` | body     | [string] | No      | List of paths to be ignored from CAS authentication (uses `contains` matching). |
+| `includeList` | body     | [string] | Yes     | List of paths to be included in CAS authentication (uses `contains` matching). |
 
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
 ```json
 {
   "success": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | CAS configuration saved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |

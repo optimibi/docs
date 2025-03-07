@@ -5,27 +5,45 @@ tags: ["api","Dictionaries"]
 description: 
 ---
 
-## POST Get value range
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/dict/data
-
-> Body Parameters
-
-```yaml
-id: dev
-name: ""
-
+**Request URL**
+```html
+/plugin/datafor-modeler/api/dict/data
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| no |none|
-|» name|body|string| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
+
+### **Parameters**
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| **body**  | body     | object | No       | None |
+| ├── `id`  | body     | string | No       | Dictionary ID |
+| ├── `name`| body     | string | No       | Dictionary name |
+
+---
+
+## **Request Example**
+
+```json
+{
+  "id": "dev",
+  "name": ""
+}
+```
+
+---
+
+## **Response Example**
 
 ```json
 {
@@ -72,30 +90,31 @@ name: ""
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» data|[string]|true|none||none|
-|» success|boolean|true|none||none|
-|» config|object|true|none||none|
-|»» default|string|true|none||none|
-|»» update_time|string|true|none||none|
-|»» datatype|string|true|none||none|
-|»» name|string|true|none||none|
-|»» id|string|true|none||none|
-|»» detail|string|true|none||none|
-|»» source|string|true|none||none|
-|»» type|string|true|none||none|
-|»» update_by|string|true|none||none|
-|»» add_time|string|true|none||none|
-|»» desc|string|true|none||none|
+| Name       | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `msg`     | string | No       | Response message |
+| `data`    | array  | Yes      | List of dictionary values |
+| ├── `warehouse_class_id` | integer  | Yes  | Warehouse class ID |
+| ├── `description` | string  | Yes  | Warehouse class description |
+| `success` | boolean | Yes     | Indicates if the operation was successful |
+| `config`  | object  | Yes     | Dictionary configuration details |
+| ├── `dbconn`      | string  | No  | Database connection name |
+| ├── `default`     | string  | No  | Default value |
+| ├── `update_time` | string  | No  | Last update timestamp |
+| ├── `expire`      | string  | No  | Expiration time in seconds |
+| ├── `name`        | string  | Yes | Dictionary name |
+| ├── `id`          | string  | Yes | Dictionary ID |
+| ├── `detail`      | string  | No  | Dictionary details (SQL query or values) |
+| ├── `type`        | string  | Yes | `1` for list, `2` for SQL |
+| ├── `update_by`   | string  | No  | Last updated by user |
+| ├── `add_time`    | string  | No  | Creation timestamp |

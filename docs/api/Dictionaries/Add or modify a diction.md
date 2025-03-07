@@ -1,43 +1,61 @@
 ---
-title: Add or modify a diction
-permalink: /api/Dictionaries/Add or modify a diction/
+title: Add or modify a dictionary
+permalink: /api/Dictionaries/Add or modify a dictionary/
 tags: ["api","Dictionaries"]
 description: 
 ---
 
-## POST Add or modify a diction
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/dict/update
-
-> Body Parameters
-
-```yaml
-id: dev
-name: dev
-datatype: "2"
-type: "2"
-dbconn: foodmart
-default: "1"
-detail: select warehouse_class_id,description from foodmart.warehouse_class
-expire: 86400
-
+**Request URL**
+```html
+/plugin/datafor-modeler/api/dict/update
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| no |empty add otherwise update|
-|» name|body|string| yes |none|
-|» datatype|body|string| yes |1NUMBER2STRING|
-|» type|body|string| yes |1list2sql|
-|» dbconn|body|string| no |none|
-|» default|body|string| no |none|
-|» detail|body|string| no |string array or sql|
-|» expire|body|integer| no |second|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
+
+### **Parameters**
+
+| Name         | Location | Type   | Required | Description |
+|-------------|----------|--------|----------|-------------|
+| **body**    | body     | object | Yes      | Request payload |
+| ├── `id`        | body | string  | No  | Leave empty for add, provide ID for update |
+| ├── `name`      | body | string  | Yes | Dictionary name |
+| ├── `datatype`  | body | string  | Yes | `1` for NUMBER, `2` for STRING |
+| ├── `type`      | body | string  | Yes | `1` for list, `2` for SQL |
+| ├── `dbconn`    | body | string  | No  | Database connection name |
+| ├── `default`   | body | string  | No  | Default value |
+| ├── `detail`    | body | string  | No  | String array or SQL query |
+| ├── `expire`    | body | integer | No  | Expiration time in seconds |
+
+---
+
+## **Request Example**
+
+```json
+{
+  "id": "dev",
+  "name": "dev",
+  "datatype": "2",
+  "type": "2",
+  "dbconn": "foodmart",
+  "default": "1",
+  "detail": "select warehouse_class_id,description from foodmart.warehouse_class",
+  "expire": 86400
+}
+```
+
+---
+
+## **Response Example**
 
 ```json
 {
@@ -46,17 +64,18 @@ expire: 86400
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description |
+|----------|--------|----------|-------------|
+| `msg`    | string | No       | Response message |
+| `success` | boolean | Yes      | Indicates if the operation was successful |
+

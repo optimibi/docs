@@ -5,97 +5,85 @@ tags: ["api","Email"]
 description: 
 ---
 
-## POST Get value range
+## **POST Test email config**
 
-POST /plugin/datafor-modeler/api/dict/data
+**Endpoint**  
+`POST /plugin/datafor-modeler/api/email/sendEmailTest`
 
-> Body Parameters
+### **Preconditions**
+- The current user's user type must be **Administrator**.
 
-```yaml
-id: dev
-name: ""
+---
 
-```
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| no |none|
-|» name|body|string| no |none|
-
-> Response Examples
+### **Body Parameters**
 
 ```json
 {
-  "msg": "",
-  "data": [
-    {
-      "warehouse_class_id": 1,
-      "description": "Small Independent"
-    },
-    {
-      "warehouse_class_id": 2,
-      "description": "Medium Independent"
-    },
-    {
-      "warehouse_class_id": 3,
-      "description": "Large Independent"
-    },
-    {
-      "warehouse_class_id": 4,
-      "description": "Small Owned"
-    },
-    {
-      "warehouse_class_id": 5,
-      "description": "Medium Owned"
-    },
-    {
-      "warehouse_class_id": 6,
-      "description": "Large Owned"
-    }
-  ],
-  "success": true,
-  "config": {
-    "dbconn": "foodmart",
-    "default": "1",
-    "update_time": "2024-08-06 10:20:17.532",
-    "expire": "86400",
-    "name": "dev",
-    "id": "dev",
-    "detail": "select warehouse_class_id,description from foodmart.warehouse_class",
-    "type": "2",
-    "update_by": "admin",
-    "add_time": "2024-08-06 10:16:32.634"
-  }
+  "smtpHost": "smtp.a.com",
+  "smtpPort": "465",
+  "userId": "a@a.com",
+  "password": "",
+  "smtpProtocol": "smtp",
+  "defaultFrom": "a@a.com",
+  "fromName": "a",
+  "useStartTls": "false",
+  "useSsl": "true",
+  "authenticate": true
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+### **Params**
 
-### Responses Data Schema
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `smtpHost`   | body     | string  | Yes      | SMTP server hostname |
+| `smtpPort`   | body     | string  | Yes      | SMTP port number |
+| `userId`     | body     | string  | Yes      | SMTP authentication user ID |
+| `password`   | body     | string  | Yes      | SMTP password |
+| `smtpProtocol` | body   | string  | Yes      | SMTP protocol (`smtp` or `smtps`) |
+| `defaultFrom` | body   | string  | Yes      | Default sender email |
+| `fromName`   | body     | string  | Yes      | Sender's display name |
+| `useStartTls` | body   | boolean | Yes      | Use STARTTLS (`true`/`false`) |
+| `useSsl`     | body     | boolean | Yes      | Use SSL (`true`/`false`) |
+| `authenticate` | body   | boolean | Yes      | Enable authentication (`true`/`false`) |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» data|[string]|true|none||none|
-|» success|boolean|true|none||none|
-|» config|object|true|none||none|
-|»» default|string|true|none||none|
-|»» update_time|string|true|none||none|
-|»» datatype|string|true|none||none|
-|»» name|string|true|none||none|
-|»» id|string|true|none||none|
-|»» detail|string|true|none||none|
-|»» source|string|true|none||none|
-|»» type|string|true|none||none|
-|»» update_by|string|true|none||none|
-|»» add_time|string|true|none||none|
-|»» desc|string|true|none||none|
+### **Response Examples**
+
+#### ✅ **Success Response**
+```json
+{
+  "code": "200",
+  "success": true
+}
+```
+
+#### ❌ **Failure Response**
+```json
+{
+  "msg": "Empty address",
+  "code": "500",
+  "success": false,
+  "type": "1"
+}
+```
+
+---
+
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
+
+### **Response Data Schema (HTTP 200)**
+
+| Name      | Type    | Required | Description |
+|----------|--------|----------|-------------|
+| `msg`    | string | No       | Response message (e.g., error details) |
+| `code`   | string | No       | Response status code (`200` for success, `500` for failure) |
+| `success` | boolean | Yes     | `true` if request was successful, `false` otherwise |
+| `type`   | string | No       | Error type (if applicable) |

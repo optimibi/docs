@@ -1,30 +1,55 @@
 ---
-title: Get favicon
+title: Get Main Logo Small
 permalink: /api/Extension Plugins/White Label/Get main logo small/
 tags: ["api","Extension Plugins","White Label"]
-description: 
+description:
 ---
 
-## GET Get main logo small
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/core/wl/wl_main_small.png
+**Request URL**
+```html
+/plugin/datafor/api/core/wl/wl_main_small.png
+```
 
-Image Display When Menu Bar is Hidden
-By default, files are stored in the following directory:
+**Authorization**  
+No authentication required.
+
+**Content Type**  
+`image/png`
+
+---
+
+**Description**  
+Retrieves the small version of the main logo, which is displayed when the menu bar is hidden.
+
+By default, logo files are stored in the following directory:
+```
 pentaho-solutions\system\datafor\ui\images\
-When the white label tool is set, files will be stored in the following directory:
+```
+When the **White Label Tool** is configured, the files are stored in:
+```
 pentaho-solutions\system\datasource\whitelabel
+```
 
-> Response Examples
+---
 
-> 200 Response
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
+Returns the small main logo image file in `.png` format.
 
 ```json
 {}
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Small main logo retrieved successfully. |
+| 404              | Not Found                                               | Logo file not found. |
+| 500              | Internal Server Error                                   | Unexpected server error. |

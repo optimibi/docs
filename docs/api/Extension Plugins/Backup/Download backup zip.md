@@ -2,37 +2,52 @@
 title: Download backup zip
 permalink: /api/Extension Plugins/Backup/Download backup zip/
 tags: ["api","Extension Plugins","Backup"]
-description: 
+description:
 ---
 
-## GET Download backup zip
+**Method**  
+`GET`
 
-GET /plugin/datafor-backup/api/log/download
-
-Preconditions:The current user's user type must be Administrator
-
-> Body Parameters
-
-```yaml
-id: Backup_2023.10.27-10.59.45.850+0800
-
+**Request URL**
+```html
+/plugin/datafor-backup/api/log/download
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|id|query|string| yes |none|
-|Cookie|header|string| yes |none|
-|body|body|object| no |none|
-|» id|body|string| yes |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
-> 200 Response
+**Preconditions**
+- The current user's user type **must be** `Administrator`.
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **Params**
+
+| Name    | Location | Type   | Required | Description |
+|---------|----------|--------|----------|-------------|
+| `id`    | query   | string | Yes      | The unique backup identifier (e.g., `Backup_2023.10.27-10.59.45.850+0800`). |
+---
+
+## **Response Examples**
+
+### ✅ Success Response (200 OK)
+The response will contain a downloadable **ZIP file**.
+
+---
+
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Backup file download successful. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 404              | Not Found                                               | The specified backup file does not exist. |
+| 500              | Internal Server Error                                   | Unexpected server error. |

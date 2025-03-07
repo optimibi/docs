@@ -2,35 +2,70 @@
 title: Download folders and files
 permalink: /api/Files/Download folders and files/
 tags: ["api","Files"]
-description: 
+description:
 ---
 
-## POST Download folders and files
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/repo/files/downloadList
-
-Preconditions:The current user has read authority of the folder or file
-
-> Body Parameters
-
-```yaml
-pathList: '["/public/ivan.datafor"]'
-
+**Request URL**
+```html
+/plugin/datafor-modeler/api/repo/files/downloadList
 ```
 
-### Params
+**Authorization**  
+The current user must have read access to the specified folder or file.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» pathList|body|string| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+---
 
-> 200 Response
+## **Body Parameters**
 
-### Responses
+```json
+{
+  "pathList": ["/public/ivan.datafor"]
+}
+```
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
+
+## **Params**
+
+| Name       | Location | Type   | Required | Description |
+|------------|----------|--------|----------|-------------|
+| `body`     | body     | object | No       | JSON payload containing file paths to download. |
+| `pathList` | body     | array  | No       | List of file or folder paths to download. |
+
+---
+
+## **Response Examples**
+
+#### ✅ **Success Response**
+```json
+{
+  "success": true
+}
+```
+
+---
+
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Request successful, file(s) ready for download. |
+| 400              | Bad Request                                             | Invalid input provided. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User lacks required permissions. |
+| 404              | Not Found                                               | File or folder not found. |
+| 500              | Internal Server Error                                   | Unexpected error occurred. |
+
+---
+
+## **Response Data Schema**
+
+| Name      | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `success` | boolean | **Yes**  | `true` if the request was successful, otherwise `false`. |

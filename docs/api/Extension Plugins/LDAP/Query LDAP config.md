@@ -2,31 +2,54 @@
 title: Query LDAP config
 permalink: /api/Extension Plugins/LDAP/Query LDAP config/
 tags: ["api","Extension Plugins","Authentication","LDAP"]
-description: 
+description:
 ---
 
-## POST Query LDAP config
+**Method**  
+`POST`
 
-POST /plugin/datafor-ldap/api/application/query
+**Request URL**
+```html
+/plugin/datafor-ldap/api/application/query
+```
 
-Preconditions:
-1. install datafor-ldap plugin
-2. The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+1. The `datafor-ldap` plugin must be installed.
+2. The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
 
 ```json
 {}
 ```
 
-### Params
+This API does not require any body parameters.
 
-|Name|Location|Type|Required|Title|Description|
-|---|---|---|---|---|---|
-|body|body|object| no ||none|
+---
 
-> Response Examples
+## **Response Examples**
 
+### ✅ Success Response (200 OK)
 ```json
 {
   "code": "200",
@@ -48,29 +71,35 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | LDAP configuration retrieved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|false|none||none|
-|» data|object|true|none||none|
-|»» initroles|[string]|true|none||none|
-|»» user_base|string|true|none||none|
-|»» inituser|string|true|none||none|
-|»» initial|string|true|none||none|
-|»» enable|string|true|none||none|
-|»» config|string|true|none||none|
-|»» url|string|true|none||none|
-|»» authtype|string|true|none||none|
-|»» administrator|string|false|none||none|
-|»» desc|string|false|none||none|
-|» success|boolean|true|none||none|
-|» msg|string|false|none||none|
+## **Response Data Schema (HTTP 200)**
+
+| Name           | Type      | Required | Description |
+|---------------|----------|----------|-------------|
+| `code`        | string   | No       | Response status code. |
+| `data`        | object   | Yes      | LDAP configuration details. |
+| `initroles`   | [string] | Yes      | List of initial roles assigned to users. |
+| `user_base`   | string   | Yes      | LDAP user base distinguished name (DN). |
+| `inituser`    | string   | Yes      | Enable LDAP user initialization (`1` = true, `0` = false). |
+| `initial`     | string   | Yes      | Initial LDAP context factory. |
+| `enable`      | string   | Yes      | Enable LDAP authentication (`1` = true, `0` = false). |
+| `config`      | string   | Yes      | LDAP user configuration settings. |
+| `url`         | string   | Yes      | LDAP server URL. |
+| `authtype`    | string   | Yes      | LDAP authentication type (`simple`, `DIGEST-MD5`, etc.). |
+| `administrator` | string | No       | LDAP administrator DN (if applicable). |
+| `desc`        | string   | No       | Description of the LDAP configuration. |
+| `success`     | boolean  | Yes      | `true` if the request was successful, `false` otherwise. |
+| `msg`         | string   | No       | Message string (if any error occurs). |

@@ -2,31 +2,52 @@
 title: Query SAML config
 permalink: /api/Extension Plugins/SAML2/Query SAML config/
 tags: ["api","Extension Plugins","Authentication","SAML2"]
-description: 
+description:
 ---
 
-## POST Query SAML config
+**Method**  
+`POST`
 
-POST /plugin/datafor-saml/api/application/query
+**Request URL**
+```html
+/plugin/datafor-saml/api/application/query
+```
 
-Preconditions:
-1. install datafor-saml plugin
-2. The current user's user type must be Administrator
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+---
+
+**Preconditions**
+1. The `datafor-saml` plugin must be installed.
+2. The current user's user type **must be** `Administrator`.
+
+---
+
+## **Params**
+
+| Name          | Location | Type    | Required | Description |
+|--------------|----------|---------|----------|-------------|
+| `Cookie`     | header   | string  | Yes      | Session cookie for authentication. |
+| `Content-Type` | header | string  | Yes      | Must be set to `application/json`. |
+
+---
+
+## **Body Parameters**
 
 ```json
 {}
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Title|Description|
-|---|---|---|---|---|---|
-|body|body|object| no ||none|
+## **Response Examples**
 
-> Response Examples
-
+### ✅ Success Response (200 OK)
 ```json
 {
   "code": "200",
@@ -58,34 +79,40 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **Response Data Schema (HTTP 200)**
 
-### Responses Data Schema
+| Name                    | Type     | Required | Description |
+|-------------------------|---------|----------|-------------|
+| `code`                 | string  | No       | HTTP response code. |
+| `data`                 | object  | Yes      | SAML configuration data. |
+| ├── `idp_entity_id`     | string  | Yes      | Identity Provider (IdP) Entity ID. |
+| ├── `initroles`         | array   | Yes      | List of initial roles assigned to users. |
+| ├── `fieldmap`         | object  | Yes      | Field mappings for SAML attributes. |
+| │   ├── `name`         | string  | Yes      | Field mapping for user display name. |
+| │   ├── `email`        | string  | Yes      | Field mapping for user email. |
+| │   ├── `username`     | string  | Yes      | Field mapping for username. |
+| ├── `includeList`       | array   | Yes      | List of paths that require authentication. |
+| ├── `idp_sso_url`      | string  | Yes      | Identity Provider Single Sign-On (SSO) URL. |
+| ├── `ignoreList`       | array   | Yes      | List of paths to be ignored from authentication. |
+| ├── `initpwd`          | string  | No       | Initial user password. |
+| ├── `sp_entity_id`     | string  | Yes      | Service Provider (SP) Entity ID. |
+| ├── `allowed_clock_skew` | integer | No      | Allowed clock skew (in seconds). |
+| ├── `idp_certificate`  | string  | Yes      | IdP X.509 certificate. |
+| ├── `inituser`         | string  | Yes      | Whether to initialize user creation (`1` = enabled, `0` = disabled). |
+| ├── `enable`           | string  | Yes      | Whether SAML authentication is enabled (`1` = enabled, `0` = disabled). |
+| `success`              | boolean | Yes      | `true` if the request was successful, `false` otherwise. |
+| `msg`                  | string  | No       | Response message (if any error occurs). |
 
-HTTP Status Code **200**
+---
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|false|none||none|
-|» data|object|true|none||none|
-|»» idp_entity_id|string|true|none||none|
-|»» initroles|[string]|true|none||none|
-|»» fieldmap|object|true|none||none|
-|»»» name|string|true|none||none|
-|»»» email|string|true|none||none|
-|»»» username|string|true|none||none|
-|»» includeList|[string]|true|none||none|
-|»» idp_sso_url|string|true|none||none|
-|»» ignoreList|[string]|true|none||none|
-|»» initpwd|string|true|none||none|
-|»» sp_entity_id|string|true|none||none|
-|»» allowed_clock_skew|integer|false|none||none|
-|»» idp_certificate|string|true|none||none|
-|»» inituser|string|true|none||none|
-|»» enable|string|true|none||none|
-|» success|boolean|true|none||none|
-|» msg|string|false|none||none|
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                 | Description |
+|------------------|---------------------------------------------------------|-------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | SAML configuration retrieved successfully. |
+| 400              | Bad Request                                             | Invalid request parameters. |
+| 401              | Unauthorized                                            | Authentication required. |
+| 403              | Forbidden                                               | User does not have permission. |
+| 500              | Internal Server Error                                   | Unexpected server error. |
