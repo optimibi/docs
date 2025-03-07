@@ -4,19 +4,36 @@ permalink: /api/Connections/Get connections/
 tags: ["api","Connections"]
 description: 
 ---
-## GET Get connections
 
-GET /plugin/datafor-modeler/api/connection/list
+**Method**  
+`GET`
 
-Preconditions:Current user needs read privileges to the connection.
+**Request URL**
+```html
+/plugin/datafor-modeler/api/connection/list
+```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|includeAccessMap|query|string| no |none|
+**Preconditions**
+- The current user must have **read** privileges for the connections.
 
-> Response Examples
+**Content Type**  
+No request body is typically used with a `GET` request. Parameters are provided via query string.
+
+---
+
+### **Parameters**
+
+| Name               | Location | Type   | Required | Description                                           |
+|--------------------|----------|--------|----------|-------------------------------------------------------|
+| **includeAccessMap** | query    | string | No       | Whether to include access mapping info (e.g., `"true"`) |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -245,67 +262,65 @@ Preconditions:Current user needs read privileges to the connection.
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» databaseConnections|[object]|true|none||none|
-|»» connectSql|string|true|none||none|
-|»» databaseName|string|true|none||none|
-|»» partitioned|boolean|true|none||none|
-|»» quoteAllFields|boolean|true|none||none|
-|»» extraOptionsOrder|object|true|none||none|
-|»» accessTypeValue|string|true|none||none|
-|»» accessType|string|true|none||none|
-|»» hostname|string|true|none||none|
-|»» password|null|true|none||none|
-|»» connectionPoolingProperties|object|true|none||none|
-|»»» minIdle|string|true|none||none|
-|»»» maxIdle|string|true|none||none|
-|»»» testOnBorrow|string|false|none||none|
-|»»» validationQuery|string|false|none||none|
-|»»» initialSize|string|true|none||none|
-|»»» maxActive|string|true|none||none|
-|»» forcingIdentifiersToUpperCase|boolean|true|none||none|
-|»» id|string|true|none||none|
-|»» initialPoolSize|integer|true|none||none|
-|»» isUploadDataset|boolean|true|none||none|
-|»» partitioningInformation|null|true|none||none|
-|»» indexTablespace|string|true|none||none|
-|»» dataTablespace|string|true|none||none|
-|»» streamingResults|boolean|true|none||none|
-|»» databaseType|object|true|none||none|
-|»»» extraOptionsHelpUrl|string|true|none||none|
-|»»» defaultDatabaseName|null|true|none||none|
-|»»» defaultOptions|null|true|none||none|
-|»»» name|string|true|none||none|
-|»»» defaultDatabasePort|integer|true|none||none|
-|»»» shortName|string|true|none||none|
-|»»» supportedAccessTypes|[string]|true|none||none|
-|»» isSystem|boolean|true|none||none|
-|»» extraOptions|object|true|none||none|
-|»» forcingIdentifiersToLowerCase|boolean|true|none||none|
-|»» accessMap|[object]|true|none||none|
-|»»» name|string|true|none||none|
-|»»» value|string|true|none||none|
-|»» name|string|true|none||none|
-|»» sqlserverInstance|null|true|none||none|
-|»» attributes|object|true|none||none|
-|»»» PORT_NUMBER|string|true|none||none|
-|»»» driverId|string|true|none||none|
-|»» maximumPoolSize|integer|true|none||none|
-|»» informixServername|string|true|none||none|
-|»» usingConnectionPool|boolean|true|none||none|
-|»» usingDoubleDecimalAsSchemaTableSeparator|boolean|true|none||none|
-|»» databasePort|string|true|none||none|
-|»» username|string|true|none||none|
-|»» changed|boolean|true|none||none|
+| Name                       | Type      | Required | Description                                                      |
+|----------------------------|----------|----------|------------------------------------------------------------------|
+| `success`                 | boolean  | Yes      | Indicates whether the request was successful                     |
+| `databaseConnections`     | [object] | Yes      | Array of database connection objects                             |
+| ├── `connectSql`          | string   | Yes      | SQL to run upon connection                                       |
+| ├── `databaseName`        | string   | Yes      | Name of the database                                             |
+| ├── `partitioned`         | boolean  | Yes      | Whether the database is partitioned                              |
+| ├── `quoteAllFields`      | boolean  | Yes      | Whether to quote all fields                                      |
+| ├── `extraOptionsOrder`   | object   | Yes      | Order of extra options (if any)                                  |
+| ├── `accessTypeValue`     | string   | Yes      | Access type (e.g., `NATIVE`)                                     |
+| ├── `accessType`          | string   | Yes      | Same as `accessTypeValue`                                        |
+| ├── `hostname`            | string   | Yes      | Host IP or domain                                               |
+| ├── `password`            | null     | Yes      | Database password (null if not retrieved)                        |
+| ├── `connectionPoolingProperties`| object | Yes  | Properties for the connection pool                              |
+| │   ├── `minIdle`         | string   | Yes      | Minimum idle connections                                         |
+| │   ├── `maxIdle`         | string   | Yes      | Maximum idle connections                                         |
+| │   ├── `testOnBorrow`    | string   | No       | Whether to test connection on borrow (e.g., `"true"`)            |
+| │   ├── `validationQuery` | string   | No       | SQL query to validate connections (`"select 1"`)                 |
+| │   ├── `initialSize`     | string   | Yes      | Initial pool size                                               |
+| │   └── `maxActive`       | string   | Yes      | Maximum active connections                                       |
+| ├── `forcingIdentifiersToUpperCase` | boolean | Yes | Whether to force identifiers to uppercase                       |
+| ├── `id`                  | string   | Yes      | Unique ID for this connection configuration                      |
+| ├── `initialPoolSize`     | integer  | Yes      | Initial size for the pool                                       |
+| ├── `isUploadDataset`     | boolean  | Yes      | Whether it’s an uploaded dataset                                |
+| ├── `partitioningInformation`| null | Yes      | Details of partitioning (null if not used)                       |
+| ├── `indexTablespace`     | string   | Yes      | Name of the index tablespace                                    |
+| ├── `dataTablespace`      | string   | Yes      | Name of the data tablespace                                     |
+| ├── `streamingResults`    | boolean  | Yes      | Whether to use streaming results                                |
+| ├── `databaseType`        | object   | Yes      | Details about the database type                                 |
+| │   ├── `extraOptionsHelpUrl` | string  | Yes  | URL for extra driver options documentation                      |
+| │   ├── `defaultDatabaseName`| null   | Yes  | Default database name (null if not applicable)                   |
+| │   ├── `defaultOptions`  | null     | Yes      | Default driver options                                          |
+| │   ├── `name`            | string   | Yes      | Full database type name (e.g., `PostgreSQL`)                     |
+| │   ├── `defaultDatabasePort`| integer| Yes      | Default port for the database type (e.g., `5432`)                |
+| │   ├── `shortName`       | string   | Yes      | Short name (e.g., `POSTGRESQL`)                                  |
+| │   └── `supportedAccessTypes` | [string]| Yes   | Supported access types (e.g., `[ "NATIVE", "ODBC", "JNDI" ]`)     |
+| ├── `isSystem`            | boolean  | Yes      | Indicates if it’s a system connection                            |
+| ├── `extraOptions`        | object   | Yes      | Additional driver-specific options                               |
+| ├── `forcingIdentifiersToLowerCase` | boolean | Yes | Whether to force identifiers to lowercase                        |
+| ├── `accessMap`           | [object] | Yes      | Array of access permission objects                               |
+| │   ├── `name`            | string   | Yes      | Permission code (`"0"`, `"1"`, `"2"`, `"4"`, etc.)              |
+| │   └── `value`           | string   | Yes      | Whether the permission is granted (`"true"` or `"false"`)        |
+| ├── `name`                | string   | Yes      | Name of the connection                                           |
+| ├── `sqlserverInstance`   | null     | Yes      | For SQL Server instances (null if not used)                      |
+| ├── `attributes`          | object   | Yes      | Driver-specific attributes                                       |
+| │   ├── `PORT_NUMBER`     | string   | Yes      | Port number (`"25432"`)                                         |
+| │   └── `driverId`        | string   | Yes      | Driver ID (e.g., `postgresql`)                                   |
+| ├── `maximumPoolSize`     | integer  | Yes      | Maximum pool size                                               |
+| ├── `informixServername`  | string   | Yes      | For Informix server name (empty if not used)                     |
+| ├── `usingConnectionPool` | boolean  | Yes      | Whether a connection pool is in use                              |
+| ├── `usingDoubleDecimalAsSchemaTableSeparator` | boolean | Yes | Whether to treat double decimals as schema-table separators      |
+| ├── `databasePort`        | string   | Yes      | Port for the database (`"25432"`)                                |
+| ├── `username`            | string   | Yes      | Database user name (e.g., `"postgres"`)                          |
+| └── `changed`             | boolean  | Yes      | Indicates if the connection configuration has changed            |

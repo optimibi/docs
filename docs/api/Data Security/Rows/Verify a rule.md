@@ -5,15 +5,42 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Verify a  rule
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/row/verify
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/row/verify
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name         | Location | Type   | Required | Description |
+|-------------|----------|--------|----------|-------------|
+| **body**    | body     | object | Yes      | Request payload |
+| ├── `dbconn`      | body | string  | Yes  | Database connection name |
+| ├── `configList`  | body | array   | Yes  | List of rule configurations |
+| │ ├── `schema` | body | string | Yes  | Schema name |
+| │ ├── `tbname` | body | string | Yes  | Table name |
+| │ ├── `rows`   | body | string | No   | JSON formatted rule condition |
+| │ ├── `sql`    | body | string | Yes  | SQL condition |
+
+---
+
+## **Request Example**
 
 ```json
 {
@@ -29,20 +56,11 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» dbconn|body|string| yes |none|
-|» configList|body|[object]| yes |none|
-|»» schema|body|string| yes |none|
-|»» tbname|body|string| yes |none|
-|»» rows|body|string| no |none|
-|»» sql|body|string| yes |none|
+## **Response Examples**
 
-> Response Examples
-
+### **Error Response Example**
 ```json
 {
   "dbconn": "Demo",
@@ -59,6 +77,7 @@ Preconditions:
 }
 ```
 
+### **Success Response Example**
 ```json
 {
   "dbconn": "Demo",
@@ -81,7 +100,6 @@ Preconditions:
           "comments": "DAY_KEY",
           "originalColumnType": 4,
           "originalNullable": 0,
-          "numberOfBinaryStringConversions": 0,
           "length": 9,
           "type": 5,
           "originalColumnTypeName": "int4",
@@ -91,70 +109,6 @@ Preconditions:
           "originalScale": 0,
           "storageType": 0,
           "originName": "DAY_KEY"
-        },
-        {
-          "typeDesc": "None",
-          "comments": "DAY_DATE",
-          "originalColumnType": 93,
-          "originalNullable": 0,
-          "numberOfBinaryStringConversions": 0,
-          "length": -1,
-          "type": 0,
-          "originalColumnTypeName": "timestamptz",
-          "originalPrecision": 35,
-          "originalSigned": false,
-          "name": "DAY_DATE",
-          "originalScale": 6,
-          "storageType": 0,
-          "originName": "DAY_DATE"
-        },
-        {
-          "typeDesc": "Integer",
-          "comments": "MONTH_KEY",
-          "originalColumnType": 4,
-          "originalNullable": 0,
-          "numberOfBinaryStringConversions": 0,
-          "length": 9,
-          "type": 5,
-          "originalColumnTypeName": "int4",
-          "originalPrecision": 10,
-          "originalSigned": true,
-          "name": "MONTH_KEY",
-          "originalScale": 0,
-          "storageType": 0,
-          "originName": "MONTH_KEY"
-        },
-        {
-          "typeDesc": "Integer",
-          "comments": "QUARTER_KEY",
-          "originalColumnType": 4,
-          "originalNullable": 0,
-          "numberOfBinaryStringConversions": 0,
-          "length": 9,
-          "type": 5,
-          "originalColumnTypeName": "int4",
-          "originalPrecision": 10,
-          "originalSigned": true,
-          "name": "QUARTER_KEY",
-          "originalScale": 0,
-          "storageType": 0,
-          "originName": "QUARTER_KEY"
-        },
-        {
-          "typeDesc": "Integer",
-          "comments": "YEAR",
-          "originalColumnType": 5,
-          "originalNullable": 0,
-          "numberOfBinaryStringConversions": 0,
-          "length": 4,
-          "type": 5,
-          "originalColumnTypeName": "int2",
-          "originalPrecision": 5,
-          "originalSigned": true,
-          "name": "YEAR",
-          "originalScale": 0,
-          "storageType": 0,
-          "originName": "YEAR"
         }
       ],
       "success": true,
@@ -165,23 +119,26 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» dbconn|string|true|none||none|
-|» configList|[object]|true|none||none|
-|»» schema|string|false|none||none|
-|»» msg|string|false|none||none|
-|»» tbname|string|false|none||none|
-|»» success|boolean|false|none||none|
-|»» rows|string|false|none||none|
-|»» sql|string|false|none||none|
+| Name        | Type     | Required | Description |
+|------------|---------|----------|-------------|
+| `dbconn`   | string  | Yes      | Database connection name |
+| `configList` | array  | Yes      | List of rule verification results |
+| ├── `schema` | string | No      | Schema name |
+| ├── `msg`    | string | No      | Error message (if any) |
+| ├── `tbname` | string | No      | Table name |
+| ├── `success` | boolean | No   | Whether the verification was successful |
+| ├── `rows`   | string  | No      | JSON formatted rule condition |
+| ├── `sql`    | string  | No      | SQL condition |
+| ├── `data`   | array  | No      | Retrieved data if verification passes |
+| ├── `meta`   | array  | No      | Column metadata for retrieved data |
+

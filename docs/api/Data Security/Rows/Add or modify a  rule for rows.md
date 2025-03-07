@@ -1,19 +1,52 @@
 ---
-title: Add or modify a  rule for rows
-permalink: /api/Data Security/Rows/Add or modify a  rule for rows/
+title: Add or modify a rule for rows
+permalink: /api/Data Security/Rows/Add or modify a rule for rows/
 tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Add or modify a  rule for rows
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/row/update
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/row/update
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name            | Location | Type     | Required | Description |
+|----------------|----------|----------|----------|-------------|
+| **body**       | body     | object   | Yes      | Request payload |
+| ├── `id`       | body     | string   | Yes      | Leave empty for add, provide value for modification |
+| ├── `dbconn`   | body     | string   | Yes      | Database connection name |
+| ├── `enable`   | body     | string   | Yes      | Rule enabled status |
+| ├── `desc`     | body     | string   | Yes      | Rule description |
+| ├── `configList` | body   | array    | Yes      | List of rule configurations |
+| │ ├── `schema` | body     | string   | Yes      | Database schema |
+| │ ├── `tbname` | body     | string   | Yes      | Table name |
+| │ ├── `rows`   | body     | string   | No       | Row-level condition in JSON format |
+| │ ├── `sql`    | body     | string   | No       | SQL condition for row-level security |
+| ├── `grantedList` | body  | array    | Yes      | List of granted users/roles |
+| │ ├── `name`   | body     | string   | Yes      | User or role name |
+| │ ├── `type`   | body     | string   | Yes      | "0" for user, "1" for role |
+
+---
+
+## **Request Example**
 
 ```json
 {
@@ -41,25 +74,9 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| yes |empty add,otherwise modify|
-|» dbconn|body|string| yes |none|
-|» enable|body|string| yes |none|
-|» desc|body|string| yes |none|
-|» configList|body|[object]| yes |none|
-|»» schema|body|string| yes |none|
-|»» tbname|body|string| yes |none|
-|»» rows|body|string| no |none|
-|»» sql|body|string| no |none|
-|» grantedList|body|[object]| yes |none|
-|»» name|body|string| yes |none|
-|»» type|body|string| yes |none|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -71,20 +88,20 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» endQuote|string|false|none||none|
-|» success|boolean|true|none||none|
-|» id|string|true|none||none|
-|» startQuote|string|false|none||none|
+| Name         | Type     | Required | Description |
+|-------------|---------|----------|-------------|
+| `msg`       | string  | No       | Response message |
+| `endQuote`  | string  | No       | End quote character |
+| `success`   | boolean | Yes      | Request success status |
+| `id`        | string  | Yes      | Rule ID |
+| `startQuote` | string | No       | Start quote character |

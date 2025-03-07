@@ -5,62 +5,49 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Add or modify a rule for objects
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/obj/update
-
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
-
-> Body Parameters
-
-```json
-{
-  "dbconn": "foodmart",
-  "enable": "1",
-  "desc": "test",
-  "configList": [
-    {
-      "schema": "foodmart",
-      "tbname": "time_by_day",
-      "obj_type": "2",
-      "colname": "the_year",
-      "visible": "1",
-      "grantedList": [
-        {
-          "name": "admin",
-          "type": "0"
-        },
-        {
-          "name": "Power User",
-          "type": "1"
-        }
-      ]
-    }
-  ]
-}
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/obj/update
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» dbconn|body|string| yes |none|
-|» enable|body|string| yes |none|
-|» desc|body|string| no |none|
-|» configList|body|[object]| yes |none|
-|»» schema|body|string| yes |none|
-|»» tbname|body|string| yes |none|
-|»» obj_type|body|string| yes |1table2column|
-|»» colname|body|string| no |none|
-|»» visible|body|string| yes |1:selected is visible,unselected is invisible 0:selected is invisible,unselected is visible|
-|»» grantedList|body|[object]| no |none|
-|»»» name|body|string| yes |none|
-|»»» type|body|string| yes |0user1role|
+**Content Type**  
+`application/json`
 
-> Response Examples
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name                        | Location | Type     | Required | Description                                               |
+|-----------------------------|----------|----------|----------|-----------------------------------------------------------|
+| **body**                    | body     | object   | Yes      | JSON payload containing the rule details                  |
+| ├── **dbconn**              | body     | string   | Yes      | Name of the database connection                           |
+| ├── **enable**              | body     | string   | Yes      | `1` to enable, `0` to disable                             |
+| ├── **desc**                | body     | string   | No       | Description of the rule                                   |
+| ├── **configList**          | body     | array    | Yes      | List of object configurations                            |
+| │   ├── **schema**         | body     | string   | Yes      | Schema name                                              |
+| │   ├── **tbname**         | body     | string   | Yes      | Table name                                               |
+| │   ├── **obj_type**       | body     | string   | Yes      | `1` for table, `2` for column                            |
+| │   ├── **colname**        | body     | string   | No       | Column name (if `obj_type` is `2`)                       |
+| │   ├── **visible**        | body     | string   | Yes      | `1`: Selected is visible, unselected is invisible        |
+| │   │                     |          |          |          | `0`: Selected is invisible, unselected is visible        |
+| │   ├── **grantedList**    | body     | array    | No       | List of users/roles granted access                       |
+| │   │   ├── **name**       | body     | string   | Yes      | User or role name                                        |
+| │   │   ├── **type**       | body     | string   | Yes      | `0` for user, `1` for role                               |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -72,20 +59,20 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» endQuote|string|false|none||none|
-|» success|boolean|true|none||none|
-|» id|string|true|none||none|
-|» startQuote|string|false|none||none|
+| Name         | Type    | Required | Description                |
+|-------------|---------|----------|----------------------------|
+| `msg`       | string  | No       | Success message            |
+| `endQuote`  | string  | No       | End quote character        |
+| `success`   | boolean | Yes      | Indicates if the request was successful |
+| `id`        | string  | Yes      | Unique identifier of the rule |
+| `startQuote`| string  | No       | Start quote character      |

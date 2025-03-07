@@ -5,29 +5,42 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## POST List alerts
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/alert/list
-
-Preconditions: Current user needs read privileges to the alerts
-
-> Body Parameters
-
-```yaml
-pagePath: /public/test.datafor
-componentId: C739239F-4B54-6C90-8389-BF77F713AA98
-
+**Request URL**
+```html
+/plugin/datafor/api/alert/list
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» pagePath|body|string| no |none|
-|» componentId|body|string| no |id of component|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+**Preconditions**
+- The current user must have **read** privileges for the alerts.
+
+---
+
+### **Parameters** (x-www-form-urlencoded)
+
+| Name              | Location | Type   | Required | Description                  |
+|-------------------|----------|--------|----------|------------------------------|
+| **pagePath**      | body     | string | No       | Full page path (e.g., `/public/test.datafor`) |
+| **componentId**   | body     | string | No       | Identifier of the component  |
+
+**Example**
+```
+pagePath: /public/test.datafor
+componentId: C739239F-4B54-6C90-8389-BF77F713AA98
+```
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -39,9 +52,7 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
           "uiPassParam": "WEEKLY",
           "startTime": "2024-08-07T12:00:00.000+08:00",
           "endTime": null,
-          "daysOfWeek": [
-            "0"
-          ]
+          "daysOfWeek": ["0"]
         }
       },
       "componentId": "C739239F-4B54-6C90-8389-BF77F713AA98",
@@ -54,10 +65,7 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
             "inclusiveLeft": true,
             "inclusiveRight": true,
             "id": "sales_fact.store_sales.1717310261398",
-            "value": [
-              1,
-              2
-            ]
+            "value": [1, 2]
           }
         ],
         "logical": "and/or"
@@ -70,24 +78,15 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
       "enabled": "1",
       "nextRun": 1739678400000,
       "emailConfig": {
-        "ccUsers": [
-          "sally"
-        ],
+        "ccUsers": ["sally"],
         "subject": "标题",
         "executor": "admin",
-        "bccUsers": [
-          "linda"
-        ],
-        "toUsers": [
-          "ada",
-          "peter"
-        ],
+        "bccUsers": ["linda"],
+        "toUsers": ["ada", "peter"],
         "content": "富文本内容或普通文本内容"
       },
       "jobid": "admin\tAlertTaskAction\t64afc643-ea02-11ef-85a8-14755bc39e02",
-      "channels": [
-        "email"
-      ],
+      "channels": ["email"],
       "componentTitle": "经营情况",
       "executor": "admin",
       "name": "测试预警",
@@ -188,7 +187,7 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
           "datafor.source.format": "true",
           "datafor.olap.result.formatter": "mix",
           "datafor.client.locale": "en",
-          "datafor.client.timezone": "Asia/Shanghai"
+          "datafor.client.timezone": "Australia/Melbourne"
         },
         "queryType": "OLAP"
       }
@@ -197,152 +196,34 @@ componentId: C739239F-4B54-6C90-8389-BF77F713AA98
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» success|boolean|true|none||none|
-|» data|[object]|true|none||none|
-|»» cron|object|false|none||none|
-|»»» complexJobTrigger|object|true|none||none|
-|»»»» uiPassParam|string|true|none||none|
-|»»»» startTime|string|true|none||none|
-|»»»» endTime|null|true|none||none|
-|»»»» daysOfWeek|[string]|true|none||none|
-|»» componentId|string|false|none||none|
-|»» rule|object|false|none||none|
-|»»» conditions|[object]|true|none||none|
-|»»»» comparator|string|false|none||none|
-|»»»» uniqueName|string|false|none||none|
-|»»»» match|string|false|none||none|
-|»»»» inclusiveLeft|boolean|false|none||none|
-|»»»» inclusiveRight|boolean|false|none||none|
-|»»»» id|string|false|none||none|
-|»»»» value|[integer]|false|none||none|
-|»»» logical|string|true|none||none|
-|»» pagePath|string|false|none||none|
-|»» pageExists|boolean|false|none||none|
-|»» pagePathTitle|string|false|none||none|
-|»» pageTitle|string|false|none||none|
-|»» title|string|false|none||none|
-|»» enabled|string|false|none||none|
-|»» nextRun|integer|false|none||none|
-|»» emailConfig|object|false|none||none|
-|»»» ccUsers|[string]|true|none||none|
-|»»» subject|string|true|none||none|
-|»»» executor|string|true|none||none|
-|»»» bccUsers|[string]|true|none||none|
-|»»» toUsers|[string]|true|none||none|
-|»»» content|string|true|none||none|
-|»» jobid|string|false|none||none|
-|»» channels|[string]|false|none||none|
-|»» componentTitle|string|false|none||none|
-|»» executor|string|false|none||none|
-|»» name|string|false|none||none|
-|»» state|string|false|none||none|
-|»» qm|object|false|none||none|
-|»»» mdx|null|true|none||none|
-|»»» metadata|object|true|none||none|
-|»»» plugins|object|true|none||none|
-|»»» name|string|true|none||none|
-|»»» queryModel|object|true|none||none|
-|»»»» calculatedMembers|[string]|true|none||none|
-|»»»» lowestLevelsOnly|boolean|true|none||none|
-|»»»» calculatedMeasures|[string]|true|none||none|
-|»»»» axes|object|true|none||none|
-|»»»»» FILTER|object|true|none||none|
-|»»»»»» mdx|null|true|none||none|
-|»»»»»» hierarchizeMode|null|true|none||none|
-|»»»»»» hierarchies|[object]|true|none||none|
-|»»»»»»» schema|string|false|none||none|
-|»»»»»»» cmembers|object|false|none||none|
-|»»»»»»» name|string|false|none||none|
-|»»»»»»» cube|string|false|none||none|
-|»»»»»»» id|string|false|none||none|
-|»»»»»»» levels|object|false|none||none|
-|»»»»»»»» the_date@@MONTHS|object|true|none||none|
-|»»»»»»»»» mdx|null|true|none||none|
-|»»»»»»»»» aggregators|[string]|true|none||none|
-|»»»»»»»»» selection|object|true|none||none|
-|»»»»»»»»»» members|[object]|true|none||none|
-|»»»»»»»»»»» uniqueName|string|false|none||none|
-|»»»»»»»»»»» caption|null|false|none||none|
-|»»»»»»»»»» parameterName|null|true|none||none|
-|»»»»»»»»»» type|string|true|none||none|
-|»»»»»»»»» name|string|true|none||none|
-|»»»»»»»»» caption|string|true|none||none|
-|»»»»»»»»» filters|[string]|true|none||none|
-|»»»»»» sortOrder|null|true|none||none|
-|»»»»»» sortEvaluationLiteral|null|true|none||none|
-|»»»»»» nonEmpty|boolean|true|none||none|
-|»»»»»» location|string|true|none||none|
-|»»»»»» filters|[string]|true|none||none|
-|»»»»» COLUMNS|object|true|none||none|
-|»»»»»» mdx|null|true|none||none|
-|»»»»»» hierarchizeMode|null|true|none||none|
-|»»»»»» hierarchies|[string]|true|none||none|
-|»»»»»» sortOrder|null|true|none||none|
-|»»»»»» sortEvaluationLiteral|null|true|none||none|
-|»»»»»» nonEmpty|boolean|true|none||none|
-|»»»»»» location|string|true|none||none|
-|»»»»»» filters|[string]|true|none||none|
-|»»»»»» filterAxis|boolean|true|none||none|
-|»»»»» ROWS|object|true|none||none|
-|»»»»»» mdx|null|true|none||none|
-|»»»»»» hierarchizeMode|null|true|none||none|
-|»»»»»» hierarchies|[object]|true|none||none|
-|»»»»»»» cmembers|object|false|none||none|
-|»»»»»»» name|string|false|none||none|
-|»»»»»»» filters|[string]|false|none||none|
-|»»»»»»» levels|object|false|none||none|
-|»»»»»»»» product_family|object|true|none||none|
-|»»»»»»»»» mdx|null|true|none||none|
-|»»»»»»»»» aggregators|[string]|true|none||none|
-|»»»»»»»»» selection|object|true|none||none|
-|»»»»»»»»» name|string|true|none||none|
-|»»»»»»»»» caption|string|true|none||none|
-|»»»»»»»»» filters|[string]|true|none||none|
-|»»»»»»»»» sort|integer|true|none||none|
-|»»»»»» sortOrder|null|true|none||none|
-|»»»»»» sortEvaluationLiteral|null|true|none||none|
-|»»»»»» nonEmpty|boolean|true|none||none|
-|»»»»»» location|string|true|none||none|
-|»»»»»» filters|[string]|true|none||none|
-|»»»» details|object|true|none||none|
-|»»»»» measures|[object]|true|none||none|
-|»»»»»» uniqueName|string|false|none||none|
-|»»»»»» name|string|false|none||none|
-|»»»»»» caption|string|false|none||none|
-|»»»»»» id|string|false|none||none|
-|»»»»»» sort|integer|false|none||none|
-|»»»»»» type|string|false|none||none|
-|»»»»» location|string|true|none||none|
-|»»»»» axis|string|true|none||none|
-|»»»» visualTotalsPattern|null|true|none||none|
-|»»»» visualTotals|boolean|true|none||none|
-|»»» cube|object|true|none||none|
-|»»»» schema|string|true|none||none|
-|»»»» uniqueName|string|true|none||none|
-|»»»» visible|boolean|true|none||none|
-|»»»» catalog|string|true|none||none|
-|»»»» name|string|true|none||none|
-|»»»» caption|string|true|none||none|
-|»»»» connection|string|true|none||none|
-|»»» type|string|true|none||none|
-|»»» parameters|object|true|none||none|
-|»»» properties|object|true|none||none|
-|»»»» datafor.secret.appKey|string|true|none||none|
-|»»»» datafor.query.pick.row|string|true|none||none|
-|»»»» datafor.source.format|string|true|none||none|
-|»»»» datafor.olap.result.formatter|string|true|none||none|
-|»»»» datafor.client.locale|string|true|none||none|
-|»»»» datafor.client.timezone|string|true|none||none|
-|»»» queryType|string|true|none||none|
+| Name       | Type      | Required | Description                                                                                           |
+|------------|----------|----------|-------------------------------------------------------------------------------------------------------|
+| `success`  | boolean  | Yes      | Indicates whether the request was successful                                                          |
+| `data`     | [object] | Yes      | An array of alert objects                                                                            |
+| ├── `cron` | object   | No       | Scheduling configuration                                                                              |
+| │   └── `complexJobTrigger` | object  | Yes | Settings for triggers (start/end time, daysOfWeek, etc.)                                             |
+| ├── `componentId`          | string  | No  | The component’s ID                                                                                   |
+| ├── `rule`                 | object  | No  | Defines the alert logic and conditions                                                               |
+| ├── `pagePath`             | string  | No  | Full path of the page                                                                                |
+| ├── `pageExists`           | boolean | No  | Indicates if the page currently exists                                                               |
+| ├── `pagePathTitle`        | string  | No  | Translated or displayed title for the page path                                                      |
+| ├── `pageTitle`            | string  | No  | Title of the page                                                                                    |
+| ├── `title`                | string  | No  | Alert title                                                                                          |
+| ├── `enabled`              | string  | No  | Whether the alert is enabled (`1` = true, `0` = false)                                               |
+| ├── `nextRun`              | integer | No  | Timestamp (ms) for the next run                                                                      |
+| ├── `emailConfig`          | object  | No  | Email alert configuration                                                                            |
+| ├── `jobid`                | string  | No  | Internal job identifier                                                                              |
+| ├── `channels`             | [string]| No  | Channels used to send the alert (`["email"]`, etc.)                                                 |
+| ├── `componentTitle`       | string  | No  | Title of the component                                                                               |
+| ├── `executor`             | string  | No  | Username who last executed or updated the alert                                                      |
+| ├── `name`                 | string  | No  | Alert name                                                                                           |
+| ├── `state`                | string  | No  | Alert’s current state (e.g., `NORMAL`, `PAUSED`)                                                     |
+| └── `qm`                   | object  | No  | Contains query configuration (e.g., `queryModel`, `properties`, `cube`)                              |

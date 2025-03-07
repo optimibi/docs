@@ -5,14 +5,23 @@ tags: ["api","Authentication"]
 description: 
 ---
 
-## GET Restful Logout
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/extension/auth/logout
+**Request URL**
+```html
+/plugin/datafor/api/extension/auth/logout
+```
 
-### Description
-User can log out of the application and get the result in JSON format.
+**Description**  
+Logs the user out of the application, returning a JSON response indicating the result.
 
-> Response Examples
+**Content Type**  
+No request body is typically used with a `GET` request.
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -21,17 +30,15 @@ User can log out of the application and get the result in JSON format.
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description                      |
+|-----------|---------|----------|----------------------------------|
+| `code`    | string  | Yes      | Code indicating the response (e.g., `"200"`) |
+| `success` | boolean | Yes      | Whether the logout was successful          |

@@ -5,50 +5,44 @@ tags: ["api","Connections"]
 description: 
 ---
 
-## PUT Change acl for connections
+**Method**  
+`PUT`
 
-PUT /plugin/datafor-modeler/api/connection/aclBatch
-
-Preconditions:Current user needs administrative privileges to the connection.
-
-> Body Parameters
-
-```json
-{
-  "foodmart": {
-    "aces": [
-      {
-        "recipient": "Administrator",
-        "modifiable": false,
-        "recipientType": 1,
-        "permissions": [
-          4
-        ]
-      }
-    ],
-    "entriesInheriting": false,
-    "owner": "admin",
-    "ownerType": 0
-  }
-}
+**Request URL**
+```html
+/plugin/datafor-modeler/api/connection/aclBatch
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» foodmart|body|object| yes |the name of the connection|
-|»» aces|body|[object]| yes |none|
-|»»» recipient|body|string| no |none|
-|»»» modifiable|body|boolean| no |none|
-|»»» recipientType|body|integer| no |none|
-|»»» permissions|body|[integer]| no |none|
-|»» entriesInheriting|body|boolean| yes |none|
-|»» owner|body|string| yes |none|
-|»» ownerType|body|integer| yes |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+**Preconditions**
+- The current user must have **administrative** privileges for the specified connections.
+
+---
+
+### **Parameters**
+
+| Name  | Location | Type   | Required | Description                                 |
+|-------|----------|--------|----------|---------------------------------------------|
+| **body**                | body | object   | No       | Overall JSON payload                        |
+| └── **foodmart**        | body | object   | Yes      | Object key is the connection name (e.g., `"foodmart"`) |
+| &nbsp;&nbsp;├── **aces**               | body | [object]  | Yes | Array of ACE (Access Control Entry) objects     |
+| &nbsp;&nbsp;│   ├── **recipient**      | body | string    | No  | Recipient of the ACE (e.g., username, role)      |
+| &nbsp;&nbsp;│   ├── **modifiable**     | body | boolean   | No  | Whether this ACE can be changed by the recipient |
+| &nbsp;&nbsp;│   ├── **recipientType**  | body | integer   | No  | 1 = user, 2 = group, etc. (implementation-defined) |
+| &nbsp;&nbsp;│   └── **permissions**    | body | [integer] | No  | Array of permission codes (e.g., `[4]` = Admin)   |
+| &nbsp;&nbsp;├── **entriesInheriting**  | body | boolean   | Yes | Whether entries are inheritable                  |
+| &nbsp;&nbsp;├── **owner**             | body | string    | Yes | Owner of this connection (e.g., `admin`)         |
+| &nbsp;&nbsp;└── **ownerType**         | body | integer   | Yes | 0 = user owner, 1 = role owner, etc. (implementation-defined) |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -56,27 +50,24 @@ Preconditions:Current user needs administrative privileges to the connection.
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
+| Name          | Type   | Required | Description                                                  |
+|---------------|--------|----------|--------------------------------------------------------------|
+| `SampleData`  | string | Yes      | Shows the result code for the specified connection          |
 
-|Name|Type|Required|Restrictions|Title| description |
-|---|---|---|---|---|---------------|
-|» SampleData|string|true|none|| |
+**Return result code of each connection**  
+The key corresponds to the connection name, and the value is a result code:
 
-Return result code of each connection
-
-#### Enum
-
-| Name               | Value | description    |
-|--------------------|-------|----------------|
-| ${connectionName}  | 200   | success        |
-| ${connectionName}  | 401   | no auth        |
-| ${connectionName}  | 409   | not found      |
-| ${connectionName}  | 500   | internal error |
+| Name                | Value | Description       |
+|---------------------|-------|-------------------|
+| `${connectionName}` | 200   | success           |
+| `${connectionName}` | 401   | no auth           |
+| `${connectionName}` | 409   | not found         |
+| `${connectionName}` | 500   | internal error    |

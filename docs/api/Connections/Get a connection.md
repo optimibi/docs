@@ -5,19 +5,35 @@ tags: ["api","Connections"]
 description: 
 ---
 
-## GET Get a connection
+**Method**  
+`GET`
 
-GET /plugin/datafor-modeler/api/connection/get
+**Request URL**
+```html
+/plugin/datafor-modeler/api/connection/get
+```
 
-Preconditions:Current user needs read privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-### Params
+**Preconditions**
+- The current user must have **read** privileges for the specified connection.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|name|query|string| no |none|
+**Content Type**  
+No request body is typically used with a `GET` request. Parameters are provided via query string.
 
-> Response Examples
+---
+
+### **Parameters**
+
+| Name  | Location | Type   | Required | Description                        |
+|-------|----------|--------|----------|------------------------------------|
+| **name** | query | string | No       | The name of the connection to retrieve |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -68,56 +84,54 @@ Preconditions:Current user needs read privileges to the connection.
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» SQLServerInstance|null|false|none||none|
-|» accessType|string|true|none||none|
-|» accessTypeValue|string|true|none||none|
-|» attributes|object|true|none||none|
-|»» driverId|string|true|none||none|
-|»» PORT_NUMBER|string|true|none||none|
-|» changed|boolean|true|none||none|
-|» connectSql|string|true|none||none|
-|» connectionPoolingProperties|object|true|none||none|
-|»» minIdle|string|true|none||none|
-|»» maxIdle|string|true|none||none|
-|»» initialSize|string|true|none||none|
-|»» maxActive|string|true|none||none|
-|» dataTablespace|string|true|none||none|
-|» databaseName|string|true|none||none|
-|» databasePort|string|true|none||none|
-|» databaseType|object|true|none||none|
-|»» defaultDatabaseName|null|true|none||none|
-|»» defaultDatabasePort|integer|true|none||none|
-|»» defaultOptions|null|true|none||none|
-|»» extraOptionsHelpUrl|string|true|none||none|
-|»» name|string|true|none||none|
-|»» shortName|string|true|none||none|
-|» extraOptions|object|true|none||none|
-|» extraOptionsOrder|object|true|none||none|
-|» forcingIdentifiersToLowerCase|boolean|true|none||none|
-|» forcingIdentifiersToUpperCase|boolean|true|none||none|
-|» hostname|string|true|none||none|
-|» id|string|true|none||none|
-|» indexTablespace|string|true|none||none|
-|» informixServername|string|true|none||none|
-|» initialPoolSize|integer|true|none||none|
-|» maximumPoolSize|integer|true|none||none|
-|» name|string|true|none||none|
-|» partitioned|boolean|true|none||none|
-|» password|null|true|none||none|
-|» quoteAllFields|boolean|true|none||none|
-|» streamingResults|boolean|false|none||none|
-|» username|string|true|none||none|
-|» usingConnectionPool|boolean|true|none||none|
-|» usingDoubleDecimalAsSchemaTableSeparator|boolean|true|none||none|
+| Name                                     | Type     | Required | Description                                                 |
+|------------------------------------------|----------|----------|-------------------------------------------------------------|
+| `SQLServerInstance`                      | null     | No       | For SQL Server; null if not used                           |
+| `accessType`                             | string   | Yes      | Connection access type (e.g., `NATIVE`)                    |
+| `accessTypeValue`                        | string   | Yes      | Same value as `accessType`                                 |
+| `attributes`                             | object   | Yes      | Driver attributes                                          |
+| ├── `driverId`                           | string   | Yes      | Identifier for the driver (e.g., `postgresql`)             |
+| └── `PORT_NUMBER`                        | string   | Yes      | Database port number (e.g., `25432`)                       |
+| `changed`                                | boolean  | Yes      | Indicates if the connection configuration has changed      |
+| `connectSql`                             | string   | Yes      | SQL to be run on connection initialization (if any)        |
+| `connectionPoolingProperties`            | object   | Yes      | Properties for the connection pool                         |
+| ├── `minIdle`                            | string   | Yes      | Minimum idle connections in the pool                       |
+| ├── `maxIdle`                            | string   | Yes      | Maximum idle connections                                   |
+| ├── `initialSize`                        | string   | Yes      | Initial number of connections                              |
+| └── `maxActive`                          | string   | Yes      | Maximum active connections in the pool                     |
+| `dataTablespace`                         | string   | Yes      | Name of the data tablespace (if applicable)               |
+| `databaseName`                           | string   | Yes      | Name of the database (e.g., `foodmart`)                    |
+| `databasePort`                           | string   | Yes      | Port for the database (e.g., `25432`)                      |
+| `databaseType`                           | object   | Yes      | Information about the database type                        |
+| ├── `defaultDatabaseName`                | null     | Yes      | Default database name (null if not specified)              |
+| ├── `defaultDatabasePort`                | integer  | Yes      | Default port (e.g., `5432`)                                |
+| ├── `defaultOptions`                     | null     | Yes      | Default driver options                                     |
+| ├── `extraOptionsHelpUrl`                | string   | Yes      | URL for extra driver options                               |
+| ├── `name`                               | string   | Yes      | Full name (e.g., `PostgreSQL`)                             |
+| └── `shortName`                          | string   | Yes      | Short name (e.g., `POSTGRESQL`)                            |
+| `extraOptions`                           | object   | Yes      | Additional driver-specific parameters                      |
+| `extraOptionsOrder`                      | object   | Yes      | Ordering for extra options                                 |
+| `forcingIdentifiersToLowerCase`          | boolean  | Yes      | Whether to force identifiers to lowercase                  |
+| `forcingIdentifiersToUpperCase`          | boolean  | Yes      | Whether to force identifiers to uppercase                  |
+| `hostname`                               | string   | Yes      | Host IP or domain (e.g., `127.0.0.1`)                      |
+| `id`                                     | string   | Yes      | Unique ID for this connection configuration                |
+| `indexTablespace`                        | string   | Yes      | Index tablespace (if applicable)                           |
+| `informixServername`                     | string   | Yes      | Server name for Informix (unused here)                     |
+| `initialPoolSize`                        | integer  | Yes      | Initial size of the pool                                   |
+| `maximumPoolSize`                        | integer  | Yes      | Maximum pool size                                          |
+| `name`                                   | string   | Yes      | Connection name (e.g., `foodmart`)                         |
+| `partitioned`                            | boolean  | Yes      | Whether the database is partitioned                        |
+| `password`                               | null     | Yes      | Password for the database user (null if not retrieved)     |
+| `quoteAllFields`                         | boolean  | Yes      | Whether to quote all fields                                |
+| `streamingResults`                       | boolean  | No       | Whether results are streamed                               |
+| `username`                               | string   | Yes      | Database user name (e.g., `postgres`)                      |
+| `usingConnectionPool`                    | boolean  | Yes      | Whether a connection pool is being used                    |
+| `usingDoubleDecimalAsSchemaTableSeparator` | boolean| Yes      | Whether double decimals separate schema/table identifiers  |

@@ -5,28 +5,38 @@ tags: ["api","Authentication"]
 description: 
 ---
 
-## GET Logout
+**Method**  
+`GET`
 
-GET /Logout
+**Request URL**
+```html
+/Logout
+```
 
-### Description
-User can log out of the application and redirects to the specified location.
+**Description**  
+Logs the user out of the application and responds with a redirect (302) to a specified location.
 
-> Response Examples
+**Content Type**  
+No request body is typically used with a `GET` request.
 
-> 302 Response
+---
 
-### Responses
+## **Response Examples**
 
-|HTTP Status Code |Meaning| Description                |Data schema|
-|---|---|----------------------------|---|
-|302|[Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)|Location /datafor/index.jsp |Inline|
+**302 Response**  
+The server responds with an HTTP 302 (Found) and redirects the user (e.g., to `/datafor/index.jsp`).
 
-### Headers
+## **HTTP Responses**
 
-#### Request Headers
-- **Cookie**: The session cookie to identify the user's session.
+| HTTP Status Code | Meaning                                                                 | Description                       | Data schema |
+|------------------|-------------------------------------------------------------------------|-----------------------------------|------------|
+| 302              | [Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)             | Location `/datafor/index.jsp`     | Inline     |
 
-#### Response Headers
-- **Location**: The URL to which the client is redirected after logout.
+### **Headers**
+
+**Request Headers**
+- **Cookie**: Session cookie to identify the user’s session.
+
+**Response Headers**
+- **Location**: The URL the client is redirected to after logout (e.g., `/datafor/index.jsp`).
 

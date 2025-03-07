@@ -5,15 +5,42 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Get rule list
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/row/query
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/row/query
+```
 
-Preconditions:
-1.Current user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name         | Location | Type   | Required | Description |
+|-------------|----------|--------|----------|-------------|
+| **body**    | body     | object | Yes      | Request payload |
+| ├── `id`          | body | string  | No  | Rule ID (leave empty to fetch all) |
+| ├── `dbconn`      | body | string  | No  | Database connection name |
+| ├── `enable`      | body | string  | No  | Filter by enable status |
+| ├── `editable`    | body | string  | No  | Editable status |
+| ├── `withGranted` | body | boolean | No  | Whether to include granted user/role list |
+| ├── `withConfig`  | body | boolean | No  | Whether to include config list |
+
+---
+
+## **Request Example**
 
 ```json
 {
@@ -27,19 +54,9 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| no |none|
-|» dbconn|body|string| no |none|
-|» enable|body|string| no |none|
-|» editable|body|string| no |none|
-|» withGranted|body|boolean| no |grantedList|
-|» withConfig|body|boolean| no |configList|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -71,31 +88,31 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|false|none||none|
-|» data|[object]|true|none||none|
-|»» grantedList|[object]|false|none||none|
-|»»» name|string|true|none||none|
-|»»» type|string|true|none||none|
-|»» dbconn|string|false|none||none|
-|»» update_time|string|false|none||none|
-|»» add_by|string|false|none||none|
-|»» enable|string|false|none||none|
-|»» editable|string|false|none||none|
-|»» id|string|false|none||none|
-|»» update_by|string|false|none||none|
-|»» add_time|string|false|none||none|
-|»» desc|string|false|none||none|
-|» success|boolean|true|none||none|
-|» msg|string|false|none||none|
+| Name        | Type     | Required | Description |
+|------------|---------|----------|-------------|
+| `code`     | string  | No       | Response status code |
+| `data`     | array   | Yes      | List of rule objects |
+| ├── `grantedList` | array | No  | List of granted users/roles |
+| │ ├── `name` | string | Yes  | User or role name |
+| │ ├── `type` | string | Yes  | `0` for user, `1` for role |
+| ├── `dbconn` | string | No  | Database connection name |
+| ├── `update_time` | string | No  | Last update timestamp |
+| ├── `add_by` | string | No  | Rule creator |
+| ├── `enable` | string | No  | Enable status (`1` for enabled) |
+| ├── `editable` | string | No  | Editable status (`1` for editable) |
+| ├── `id` | string | No  | Rule ID |
+| ├── `update_by` | string | No  | Last updated by |
+| ├── `add_time` | string | No  | Creation timestamp |
+| ├── `desc` | string | No  | Rule description |
+| `success`  | boolean | Yes      | Request success status |
+| `msg`      | string  | No       | Response message |

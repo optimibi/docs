@@ -5,127 +5,84 @@ tags: ["api","Connections"]
 description: 
 ---
 
-## POST Modify a connection
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/connection/update
-
-Preconditions:
-1.The cuccunt user's type cannot be SYS_Reader
-2.Current user needs edit privileges to the connection.
-
-> Body Parameters
-
-```json
-{
-  "SQLServerInstance": null,
-  "accessType": "NATIVE",
-  "accessTypeValue": "NATIVE",
-  "attributes": {
-    "driverId": "postgresql",
-    "PORT_NUMBER": "25432"
-  },
-  "changed": false,
-  "connectSql": "",
-  "connectionPoolingProperties": {
-    "initialSize": "5",
-    "maxActive": "200",
-    "maxIdle": "20",
-    "minIdle": "5"
-  },
-  "dataTablespace": "",
-  "databaseName": "foodmart",
-  "databasePort": "25432",
-  "databaseType": {
-    "defaultDatabaseName": null,
-    "defaultDatabasePort": 5432,
-    "defaultOptions": null,
-    "extraOptionsHelpUrl": "http://jdbc.postgresql.org/documentation/83/connect.html#connection-parameters",
-    "name": "PostgreSQL",
-    "shortName": "POSTGRESQL"
-  },
-  "extraOptions": {
-    "POSTGRESQL.TimeZone": "Asia/Shanghai"
-  },
-  "extraOptionsOrder": {
-    "0": "POSTGRESQL.TimeZone"
-  },
-  "forcingIdentifiersToLowerCase": false,
-  "forcingIdentifiersToUpperCase": false,
-  "hostname": "127.0.0.1",
-  "id": "d55f86ef-0c20-4442-b806-074d4211b0fb",
-  "indexTablespace": "",
-  "informixServername": "",
-  "initialPoolSize": 0,
-  "maximumPoolSize": 0,
-  "name": "foodmart2",
-  "partitioned": false,
-  "password": null,
-  "quoteAllFields": false,
-  "streamingResults": false,
-  "username": "postgres",
-  "usingConnectionPool": true,
-  "usingDoubleDecimalAsSchemaTableSeparator": false,
-  "driverId": "postgresql",
-  "PORT_NUMBER": "25432",
-  "CUSTOM_URL": null
-}
+**Request URL**
+```html
+/plugin/datafor-modeler/api/connection/update
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Accept|header|string| no |none|
-|Access-Control-Request-Headers|header|string| no |none|
-|body|body|object| no |none|
-|» SQLServerInstance|body|null| no |none|
-|» accessType|body|string| yes |none|
-|» accessTypeValue|body|string| yes |none|
-|» attributes|body|object| yes |none|
-|»» driverId|body|string| yes |none|
-|»» PORT_NUMBER|body|string| yes |none|
-|» changed|body|boolean| no |none|
-|» connectSql|body|string| no |none|
-|» connectionPoolingProperties|body|object| yes |none|
-|»» initialSize|body|string| yes |none|
-|»» maxActive|body|string| yes |none|
-|»» maxIdle|body|string| yes |none|
-|»» minIdle|body|string| yes |none|
-|» dataTablespace|body|string| yes |none|
-|» databaseName|body|string| yes |none|
-|» databasePort|body|string| yes |none|
-|» databaseType|body|object| yes |none|
-|»» defaultDatabaseName|body|null| yes |none|
-|»» defaultDatabasePort|body|integer| yes |none|
-|»» defaultOptions|body|null| yes |none|
-|»» extraOptionsHelpUrl|body|string| yes |none|
-|»» name|body|string| yes |none|
-|»» shortName|body|string| yes |none|
-|» extraOptions|body|object| yes |none|
-|»» POSTGRESQL.TimeZone|body|string| yes |none|
-|» extraOptionsOrder|body|object| yes |none|
-|»» 0|body|string| yes |none|
-|» forcingIdentifiersToLowerCase|body|boolean| yes |none|
-|» forcingIdentifiersToUpperCase|body|boolean| yes |none|
-|» hostname|body|string| yes |none|
-|» id|body|string| yes |none|
-|» indexTablespace|body|string| yes |none|
-|» informixServername|body|string| yes |none|
-|» initialPoolSize|body|integer| yes |none|
-|» maximumPoolSize|body|integer| yes |none|
-|» name|body|string| yes |none|
-|» partitioned|body|boolean| yes |none|
-|» password|body|null| yes |none|
-|» quoteAllFields|body|boolean| yes |none|
-|» streamingResults|body|boolean| yes |none|
-|» username|body|string| yes |none|
-|» usingConnectionPool|body|boolean| yes |none|
-|» usingDoubleDecimalAsSchemaTableSeparator|body|boolean| yes |none|
-|» driverId|body|string| yes |none|
-|» PORT_NUMBER|body|string| yes |none|
-|» CUSTOM_URL|body|null| no |none|
+**Content Type**  
+`application/json`
 
-> Response Examples
+**Preconditions**
+1. The current user’s type **cannot** be `SYS_Reader`.
+2. The current user must have **edit** privileges for the connection.
+
+---
+
+### **Parameters**
+
+| Name                                     | Location | Type     | Required | Description                                             |
+|------------------------------------------|----------|----------|----------|---------------------------------------------------------|
+| **Accept**                               | header   | string   | No       | E.g., `application/json`                                |
+| **Access-Control-Request-Headers**       | header   | string   | No       | Headers used during the request (CORS)                 |
+| **body**                                 | body     | object   | No       | Overall JSON payload                                    |
+| ├── **SQLServerInstance**               | body     | null     | No  | For SQL Server; null if not used                        |
+| ├── **accessType**                      | body     | string   | Yes | Type of connection access (e.g., `NATIVE`)             |
+| ├── **accessTypeValue**                 | body     | string   | Yes | Same as `accessType`                                   |
+| ├── **attributes**                      | body     | object   | Yes | Additional connection attributes                        |
+| │   ├── **driverId**                    | body     | string   | Yes | E.g., `postgresql`                                      |
+| │   └── **PORT_NUMBER**                 | body     | string   | Yes | Database port (e.g., `25432`)                           |
+| ├── **changed**                         | body     | boolean  | No  | Indicates if the connection config has changed          |
+| ├── **connectSql**                      | body     | string   | No  | SQL to run when establishing the connection (optional) |
+| ├── **connectionPoolingProperties**     | body     | object   | Yes | Connection pool settings                                |
+| │   ├── **initialSize**                 | body     | string   | Yes | Initial size of the pool                               |
+| │   ├── **maxActive**                   | body     | string   | Yes | Maximum active connections                             |
+| │   ├── **maxIdle**                     | body     | string   | Yes | Maximum idle connections                               |
+| │   └── **minIdle**                     | body     | string   | Yes | Minimum idle connections                               |
+| ├── **dataTablespace**                  | body     | string   | Yes | Tablespace for data (if applicable)                    |
+| ├── **databaseName**                    | body     | string   | Yes | Name of the database (e.g., `foodmart`)                |
+| ├── **databasePort**                    | body     | string   | Yes | Port for the database (e.g., `25432`)                  |
+| ├── **databaseType**                    | body     | object   | Yes | Info about the database type                           |
+| │   ├── **defaultDatabaseName**         | body     | null     | Yes | Default DB name (null if not specified)                |
+| │   ├── **defaultDatabasePort**         | body     | integer  | Yes | Default port (e.g., `5432`)                            |
+| │   ├── **defaultOptions**              | body     | null     | Yes | Default driver options                                 |
+| │   ├── **extraOptionsHelpUrl**         | body     | string   | Yes | URL for documentation of extra options                 |
+| │   ├── **name**                        | body     | string   | Yes | E.g., `PostgreSQL`                                     |
+| │   └── **shortName**                   | body     | string   | Yes | Abbreviated name (e.g., `POSTGRESQL`)                  |
+| ├── **extraOptions**                    | body     | object   | Yes | Additional driver-specific options                     |
+| │   └── **POSTGRESQL.TimeZone**         | body     | string   | Yes | Time zone setting (e.g., `Australia/Melbourne`)         |
+| ├── **extraOptionsOrder**               | body     | object   | Yes | Order of extra options                                 |
+| │   └── **0**                           | body     | string   | Yes | First item in the order                                |
+| ├── **forcingIdentifiersToLowerCase**   | body     | boolean  | Yes | Whether to force identifiers to lowercase              |
+| ├── **forcingIdentifiersToUpperCase**   | body     | boolean  | Yes | Whether to force identifiers to uppercase              |
+| ├── **hostname**                        | body     | string   | Yes | Host IP or domain (e.g., `127.0.0.1`)                  |
+| ├── **id**                              | body     | string   | Yes | Unique ID for this connection                          |
+| ├── **indexTablespace**                 | body     | string   | Yes | Tablespace for indexes (if applicable)                 |
+| ├── **informixServername**              | body     | string   | Yes | For Informix only; otherwise empty                     |
+| ├── **initialPoolSize**                 | body     | integer  | Yes | Initial number of connections in the pool              |
+| ├── **maximumPoolSize**                 | body     | integer  | Yes | Maximum size of the pool                               |
+| ├── **name**                            | body     | string   | Yes | Connection name (e.g., `foodmart2`)                    |
+| ├── **partitioned**                     | body     | boolean  | Yes | Whether the database is partitioned                    |
+| ├── **password**                        | body     | null     | Yes | Database password (null if not changed)                |
+| ├── **quoteAllFields**                  | body     | boolean  | Yes | Whether to quote all SQL fields                        |
+| ├── **streamingResults**                | body     | boolean  | Yes | Whether to use streaming results                       |
+| ├── **username**                        | body     | string   | Yes | Database user (e.g., `postgres`)                       |
+| ├── **usingConnectionPool**             | body     | boolean  | Yes | Whether to use a connection pool                       |
+| ├── **usingDoubleDecimalAsSchemaTableSeparator** | body | boolean | Yes | If true, double decimals are used as schema-table separators |
+| ├── **driverId**                        | body     | string   | Yes | Driver ID (duplicate of `attributes.driverId`)         |
+| ├── **PORT_NUMBER**                     | body     | string   | Yes | Database port (duplicate of `attributes.PORT_NUMBER`)  |
+| └── **CUSTOM_URL**                      | body     | null     | No  | Custom JDBC URL if using a non-default driver config   |
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -135,18 +92,16 @@ Preconditions:
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» code|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description         |
+|-----------|---------|----------|---------------------|
+| `msg`     | string  | No       | Response message    |
+| `code`    | string  | Yes      | Status code (`"200"`) |
+| `success` | boolean | Yes      | Indicates whether the request succeeded |

@@ -5,15 +5,38 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Get configList for a rule
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/row/config/query
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/row/config/query
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name         | Location | Type   | Required | Description |
+|-------------|----------|--------|----------|-------------|
+| **body**    | body     | object | Yes      | Request payload |
+| ├── `group_id` | body | string | Yes      | Rule group ID |
+| ├── `dbconn`   | body | string | Yes      | Database connection name |
+
+---
+
+## **Request Example**
 
 ```json
 {
@@ -22,15 +45,9 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» group_id|body|string| yes |none|
-|» dbconn|body|string| yes |none|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -51,26 +68,26 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» code|string|false|none||none|
-|» data|[object]|true|none||none|
-|»» schema|string|false|none||none|
-|»» dbconn|string|false|none||none|
-|»» tbname|string|false|none||none|
-|»» group_id|string|false|none||none|
-|»» id|string|false|none||none|
-|»» rows|string|false|none||none|
-|»» sql|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name        | Type     | Required | Description |
+|------------|---------|----------|-------------|
+| `msg`      | string  | No       | Response message |
+| `code`     | string  | No       | Response status code |
+| `data`     | array   | Yes      | List of configuration rules |
+| ├── `schema` | string | No      | Database schema |
+| ├── `dbconn` | string | No      | Database connection name |
+| ├── `tbname` | string | No      | Table name |
+| ├── `group_id` | string | No   | Rule group ID |
+| ├── `id` | string  | No       | Configuration rule ID |
+| ├── `rows` | string  | No       | Row filter condition in JSON format |
+| ├── `sql` | string  | No       | SQL condition |
+| `success`  | boolean | Yes      | Request success status |

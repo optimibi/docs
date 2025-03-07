@@ -5,14 +5,23 @@ tags: ["api","Authentication"]
 description: 
 ---
 
-## POST Restful Login
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/extension/auth/login
+**Request URL**
+```html
+/plugin/datafor/api/extension/auth/login
+```
 
-### Description
-User can log in and get the result in JSON format.
+**Description**  
+This endpoint allows a user to log in. The login result is returned in JSON format.
 
-> Response Examples
+**Content Type**  
+`application/json`
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -30,19 +39,17 @@ User can log in and get the result in JSON format.
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» jsessionid|string|false|none||none|
-|» data|string|false|none||1login 2 has logged in before request|
-|» success|boolean|true|none||none|
+| Name          | Type    | Required | Description                                             |
+|---------------|---------|----------|---------------------------------------------------------|
+| `msg`         | string  | Yes      | Descriptive message about the login attempt            |
+| `jsessionid`  | string  | No       | Session ID for the login, if any                       |
+| `data`        | string  | No       | `"1"` if just logged in, `"2"` if previously logged in  |
+| `success`     | boolean | Yes      | Indicates whether the login was successful             |

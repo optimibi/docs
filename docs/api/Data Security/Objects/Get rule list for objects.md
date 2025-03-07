@@ -5,15 +5,44 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Get rule list for objects
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/obj/query
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/obj/query
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name            | Location | Type     | Required | Description |
+|----------------|----------|----------|----------|-------------|
+| **body**       | body     | object   | Yes      | Request payload |
+| ├── `id`       | body     | string   | No       | Rule ID |
+| ├── `dbconn`   | body     | string   | No       | Database connection name |
+| ├── `enable`   | body     | string   | No       | Rule enabled status |
+| ├── `withGranted` | body  | boolean  | No       | Include granted list |
+| ├── `withConfig` | body   | boolean  | No       | Include config list |
+| ├── `schema`   | body     | string   | No       | Database schema |
+| ├── `tbname`   | body     | string   | No       | Table name |
+| ├── `type`     | body     | string   | No       | Rule type |
+
+---
+
+## **Request Example**
 
 ```json
 {
@@ -27,21 +56,9 @@ Preconditions:
 }
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» id|body|string| no |none|
-|» dbconn|body|string| no |none|
-|» enable|body|string| no |none|
-|» withGranted|body|boolean| no |grantedList|
-|» withConfig|body|boolean| no |configList|
-|» schema|body|string| no |none|
-|» tbname|body|string| no |none|
-|» type|body|string| no |none|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -84,38 +101,38 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|true|none||none|
-|» code|string|true|none||none|
-|» data|[object]|true|none||none|
-|»» dbconn|string|true|none||none|
-|»» update_time|string|false|none||none|
-|»» add_by|string|false|none||none|
-|»» enable|string|true|none||none|
-|»» editable|string|true|none||none|
-|»» id|string|true|none||none|
-|»» update_by|string|false|none||none|
-|»» configList|[object]|true|none||none|
-|»»» schema|string|true|none||none|
-|»»» grantedList|[object]|true|none||none|
-|»»»» name|string|true|none||none|
-|»»»» type|string|true|none||none|
-|»»» tbname|string|true|none||none|
-|»»» colname|string|false|none||none|
-|»»» obj_key|string|true|none||none|
-|»»» obj_type|string|true|none||none|
-|»»» visible|string|true|none||1:selected is visible,unselected is invisible 0:selected is invisible,unselected is visible|
-|»» add_time|string|false|none||none|
-|»» desc|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name         | Type     | Required | Description |
+|-------------|---------|----------|-------------|
+| `msg`       | string  | Yes      | Response message |
+| `code`      | string  | Yes      | Response code |
+| `data`      | array   | Yes      | List of rules |
+| ├── `dbconn`  | string  | Yes      | Database connection name |
+| ├── `update_time` | string | No  | Last update timestamp |
+| ├── `add_by` | string | No      | Rule creator |
+| ├── `enable` | string | Yes     | Rule enabled status |
+| ├── `editable` | string | Yes   | Edit permission |
+| ├── `id` | string | Yes         | Rule ID |
+| ├── `update_by` | string | No   | Last updated by |
+| ├── `configList` | array  | Yes  | List of rule configurations |
+| │ ├── `schema` | string | Yes   | Database schema |
+| │ ├── `grantedList` | array | Yes | List of granted users/roles |
+| │ │ ├── `name` | string | Yes  | User or role name |
+| │ │ ├── `type` | string | Yes  | "0" for user, "1" for role |
+| │ ├── `tbname` | string | Yes  | Table name |
+| │ ├── `colname` | string | No  | Column name (if applicable) |
+| │ ├── `obj_key` | string | Yes  | Object key |
+| │ ├── `obj_type` | string | Yes  | "1" for table, "2" for column |
+| │ ├── `visible` | string | Yes  | "1" for visible, "0" for invisible |
+| ├── `add_time` | string | No    | Rule creation timestamp |
+| ├── `desc` | string | No        | Rule description |
+| `success`   | boolean | Yes      | Request success status |

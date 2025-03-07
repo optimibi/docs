@@ -5,45 +5,52 @@ tags: ["api","Authentication"]
 description: 
 ---
 
-## GET Login
+**Method**  
+`GET`
 
-GET /j_spring_security_check
+**Request URL**
+```html
+/j_spring_security_check
+```
 
-### Description
-User can log in and redirects to the specified location.
+**Description**  
+This endpoint allows a user to log in. Upon successful login, the server responds with a 302 redirect to the specified location.
 
-> Body Parameters
+**Content Type**  
+Typically `application/x-www-form-urlencoded` when submitting form data (though it is uncommon to send a request body with `GET`).
 
-```yaml
+---
+
+### **Parameters** (x-www-form-urlencoded)
+
+| Name          | Location | Type   | Required | Description                                         |
+|---------------|----------|--------|----------|-----------------------------------------------------|
+| **j_username**| body     | string | No       | The username for login (e.g., `admin`)             |
+| **j_password**| body     | string | No       | The password for login (e.g., `password`)          |
+
+**Example**
+```
 j_username: admin
 j_password: password
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» j_username|body|string| no |none|
-|» j_password|body|string| no |none|
+## **Response Examples**
 
+**302 Response**  
+The server responds with an HTTP 302 (Found) and redirects the user.
 
+## **HTTP Responses**
 
-> Response Examples
+| HTTP Status Code | Meaning                                                                                 | Description                       | Data schema |
+|------------------|-----------------------------------------------------------------------------------------|-----------------------------------|------------|
+| 302              | [Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)                             | Redirect to `/datafor`            | Inline     |
 
-> 302 Response
+### **Headers**
 
-### Responses
+**Request Headers**
+- **Cookie**: Session cookie for identifying the user’s session.
 
-|HTTP Status Code |Meaning| Description      |Data schema|
-|---|---|------------------|---|
-|302|[Found](https://tools.ietf.org/html/rfc7231#section-6.4.3)|Location /datafor |Inline|
-
-### Headers
-
-#### Request Headers
-- **Cookie**: The session cookie to identify the user's session.
-
-#### Response Headers
-- **Location**: The URL to which the client is redirected after logout.
-
+**Response Headers**
+- **Location**: The URL the client is redirected to (e.g., `/datafor` if login is successful).

@@ -5,15 +5,39 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Enable rules
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/row/enableBatch
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/row/enableBatch
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| **body**  | body     | array  | Yes      | List of rule objects |
+| ├── `id`  | body     | string | Yes      | Rule ID |
+| ├── `dbconn` | body | string | Yes      | Database connection name |
+| ├── `enable` | body | string | Yes      | `1` to enable, `0` to disable |
+
+---
+
+## **Request Example**
 
 ```json
 [
@@ -25,13 +49,9 @@ Preconditions:
 ]
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|array[object]| no |none|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -49,23 +69,23 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|true|none||none|
-|» data|[object]|true|none||none|
-|»» msg|string|false|none||none|
-|»» dbconn|string|false|none||none|
-|»» enable|string|false|none||none|
-|»» success|boolean|false|none||none|
-|»» id|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name       | Type     | Required | Description |
+|-----------|---------|----------|-------------|
+| `code`    | string  | Yes      | Response status code |
+| `data`    | array   | Yes      | List of enabled/disabled rules |
+| ├── `msg` | string  | No       | Response message |
+| ├── `dbconn` | string | No    | Database connection name |
+| ├── `enable` | string | No    | `1` for enabled, `0` for disabled |
+| ├── `success` | boolean | No | Enable/disable success status |
+| ├── `id` | string  | No      | Rule ID |
+| `success` | boolean | Yes      | Request success status |

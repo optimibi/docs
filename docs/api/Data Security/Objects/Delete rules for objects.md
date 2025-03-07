@@ -5,15 +5,36 @@ tags: ["api","Data Security"]
 description: 
 ---
 
-## POST Delete rules for objects
+**Method**  
+`POST`
 
-POST /plugin/datafor-modeler/api/auth/obj/deleteBatch
+**Request URL**
+```html
+/plugin/datafor-modeler/api/auth/obj/deleteBatch
+```
 
-Preconditions:
-1.Cuccunt user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-> Body Parameters
+**Content Type**  
+`application/json`
+
+**Preconditions**
+- The current user’s type **cannot** be `SYS_Reader`.
+- The current user must have **administrative privileges** for the connection.
+
+---
+
+### **Parameters**
+
+| Name     | Location | Type           | Required | Description |
+|----------|----------|---------------|----------|-------------|
+| **body** | body     | array[object] | Yes      | List of object rules to delete |
+
+---
+
+## **Request Example**
 
 ```json
 [
@@ -24,13 +45,9 @@ Preconditions:
 ]
 ```
 
-### Params
+---
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|array[object]| no |none|
-
-> Response Examples
+## **Response Examples**
 
 ```json
 {
@@ -47,22 +64,22 @@ Preconditions:
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» code|string|true|none||none|
-|» data|[object]|true|none||none|
-|»» msg|string|false|none||none|
-|»» dbconn|string|false|none||none|
-|»» success|boolean|true|none||none|
-|»» id|string|true|none||none|
-|» success|boolean|true|none||none|
+| Name       | Type    | Required | Description                |
+|------------|---------|----------|----------------------------|
+| `code`     | string  | Yes      | HTTP response code         |
+| `data`     | array   | Yes      | List of deleted objects    |
+| ├── `msg`  | string  | No       | Success message            |
+| ├── `dbconn` | string | No      | Database connection name   |
+| ├── `success` | boolean | Yes   | Indicates if the deletion was successful |
+| ├── `id`   | string  | Yes      | ID of the deleted rule     |
+| `success`  | boolean | Yes      | Overall request success status |

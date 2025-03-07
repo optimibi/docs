@@ -5,26 +5,42 @@ tags: ["api","Connections"]
 description: 
 ---
 
-## DELETE Delete a connection
+**Method**  
+`DELETE`
 
-DELETE /plugin/datafor-modeler/api/connection/deletebyname
+**Request URL**
+```html
+/plugin/datafor-modeler/api/connection/deletebyname
+```
 
-Preconditions:
-1.Current user's type cannot be SYS_Reader
-2.Current user needs administrative privileges to the connection.
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-### Params
+**Preconditions**
+1. The current user’s type **cannot** be `SYS_Reader`.
+2. The current user must have **administrative** privileges for the connection.
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|name|query|string| no |none|
+**Content Type**  
+No request body is typically used with `DELETE`. Parameters are provided via query string.
 
-> Response Examples
+---
 
-> 200 Response
+### **Parameters**
 
-### Responses
+| Name  | Location | Type   | Required | Description                    |
+|-------|----------|--------|----------|--------------------------------|
+| **name** | query    | string | No       | The name of the connection to delete |
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+---
+
+## **Response Examples**
+
+**200 Response**  
+Indicates the request was processed successfully.
+
+## **HTTP Responses**
+
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |

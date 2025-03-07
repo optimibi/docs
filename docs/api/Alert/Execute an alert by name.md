@@ -5,27 +5,42 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## POST Execute one by name
+**Method**  
+`POST`
 
-POST /plugin/datafor/api/alert/execute
-
-Preconditions: Current user needs read privileges to the alert
-
-> Body Parameters
-
-```yaml
-name: 测试预警
-
+**Request URL**
+```html
+/plugin/datafor/api/alert/execute
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object| no |none|
-|» name|body|string| no |none|
+**Content Type**  
+`application/x-www-form-urlencoded`
 
-> Response Examples
+---
+
+**Preconditions**
+- The current user must have **read** privileges for the alert.
+
+---
+
+### **Parameters** (x-www-form-urlencoded)
+
+| Name    | Location | Type   | Required | Description                         |
+|---------|----------|--------|----------|-------------------------------------|
+| **name**| body     | string | No       | Name of the alert to be executed    |
+
+**Example**
+```
+name: 测试预警
+```
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -34,17 +49,17 @@ name: 测试预警
 }
 ```
 
-### Responses
+---
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+## **HTTP Responses**
 
-### Responses Data Schema
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-HTTP Status Code **200**
+### **Response Data Schema (HTTP 200)**
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description    |
+|-----------|---------|----------|----------------|
+| `msg`     | string  | No       | Message string |
+| `success` | boolean | Yes      | Request status |

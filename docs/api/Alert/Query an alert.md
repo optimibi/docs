@@ -5,27 +5,37 @@ tags: ["api","Alert"]
 description: 
 ---
 
-## GET Query an alert
+**Method**  
+`GET`
 
-GET /plugin/datafor/api/alert/detail
-
-Preconditions: Current user needs read privileges to the alert
-
-> Body Parameters
-
-```yaml
-{}
-
+**Request URL**
+```html
+/plugin/datafor/api/alert/detail
 ```
 
-### Params
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|name|query|string| no |名称|
-|body|body|object| no |none|
+**Preconditions**
+- The current user must have **read** privileges for the alert.
 
-> Response Examples
+**Content Type**  
+No request body is typically sent with a GET request.
+
+---
+
+### **Parameters**
+
+| Name    | Location | Type   | Required | Description                      |
+|---------|----------|--------|----------|----------------------------------|
+| **name**| query    | string | No       | Alert name to be queried         |
+
+*(Although an empty body `{}` is shown, this endpoint primarily uses the `name` query parameter.)*
+
+---
+
+## **Response Examples**
 
 ```json
 {
@@ -34,17 +44,15 @@ Preconditions: Current user needs read privileges to the alert
 }
 ```
 
-### Responses
+## **HTTP Responses**
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| HTTP Status Code | Meaning                                                                 | Description | Data schema |
+|------------------|-------------------------------------------------------------------------|------------|------------|
+| 200              | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)                | none       | Inline     |
 
-### Responses Data Schema
+### **Response Data Schema (HTTP 200)**
 
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» msg|string|false|none||none|
-|» success|boolean|true|none||none|
+| Name      | Type    | Required | Description     |
+|-----------|---------|----------|-----------------|
+| `msg`     | string  | No       | Message string  |
+| `success` | boolean | Yes      | Request status  |
