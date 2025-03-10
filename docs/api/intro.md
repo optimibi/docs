@@ -1,16 +1,15 @@
 ﻿---
-title: Optimibi API Overview
+title: {{ userConfig.siteConfig.name }} API Overview
 createTime: 2025/02/10 17:14:56
 permalink: /api/index/
 author: Optimibi
 tags:
   - API
-  - Optimibi
 description: 
 ---
 
 
-# **Optimibi API Overview**
+# **{{ userConfig.siteConfig.name }} API Overview**
 
 Optimibi provides a robust set of APIs that enable seamless interaction with its platform, allowing users to programmatically manage and automate various functionalities. These APIs cover a wide range of features, including **user and role management**, **access control**, **file and folder operations**, **data modeling**, **system configuration**, **user personalization**, and **parameter management**.
 
