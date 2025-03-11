@@ -12,7 +12,7 @@ Optimibi enables users to dynamically modify the default filter values in report
 
 ### Create Parameters
 
-Reference document: [Parameters](https://help.optimibi.com/documentation/Analysis/Parameters/)
+Reference document: [Creating Parameters](/documentation/Analysis/Creating-Parameters/)
 
 ### Default Filter Values
 
