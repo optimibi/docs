@@ -38,7 +38,7 @@ detail: '[{"name":"dev","value":"a"},{"name":"dev","value":"b"}]'
 
 ---
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name       | Location | Type     | Required | Description |
 |------------|----------|----------|----------|-------------|

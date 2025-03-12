@@ -5,10 +5,17 @@ tags: ["api","Email"]
 description: 
 ---
 
-## **POST Test email config**
+**Method**  
+`POST`
 
-**Endpoint**  
-`POST /plugin/datafor-modeler/api/email/sendEmailTest`
+**Request URL**
+```html 
+/plugin/datafor-modeler/api/email/sendEmailTest
+```
+
+**Authorization**  
+Use of this API requires authentication. For details about the authentication method, see  
+[Authorization](/api/index/#_5-authentication-security).
 
 ### **Preconditions**
 - The current user's user type must be **Administrator**.
@@ -33,7 +40,7 @@ description:
 
 ---
 
-### **Params**
+### **Request Schema**
 
 | Name          | Location | Type    | Required | Description |
 |--------------|----------|---------|----------|-------------|

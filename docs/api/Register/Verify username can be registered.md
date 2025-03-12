@@ -31,7 +31,7 @@ This API checks whether a given username can be used for registration. The verif
 username: admin
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name       | Location | Type   | Required | Description |
 |------------|----------|--------|----------|-------------|

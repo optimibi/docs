@@ -31,7 +31,7 @@ This API verifies whether an email address can be used for registration. It chec
 email: a@a.com
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name    | Location | Type   | Required | Description |
 |---------|----------|--------|----------|-------------|

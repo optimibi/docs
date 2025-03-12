@@ -49,7 +49,7 @@ This API registers a new user account by providing user details and a verificati
 }
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name        | Location | Type   | Required | Description |
 |------------|----------|--------|----------|-------------|

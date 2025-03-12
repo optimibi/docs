@@ -29,13 +29,13 @@ This API adds recently accessed items to the user’s history. It allows trackin
 
 ## **Parameters**
 
-### **Query Parameters Schema**
+### **Query Request Schema**
 | Name     | Location | Type   | Required | Description |
 |----------|----------|--------|----------|-------------|
 | `append`  | query   | string | No       | Determines whether to append the new recent item to the existing list. |
 | `distinct` | query   | string | No       | Specifies whether duplicate entries should be filtered out. |
 
-### **Body Parameters Schema**
+### **Body Request Schema**
 | Name      | Location | Type        | Required | Description |
 |----------|----------|------------|----------|-------------|
 | `body`   | body     | array[object] | No       | A list of recently accessed items. |
