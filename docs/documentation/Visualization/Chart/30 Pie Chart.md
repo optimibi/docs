@@ -47,7 +47,6 @@ A **Pie Chart** requires:
    - **Tooltips**: Show additional details when hovering over slices.
    - **Filters**: Restrict data using filters to refine the visualization.
 
-   ![image-20250312203013290](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250312203013290-1741785560252-1.png)
    <div align="left"><img src="./../images/image-20250312203013290-1741785560252-1.png"  width="100%" /></div>
 
 ### Comparing Multiple Measures
