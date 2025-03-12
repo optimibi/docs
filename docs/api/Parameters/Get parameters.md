@@ -27,7 +27,7 @@ This API retrieves query parameters stored in the system, including metadata suc
 
 ---
 
-### **Body Parameters Schema**
+### **Body Request Schema**
 | Name  | Location | Type   | Required | Description |
 |-------|----------|--------|----------|-------------|
 | `body` | body    | object | No       | Request body (empty object expected). |

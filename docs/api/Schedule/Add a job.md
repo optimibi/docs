@@ -45,7 +45,7 @@ This API schedules a new job for execution. The job can be configured with param
 }
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name                | Location | Type       | Required | Description |
 |---------------------|----------|------------|----------|-------------|

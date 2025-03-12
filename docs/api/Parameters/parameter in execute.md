@@ -33,7 +33,7 @@ This API executes an OLAP query against the specified cube. Users can define que
 |---------|----------|--------|----------|-------------|
 | `_test` | query   | string | No       | Test parameter for debugging purposes (if applicable). |
 
-### **Body Parameters Schema**
+### **Body Request Schema**
 | Name             | Location | Type     | Required | Description |
 |-----------------|----------|----------|----------|-------------|
 | `cube`          | body     | object   | **Yes**  | The cube metadata used for the query. |

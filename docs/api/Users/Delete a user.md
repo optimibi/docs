@@ -27,7 +27,7 @@ Use of this API requires authentication. The current user's user type must be **
 username: dev
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name            | Location | Type     | Required | Description                         |
 |-----------------|----------|----------|----------|-------------------------------------|

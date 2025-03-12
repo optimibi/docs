@@ -28,7 +28,7 @@ This API sends a registration verification code to the specified email address. 
 
 ## **Parameters**
 
-### **Body Parameters Schema**
+### **Body Request Schema**
 | Name     | Location | Type   | Required | Description |
 |----------|----------|--------|----------|-------------|
 | `email`  | body    | string | **Yes**  | The recipient email address where the registration code will be sent. |

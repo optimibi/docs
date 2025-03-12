@@ -24,7 +24,7 @@ Use of this API requires authentication. For details about the authentication me
 
 ---
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name       | Location | Type     | Required | Description |
 |------------|----------|----------|----------|-------------|

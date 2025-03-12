@@ -36,7 +36,7 @@ This API deletes an existing user role from the system. Only users with administ
 authority: DEV
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name        | Location | Type   | Required | Description |
 |------------|----------|--------|----------|-------------|

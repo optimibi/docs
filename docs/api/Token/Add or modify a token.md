@@ -49,7 +49,7 @@ Use of this API requires authentication. For details about the authentication me
 }
 ```
 
-### **Body Parameters Schema**
+### **Body Request Schema**
 
 | Name           | Type       | Required | Description                                        |
 |---------------|------------|---------:|--------------------------------------------------|

@@ -34,7 +34,7 @@ This API verifies whether a given registration code is valid for the provided em
 }
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name    | Location | Type   | Required | Description |
 |---------|----------|--------|----------|-------------|

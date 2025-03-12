@@ -36,7 +36,7 @@ This API creates a new user role with the specified authority level. Roles defin
 authority: DEV
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name        | Location | Type   | Required | Description |
 |------------|----------|--------|----------|-------------|

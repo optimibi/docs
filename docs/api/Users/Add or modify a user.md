@@ -36,7 +36,7 @@ usertype: SYS_Creator
 enabled: "1"
 ```
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name            | Location | Type     | Required | Description                                 |
 |-----------------|----------|----------|----------|---------------------------------------------|

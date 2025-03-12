@@ -21,7 +21,7 @@ Typically `application/x-www-form-urlencoded` when submitting form data (though 
 
 ---
 
-### **Parameters Schema**
+### **Request Schema**
 
 | Name          | Location | Type   | Required | Description                                         |
 |---------------|----------|--------|----------|-----------------------------------------------------|
