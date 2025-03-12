@@ -47,7 +47,8 @@ A **Pie Chart** requires:
    - **Tooltips**: Show additional details when hovering over slices.
    - **Filters**: Restrict data using filters to refine the visualization.
 
-   ![image-20250312203013290](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250312203013290.png)
+   ![image-20250312203013290](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250312203013290-1741785560252-1.png)
+   <div align="left"><img src="./../images/image-20250312203013290-1741785560252-1.png"  width="100%" /></div>
 
 ### Comparing Multiple Measures
 
@@ -63,7 +64,7 @@ A **Pie Chart** can also compare multiple measures without a categorical legend.
    - **Tooltips**: Display additional details when hovering over slices.
    - **Filters**: Apply filters to refine the dataset.
    
-   ![image-20250312202258533](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250312202258533-1741782769889-2.png)
+   <div align="left"><img src="./../images/image-20250312202258533-1741782769889-2-1741785560252-2.png"  width="100%" /></div>
 
 
 
