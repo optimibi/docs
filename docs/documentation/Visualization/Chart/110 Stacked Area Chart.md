@@ -45,10 +45,10 @@ A **Stacked Area Chart** requires:
    - **Color**: Assign custom colors to different categories.
    - **Tooltips**: Display additional details when hovering over the chart.
    - **Time Axis**: Adjust time formatting.
-   - **Filters**: Restrict data using filters.
+   - **Filters**: Restrict data using filters.s
 
 ## Example
 
 The following example visualizes daily store sales across three product families (Drink, Food, Non-Consumable) for December 1997.
 
-<div align="left"><img src="./images/image-20250312201251797.png"  width="100%" /></div>
+<div align="left"><img src="./../images/image-20250312201251797.png"  width="100%" /></div>
