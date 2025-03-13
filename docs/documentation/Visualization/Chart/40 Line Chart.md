@@ -22,21 +22,14 @@ A **Line Chart** requires:
 - **X-Axis**: A time-based dimension (e.g., `the_date(Month)`).
 - **Measures**: One or more numerical fields representing the trend data (e.g., `store_sales`, `store_invoice`, `store_cost`).
 - **Legend (Optional)**: A categorical field that differentiates the lines (e.g., `store_type`).
+- **Color(Optional):** Used to set the color of the chart based on categories or numerical values (intensity-based coloring, or using a categorical field for distinct colors).
+- **Tooltips(Optional)**: Show additional details when hovering over plot area.
 - **Filters (Optional)**: Used to refine the displayed data (e.g., filtering by region, product category).
 
 
 ## How to Configure
 
 ### Single Measure Line Chart
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set X-Axis**: Choose a time-based field (e.g., `the_date(Month)`).
-3. **Set Measure**: Select a single numerical field for the trend line (e.g., `store_sales`).
-4. **Set Legend (Optional)**: Use a categorical field to differentiate multiple lines (e.g., `store_type`).
-5. **Optional Customization**:
-   - **Color**: Assign different colors for better distinction.
-   - **Tooltips**: Show additional details when hovering over data points.
-   - **Filters**: Apply filters to refine data (e.g., region-based filtering).
 
 **Example Data Structure**
 
@@ -58,16 +51,6 @@ A **Line Chart** requires:
 <div align="left"><img src="./../images/image-20250312222325472.png"  width="100%" /></div>
 
 ### Multiple Measure Line Chart
-
-A **Line Chart** can also compare multiple numerical fields over time, plotting multiple lines on the same axis.
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set X-Axis**: Choose a time-based field (e.g., `the_date(Month)`).
-3. **Set Multiple Measures**: Select two or more numerical fields (e.g., `store_sales`, `store_invoice`, `store_cost`).
-4. **Optional Customization**:
-   - **Color**: Assign different colors to each measure.
-   - **Tooltips**: Display additional information when hovering over data points.
-   - **Filters**: Apply conditions to restrict the data displayed.
 
 **Example Data Structure**
 

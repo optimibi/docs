@@ -22,6 +22,8 @@ A **Stacked Area Chart** requires:
 - **X-Axis**: A time-based dimension (e.g., Date, Month, Year) to track trends over time.
 - **Legend**: A categorical field to represent different groups contributing to the total (e.g., Product Family, Department).
 - **Measures**: A numerical value representing the metric to be analyzed (e.g., Sales, Revenue, Quantity Sold).
+- **Color(Optional):** Used to set the color of the chart based on categories or numerical values (intensity-based coloring, or using a categorical field for distinct colors).
+- **Tooltips(Optional)**: Show additional details when hovering over plot area.
 - **Filters (Optional)**: Used to restrict the data displayed, such as filtering by month, region, or category.
 
 ### Example Data Structure
@@ -34,18 +36,6 @@ A **Stacked Area Chart** requires:
 | 1997-12-02 | Drink          | 250         |
 | 1997-12-02 | Food           | 700         |
 | 1997-12-02 | Non-Consumable | 400         |
-
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set X-Axis**: Select a time-based field (e.g., `the_date`).
-3. **Set Legend**: Choose a categorical field to distinguish different data groups (e.g., `product_family`).
-4. **Set Measures**: Choose a numerical field to measure (e.g., `store_sales`).
-5. **Optional Customization**:
-   - **Color**: Assign custom colors to different categories.
-   - **Tooltips**: Display additional details when hovering over the chart.
-   - **Time Axis**: Adjust time formatting.
-   - **Filters**: Restrict data using filters.s
 
 ## Example
 
