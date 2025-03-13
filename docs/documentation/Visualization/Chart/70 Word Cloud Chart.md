@@ -34,16 +34,6 @@ A **Word Cloud Chart** requires:
 | Chocolate Candy     | 12000       |
 | Potato Chips        | 9000        |
 
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set Word**: Choose the categorical field representing the words (e.g., `product_subcategory`).
-3. **Set Measure**: Select a numerical field that determines the word size (e.g., `store_sales`).
-4. **Optional Customization**:
-   - **Color**: Apply different colors to words for better visual distinction.
-   - **Filters**: Restrict data using filters (e.g., time-based or categorical filters).
-   - **Layout and Rotation**: Adjust the word distribution and alignment.
-
 ## Example
 
 The following example visualizes store sales by product subcategory, with more significant sales values represented by larger words.

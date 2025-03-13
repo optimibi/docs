@@ -25,6 +25,7 @@ A **Scatter Plot** requires:
 - **Marker**: A categorical field representing distinct groups (e.g., `product_subcategory`).
 - **Legend**: A categorical field to differentiate data points by color (e.g., `product_family`).
 - **Size (Optional)**: A numerical field to adjust the marker size based on values (e.g., `Margin`).
+- **Color(Optional)**:Customize colors to represent different groups.
 - **Filters (Optional)**: Used to refine the displayed data (e.g., by date, product type, or region).
 
 ### Example Data Structure
@@ -36,18 +37,6 @@ A **Scatter Plot** requires:
 | Chocolate Candy     | Non-Consumable | 3.08       | 15000       | 300    |
 | Soft Drinks         | Drink          | 3.10       | 18000       | 250    |
 | Potato Chips        | Non-Consumable | 3.06       | 9000        | 150    |
-
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set X-Axis**: Select a numerical field to represent the horizontal axis (e.g., `unit_sales`).
-3. **Set Y-Axis**: Select a numerical field to represent the vertical axis (e.g., `store_sales`).
-4. **Set Marker**: Choose a categorical field to define unique data points (e.g., `product_subcategory`).
-5. **Set Legend**: Select a categorical field to differentiate points by color (e.g., `product_family`).
-6. **Optional Customization**:
-   - **Size**: Use a numerical field to adjust marker sizes dynamically (e.g., `Margin`).
-   - **Color**: Customize colors to represent different groups.
-   - **Filters**: Apply filters to refine displayed data (e.g., `Date`, `Region`).
 
 ## Example
 

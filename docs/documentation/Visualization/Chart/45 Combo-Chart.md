@@ -22,6 +22,8 @@ A **Combo Chart** requires:
 - **X-Axis**: A time-based or categorical field (e.g., `the_date(Day)`).
 - **Column Measures**: One or more numerical fields representing the bar values (e.g., `store_sales`, `store_invoice`).
 - **Line Measures**: One or more numerical fields representing the trend lines (e.g., `Margin`, `store_cost`).
+- **Color(Optional)**: Assign different colors for better distinction.
+- **Tooltips(Optional)**: Show additional details when hovering over data points.
 - **Filters (Optional)**: Used to refine the displayed data (e.g., filtering by month, category, or region).
 
 ### Example Data Structure
@@ -34,17 +36,6 @@ A **Combo Chart** requires:
 | 1997-08-04    | 950         | 820           | 140%   |
 | 1997-08-05    | 1300        | 1000          | 160%   |
 | 1997-08-06    | 500         | 400           | 135%   |
-
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set X-Axis**: Choose a time-based or categorical field (e.g., `the_date(Day)`).
-3. **Set Column Measures**: Select one or more numerical fields to be represented as bars (e.g., `store_sales`, `store_cost`).
-4. **Set Line Measures**: Choose one or more numerical fields to be represented as lines (e.g., `Margin`).
-5. Optional Customization:
-   - **Color**: Assign different colors for better distinction.
-   - **Tooltips**: Show additional details when hovering over data points.
-   - **Filters**: Apply filters to refine data (e.g., `the_date(Month)`).
 
 ## Example
 

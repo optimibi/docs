@@ -34,23 +34,6 @@ A **Sankey Chart** requires:
 | Mid-Size Grocery    | Seafood            | 10251.89    |
 | Small Grocery       | Baked Goods        | 48416.97    |
 
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-
-2. **Set Source**: Choose a categorical field representing the starting node (e.g., `store_type`).
-
-3. **Set Target**: Select a categorical field representing the ending node (e.g., `product_department`).
-
-4. **Set Measure**: Choose a numerical field representing the flow magnitude (e.g., `store_sales`).
-
-5. Optional Customization
-
-   :
-
-   - **Color**: Assign different colors for better visibility.
-   - **Filters**: Apply filters to refine data (e.g., region, time period).
-
 ## Example
 
 The following example visualizes **store sales flow from store types to product departments**.

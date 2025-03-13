@@ -22,6 +22,7 @@ A **Radar Chart** requires:
 - **Radial Axes**: A categorical field representing different attributes or categories (e.g., `store_type`).
 - **Legend (Optional)**: A categorical field that differentiates different groups (e.g., `the_date(Year)`).
 - **Measures**: A numerical field that defines the values plotted on the radar chart (e.g., `store_sales`).
+- **Color(Optional):** Used to set the color of the chart based on categories or numerical values (intensity-based coloring, or using a categorical field for distinct colors).
 - **Filters (Optional)**: Used to refine the displayed data (e.g., filtering by region, product category).
 
 ### Example Data Structure
@@ -38,17 +39,6 @@ A **Radar Chart** requires:
 | Small Grocery       | 1998           | 15000       |
 | Mid-Size Grocery    | 1998           | 12000       |
 | Gourmet Supermarket | 1998           | 10000       |
-
-## How to Configure
-
-1. **Select the Analysis Model**: Choose the dataset containing the necessary fields.
-2. **Set Radial Axes**: Choose a categorical field representing the radar axes (e.g., `store_type`).
-3. **Set Legend**: Select a categorical field to compare different series (e.g., `the_date(Year)`).
-4. **Set Measures**: Choose a numerical field to define the values on the radar chart (e.g., `store_sales`).
-5. **Optional Customization**:
-   - **Color**: Assign colors to differentiate between series.
-   - **Tooltips**: Display additional information when hovering over data points.
-   - **Filters**: Apply filters to refine the dataset (e.g., filtering by location, product type).
 
 ## Example
 
