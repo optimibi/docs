@@ -1,6 +1,6 @@
 ---
 title: Repository Separation Deployment Guide
-permalink: /documentation/Setup/Repository-Separation-Deployment-Guide/
+permalink: /documentation/Setup/repository-reparation-deployment-guide/
 ---
 
 # Repository Separation Deployment Guide
@@ -9,14 +9,12 @@ This guide provides instructions for migrating the Optimibi repository database 
 
 > **Important Notice**: Before proceeding, ensure that you have completed a **full backup** of the system to prevent data loss or service disruption due to misconfiguration.
 
-------
 
 ## 1. Prerequisites and Preparation
 
 - **Verify PostgreSQL Environment**: Ensure that PostgreSQL is correctly installed and accessible. It is recommended to use **version 13.x or 14.x** for compatibility and performance.
 - **Stop Optimibi Services**: Before migration or configuration, stop Optimibi services to avoid data conflicts.
 
-------
 
 ## 2. Initializing the Repository Database
 
@@ -37,7 +35,6 @@ This guide provides instructions for migrating the Optimibi repository database 
 
 3. Replace `'password'` with a **strong password** that complies with security policies and keep it securely stored.
 
-------
 
 ### 2.2 Execute Database Initialization
 
@@ -55,7 +52,6 @@ This guide provides instructions for migrating the Optimibi repository database 
 
 2. Execute all SQL files located in `data/postgresql/` to complete the database initialization.
 
-------
 
 ## 3. Configuring Optimibi to Connect to an Independent PostgreSQL Database
 
@@ -82,7 +78,6 @@ This guide provides instructions for migrating the Optimibi repository database 
   - `url`: Update to the PostgreSQL server address and port
   - `username` / `password`: Update database credentials
 
-------
 
 ### 3.2 Modify Spring Security Configuration
 
@@ -105,7 +100,6 @@ This guide provides instructions for migrating the Optimibi repository database 
   datasource.password=<database_password>
   ```
 
-------
 
 ### 3.4 Modify Jackrabbit Repository Configuration
 
@@ -118,7 +112,6 @@ This guide provides instructions for migrating the Optimibi repository database 
   - Locate all database connection-related configurations (6 occurrences) and update the database address and credentials.
   - Locate the `jcr_user` configuration and update the `password` to match the password set in **section 2.1**.
 
-------
 
 ### 3.5 Modify Hibernate Configuration
 
@@ -132,7 +125,6 @@ This guide provides instructions for migrating the Optimibi repository database 
   - `connection.username`
   - `connection.password`
 
-------
 
 ## 4. Clear System Cache
 
@@ -156,13 +148,11 @@ After completing all configurations, clear the Optimibi cache to ensure the new 
     sh clear.sh
     ```
 
-------
 
 ## 5. Start Optimibi Services
 
 - Start Optimibi services and check logs to ensure there are no errors.
 
-------
 
 ## 6. Verify System Configuration
 
@@ -171,7 +161,6 @@ After completing all configurations, clear the Optimibi cache to ensure the new 
 3. Update connection details for example data sources such as `foodmart` to ensure business data sources are accessible.
 4. Go to the **Public** directory, upload, and test sample analytical pages to verify data display correctness.
 
-------
 
 ## 7. Important Considerations
 
@@ -179,7 +168,6 @@ After completing all configurations, clear the Optimibi cache to ensure the new 
 - **Production Deployment**: For production environments, submit a detailed change request and undergo review before implementation.
 - **Network Security**: It is advised to use a **private network or VPN** for communication between Optimibi and the PostgreSQL database to avoid exposing it to the public internet.
 
-------
 
 ## 8. Appendix: Recommended PostgreSQL Configuration Parameters
 
