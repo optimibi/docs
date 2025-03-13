@@ -12,7 +12,7 @@ This guide provides instructions for migrating the Optimibi repository database 
 
 ## 1. Prerequisites and Preparation
 
-- **Verify PostgreSQL Environment**: Ensure that PostgreSQL is correctly installed and accessible. It is recommended to use **version 13.x or 14.x** for compatibility and performance.
+- **Verify PostgreSQL Environment**: Ensure that PostgreSQL is correctly installed and accessible. 
 - **Stop Optimibi Services**: Before migration or configuration, stop Optimibi services to avoid data conflicts.
 
 
@@ -20,7 +20,7 @@ This guide provides instructions for migrating the Optimibi repository database 
 
 ### 2.1 Modify Database Initialization Scripts
 
-1. Navigate to `BI-Server/data/postgresql/` and edit the following SQL files:
+1. Navigate to `data/postgresql/` and edit the following SQL files:
 
    - `create_jcr_postgresql.sql`
    - `create_quartz_postgresql.sql`
@@ -64,14 +64,46 @@ This guide provides instructions for migrating the Optimibi repository database 
   : Locate the 
 
   ```
-  <Context path="/datafor" ...>
+  <Context path="/datafor" docBase="datafor" debug="0" privileged="true">
+           <Resource name="jdbc/Hibernate" auth="Container" type="javax.sql.DataSource"
+		factory="org.pentaho.di.core.database.util.DecryptingDataSourceFactory" maxActive="200" minIdle="10" maxIdle="200" initialSize="10"
+		maxWait="10000" username="hibuser" password="password"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:25432/hibernate"
+		testOnBorrow="true"
+		validationQuery="select 1" />
+		
+	         <Resource name="jdbc/Quartz" auth="Container" type="javax.sql.DataSource"
+		factory="org.pentaho.di.core.database.util.DecryptingDataSourceFactory" maxActive="200" minIdle="10" maxIdle="200" initialSize="10"
+		maxWait="10000" username="pentaho_user" password="password"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:25432/quartz"
+		testOnBorrow="true"
+		validationQuery="select 1"/>
+
+   	       <Resource name="jdbc/jackrabbit" auth="Container" type="javax.sql.DataSource"
+		factory="org.pentaho.di.core.database.util.DecryptingDataSourceFactory" maxActive="200" minIdle="10"
+		maxIdle="200" initialSize="10"
+		maxWait="10000" username="jcr_user" password="password"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:25432/jackrabbit"
+		testOnBorrow="true"
+		validationQuery="select 1"/>	
+					<Resource name="jdbc/datafor_modeler_auth" auth="Container" type="javax.sql.DataSource"
+		factory="org.pentaho.di.core.database.util.DecryptingDataSourceFactory" maxActive="200" minIdle="10"
+		maxIdle="200" initialSize="10"
+		maxWait="10000" username="postgres" password="postgres"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:25432/datafor?stringtype=unspecified"
+		testOnBorrow="true"
+		validationQuery="select 1"/>
+				<Resource name="jdbc/datafor_repository" auth="Container" type="javax.sql.DataSource"
+		factory="org.pentaho.di.core.database.util.DecryptingDataSourceFactory" maxActive="200" minIdle="10"
+		maxIdle="200" initialSize="10"
+		maxWait="10000" username="upload" password="password"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:25432/upload?stringtype=unspecified"
+		testOnBorrow="true"
+		validationQuery="select 1"/>		
+       </Context>
   ```
 
-   node and modify the 
-
-  ```
-  <Resource>
-  ```
+   node and modify the url and credentials for all the following resources:
 
    configuration:
 
@@ -132,10 +164,6 @@ After completing all configurations, clear the Optimibi cache to ensure the new 
 
 - **Navigate to the Optimibi server root directory**:
 
-  ```shell
-  cd /opt/datafor-server
-  ```
-
 - **Execute the cache clearing script**:
 
   - **Windows**: Double-click `clear.bat`
@@ -145,6 +173,7 @@ After completing all configurations, clear the Optimibi cache to ensure the new 
     :
 
     ```shell
+    cd /opt/bi-server
     sh clear.sh
     ```
 
