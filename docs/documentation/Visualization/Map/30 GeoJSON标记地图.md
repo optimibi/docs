@@ -9,7 +9,7 @@ A GeoJSON marked map is a map that encodes geographical location information as 
 
 ## Creating a Map
 
-1. Create a new report in Datafor and add a GeoJSON marked map component in the report's design mode. This will add a blank map to the canvas area of the report designer.
+1. Create a new report in Optimibi and add a GeoJSON marked map component in the report's design mode. This will add a blank map to the canvas area of the report designer.
 
    <div align="left"><img src="./../images/1681887783802.png"  width="100%" /></div>
 
@@ -36,6 +36,6 @@ A GeoJSON marked map is a map that encodes geographical location information as 
 
 2. Can I customize my own GeoJSON map?
 
-   Yes, you can contact Datafor to customize a GeoJSON map for you.
+   Yes, you can contact Optimibi to customize a GeoJSON map for you.
 
 
