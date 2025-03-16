@@ -1,5 +1,5 @@
 ---
-title:  Tabs Component
+title:  Tabs
 permalink: /documentation/Visualization/Tabs-Component/
 ---
 
