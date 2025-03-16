@@ -87,6 +87,10 @@ export const documentationNote = defineNoteConfig({
 					link: "/documentation/Visualization/20 筛选器订阅.md",
 				},
 				{
+					text: "Multi-Tabbed Page",
+					link: "/documentation/Visualization/25 制作多标签页面.md",
+				},				
+				{
 					text: "Tooltips",
 					link: "/documentation/Visualization/40_图表组件的工具提示.md",
 				},
