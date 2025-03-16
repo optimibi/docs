@@ -73,7 +73,11 @@ export const documentationNote = defineNoteConfig({
 					collapsed: true,
 					prefix: "/documentation/Visualization/Assists/",
 					items: "auto",
-				},					
+				},
+				{
+					text: "Report Page Size and Display Settings",
+					link: "/documentation/Visualization/08 报表页的大小和显示方式.md",
+				},				
 				{
 					text: "Add Charts",
 					link: "/documentation/Visualization/10 添加图表.md",
