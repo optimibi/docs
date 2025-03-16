@@ -47,7 +47,8 @@ If the dataset already contains **Longitude & Latitude**, the map will directly 
 | Chicago                                                      | -87.6298  | 41.8781  | 72000       |
 | Houston                                                      | -95.3698  | 29.7604  | 69000       |
 | Miami                                                        | -80.1918  | 25.7617  | 50000       |
-| **Example**: The following example visualizes **store sales using different marker shapes, with size based on sales values**. |           |          |             |
+
+**Example**: The following example visualizes **store sales using different marker shapes, with size based on sales values**.
 
 <div align="left"><img src="./../images/image-20250316160416558.png"  width="100%" /></div>
 
