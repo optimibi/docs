@@ -12,13 +12,13 @@ Log in to Windows as an **Administrator**.
 1. Start optimibi by double-clicking:
 
    ```
-   start-optimibi.bat
+   start-server.bat
    ```
 
 2. Stop optimibi by double-clicking:
 
    ```
-   stop-optimibi.bat
+   stop-server.bat
    ```
 
 ## Method 2: Run optimibi as a Service
@@ -58,4 +58,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `optimibi-upload.jar` in the `optimibi-server\update` folder and restart the system.
+Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.

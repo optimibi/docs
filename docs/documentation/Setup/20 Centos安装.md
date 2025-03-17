@@ -13,19 +13,19 @@ sudo su root
 
 <div align="left"><img src="./images/image-20220829172346058.png"  /></div>
 
-**Step 2. Create the 'optimibi' user group**
+**Step 2. Create the 'biadmin' user group**
 
 ```
-groupadd optimibi
+groupadd biadmin
 ```
 
 <div align="left"><img src="./images/image-20220829172418679.png"  /></div>
 
-**Step 3. Create the 'optimibi' user, add it to the 'OptimiBI' user group, and set the user password to 'optimibi' as well.**
+**Step 3. Create the 'biadmin' user, add it to the 'biadmin' user group, and set the user password to 'biadmin' as well.**
 
 ```
-adduser optimibi -g optimibi
-passwd optimibi
+adduser biadmin -g biadmin
+passwd biadmin
 ```
 
 <div align="left"><img src="./images/image-20220829172434849.png"  /></div>
@@ -42,9 +42,8 @@ unzip -o optimibi-server_202203240605.zip -d /opt/
 
 ```
 cd /opt/
-chmod -R 700 optimibi-server
-chown -R optimibi optimibi-server
-chgrp -R optimibi optimibi-server
+chmod -R 700 bi-server
+chown -R biadmin:biadmin bi-server
 ```
 
 <div align="left"><img src="./images/image-20220829172501348.png"  /></div>
@@ -55,17 +54,17 @@ chgrp -R optimibi optimibi-server
 
 ## Start OptimiBI
 
-**Please operate as the 'optimibi' user**
+**Please operate as the 'biadmin' user**
 
 ```
-su OptimiBI
-cd /opt/optimibi-server/
+su biadmin
+cd /opt/bi-server/
 ```
 
 **Start the service**
 
 ```
-./start-optimibi.sh
+sh start-server.sh
 ```
 
 <div align="left"><img src="./images/image-20220829172513074.png"  /></div>
@@ -73,7 +72,7 @@ cd /opt/optimibi-server/
 **Stop Service**
 
 ```
-./stop-optimibi.sh
+sh stop-server.sh
 ```
 
 <div align="left"><img src="./images/image-20220829172525119.png"  /></div>
@@ -101,4 +100,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `optimibi-upload.jar` in the `optimibi-server\update` folder and restart the system.
+Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.
