@@ -104,7 +104,6 @@ The Table  component is designed to display structured data in a tabular format.
 | Subtotals | ❌ Not Supported | ✅ Supported |
 | Grand Totals |  ✅ Supported | ✅ Supported |
 | Conditional Formatting | ✅ Supported     | ✅ Supported |
-| Field Order Independency | ✅ Supported     | ❌ Not Supported |
 
 ## Use Cases
 
