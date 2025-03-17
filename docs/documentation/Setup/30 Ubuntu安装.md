@@ -9,24 +9,24 @@ permalink: /documentation/Setup/OptimiBI-Installation-Ubuntu/
 **Step 1. Switch to the root user**
 
 ```
-sudo su  
+sudo su
 ```
 
 <div align="left"><img src="./images/image-20220829171526492.png"  /></div>
 
-**Step 2. Create the "optimibi" user, and set the user password to "optimibi" as well.**
+**Step 2. Create the "biadmin" user, and set the user password to "biadmin" as well.**
 
 ```
-adduser optimibi
+adduser biadmin
 ```
 
 <div align="left"><img src="./images/image-20220829171542736.png"  /></div>
 
-**Step 3. Create a user group and add the "optimibi" user to the "optimibi" user group.**
+**Step 3. Create a user group and add the "biadmin" user to the "biadmin" user group.**
 
 ```
-addgroup optimibi
-addgroup optimibi optimibi
+addgroup biadmin
+addgroup biadmin biadmin
 ```
 
 <div align="left"><img src="./images/image-20220829171600582.png"  /></div>
@@ -43,9 +43,9 @@ unzip -o optimibi-server_202203210834.zip -d /opt/
 
 ```
 cd /opt/
-chmod -R 700 optimibi-server
-chown -R optimibi optimibi-server
-chgrp -R optimibi optimibi-server
+chmod -R 700 bi-server
+chown -R biadmin bi-server
+chgrp -R biadmin bi-server
 ```
 
 <div align="left"><img src="./images/image-20220829171632512.png"  /></div>
@@ -56,17 +56,17 @@ Start or stop the service, refer to daily startup procedures.
 
 ## Startup
 
-**For daily startup and shutdown, please perform the operations using the "optimibi" user.**
+**For daily startup and shutdown, please perform the operations using the "biadmin" user.**
 
 ```
-su optimibi
-cd /opt/optimibi-server/
+su biadmin
+cd /opt/bi-server/
 ```
 
 **Start the service**
 
 ```
-./start-optimibi.sh
+./start-server.sh
 ```
 
 <div align="left"><img src="./images/image-20220829171648174.png"  /></div>
@@ -74,7 +74,7 @@ cd /opt/optimibi-server/
 **Stop the service**
 
 ```
-./stop-optimibi.sh
+./stop-server.sh
 ```
 
 <div align="left"><img src="./images/image-20220829171701208.png"  /></div>
@@ -100,4 +100,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `optimibi-upload.jar` in the `optimibi-server\update` folder and restart the system.
+Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.
