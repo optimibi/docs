@@ -1,47 +1,50 @@
 ---
-title: Optimibi Installation (Ubuntu)
-permalink: /documentation/Setup/OptimiBI-Installation-Ubuntu/
+title: Installation Guide (Ubuntu)
+permalink: /documentation/Setup/Installation-Ubuntu/
 ---
 
-# Optimibi Installation (Ubuntu)
-## Installation Steps
+# Installation Guide (Ubuntu)
 
-**Step 1. Switch to the root user**
+## Step 1: Switch to the Root User
 
-```
+To begin the installation, switch to the root user by running:
+
+```bash
 sudo su
 ```
 
-<div align="left"><img src="./images/image-20220829171526492.png" width="40%" /></div>
+## Step 2: Create the `biadmin` User
 
-**Step 2. Create the "biadmin" user, and set the user password to "biadmin" as well.**
+Create a user named `biadmin` and set the password:
 
-```
+```bash
 adduser biadmin
 ```
 
-<div align="left"><img src="./images/image-20220829171542736.png" width="53%" /></div>
+Follow the prompts to set a password and user details.
 
-**Step 3. Create a user group and add the "biadmin" user to the "biadmin" user group.**
+## Step 3: Create the `biadmin` User Group
 
-```
+Create a user group named `biadmin` and add the `biadmin` user to this group:
+
+```bash
 addgroup biadmin
-addgroup biadmin biadmin
+adduser biadmin biadmin
 ```
 
-<div align="left"><img src="./images/image-20220829171600582.png"  width="48%"/></div>
+## Step 4: Extract the Installation Package
 
-**Step 4. Navigate to the directory where the installation package is located and unzip the package to the /opt path.**
+Navigate to the directory where the installation package is located and extract it into the `/opt` directory:
 
+```bash
+unzip -o Optimibi-linux-7.02.zip -d /opt/
 ```
-unzip -o optimibi-linux-7.02.zip -d /opt/
-```
 
-<div align="left"><img src="./images/image-20220829172446528.png"  width="57%"/></div>
+## Step 5: Set Directory Permissions
 
-**Step 5. After the extraction is complete, go to the /opt/ directory and modify permissions.**
+Move to the `/opt/` directory and modify the permissions:
 
-```
+```bash
 cd /opt/
 chmod -R 700 bi-server
 chown -R biadmin bi-server
@@ -49,56 +52,60 @@ chgrp -R biadmin bi-server
 ls -al bi-server
 ```
 
-<div align="left"><img src="./images/image-20220829171632512.png"  width="67%"/></div>
+**Installation is now complete.**
 
-**Installation Completed**
+------
 
-Start or stop the service, refer to daily startup procedures.
+# Starting Optimibi
 
-## Startup
+**Ensure that you perform the following steps as the `biadmin` user.**
 
-**For daily startup and shutdown, please perform the operations using the "biadmin" user.**
+## Step 1: Switch to `biadmin`
 
-```
+```bash
 su biadmin
+```
+
+## Step 2: Start the Service
+
+Navigate to the Optimibi directory and start the server:
+
+```bash
 cd /opt/bi-server/
-```
-
-**Start the service**
-
-```
 ./start-server.sh
 ```
 
-<div align="left"><img src="./images/image-20220829171648174.png"  /></div>
+## Step 3: Stop the Service
 
-**Stop the service**
+To stop the service, use:
 
-```
+```bash
 ./stop-server.sh
 ```
 
-<div align="left"><img src="./images/image-20220829171701208.png"  /></div>
+## Step 4: Check Service Status
 
-**Check the status of the service startup and shutdown**
+To verify whether the service is running, check the `Tomcat` process:
 
+```bash
+ps -ef | grep tomcat
 ```
-ps -ef|grep tomcat
-```
 
-<div align="left"><img src="./images/image-20220829171716368.png"  width="72%"/></div>
+If the command output shows Tomcat processes running, the service is active.
 
-**If the command outputs as above, it indicates that the service is in a running state.**
+------
 
-## Login
+# Logging into Optimibi
 
-URL:  `http://localhost:28080/`
+After installation, access the Optimibi web interface using:
 
-username  /  password
+- **URL:** http://<server-ip>:28080/
+- Default Login Credentials:
+  - **Admin:** `admin / password`
+  - **Demo User:** `demo / demo`
 
-- `admin` / `password`
-- `demo` / `demo`
+------
 
-## Update the System
+# Updating the System
 
-Place the update package `optimibi-update.jar` in the `bi-server\update` folder and restart the system.
+To update Optimibi, place the update package (e.g., `Optimibi-update.jar`) in the `bi-server/update` folder and restart the system.

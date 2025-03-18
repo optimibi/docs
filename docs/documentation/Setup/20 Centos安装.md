@@ -1,3 +1,8 @@
+---
+title: Installation Guide (CentOS)
+permalink: /documentation/Setup/Installation-CentOS/
+---
+
 # Installation Guide (CentOS)
 
 ## Step 1: Switch to the Root User

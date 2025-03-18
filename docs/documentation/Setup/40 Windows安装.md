@@ -1,9 +1,9 @@
 ---
-title: Optimibi Installation (Windows)
-permalink: /documentation/Setup/OptimiBI-Installation-windows/
+title: Installation (Windows)
+permalink: /documentation/Setup/Installation-windows/
 ---
 
-# Optimibi Installation (Windows)
+# Installation (Windows)
 
 Log in to Windows as an **Administrator**.
 
@@ -49,7 +49,7 @@ Log in to Windows as an **Administrator**.
 
 ## Login
 
-URL:  `http://localhost:28080/`
+URL:  `http://<server-ip>:28080/`
 
 username  /  password
 
