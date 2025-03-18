@@ -99,7 +99,7 @@ If the command output shows Tomcat processes running, the service is active.
 
 After installation, access the Optimibi web interface using:
 
-- **URL:** http://<server-ip>:28080/
+- **URL:** http://server-ip:28080/
 - Default Login Credentials:
   - **Admin:** `admin / password`
   - **Demo User:** `demo / demo`
