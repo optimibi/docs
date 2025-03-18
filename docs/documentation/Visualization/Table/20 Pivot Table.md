@@ -1,3 +1,8 @@
+---
+title:  Pivot Table
+permalink: /documentation/Visualization/Pivot-Table/
+---
+
 # Pivot Table
 
 ## Overview
