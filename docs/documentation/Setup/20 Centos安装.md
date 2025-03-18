@@ -33,7 +33,7 @@ passwd biadmin
 **Step 4. Navigate to the directory containing the installation package and extract the package to the /opt directory.**
 
 ```
-unzip -o optimibi-server_202203240605.zip -d /opt/
+unzip -o optimibi-linux-7.02.zip -d /opt/
 ```
 
 <div align="left"><img src="./images/image-20220829172446528.png"  /></div>
@@ -64,18 +64,18 @@ cd /opt/bi-server/
 **Start the service**
 
 ```
-sh start-server.sh
+./start-server.sh
 ```
 
-<div align="left"><img src="./images/image-20220829172513074.png"  /></div>
+<div align="left"><img src="./images/image-20220829171648174.png"  /></div>
 
 **Stop Service**
 
 ```
-sh stop-server.sh
+./stop-server.sh
 ```
 
-<div align="left"><img src="./images/image-20220829172525119.png"  /></div>
+<div align="left"><img src="./images/image-20220829171701208.png"  /></div>
 
 **Check Service Start/Stop Status**
 
@@ -83,7 +83,7 @@ sh stop-server.sh
 ps -ef|grep tomcat
 ```
 
-<div align="left"><img src="./images/image-20220829172541387.png"  /></div>
+<div align="left"><img src="./images/image-20220829171716368.png"  /></div>
 
 If the command produces the above output, it indicates that the service is in a running state.
 
@@ -100,4 +100,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.
+Place the update package such as `optimibi-update.jar` in the `bi-server\update` folder and restart the system.

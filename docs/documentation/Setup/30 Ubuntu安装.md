@@ -34,10 +34,10 @@ addgroup biadmin biadmin
 **Step 4. Navigate to the directory where the installation package is located and unzip the package to the /opt path.**
 
 ```
-unzip -o optimibi-server_202203210834.zip -d /opt/
+unzip -o optimibi-linux-7.02.zip -d /opt/
 ```
 
-<div align="left"><img src="./images/image-20220829171613825.png"  /></div>
+<div align="left"><img src="./images/image-20220829172446528.png"  /></div>
 
 **Step 5. After the extraction is complete, go to the /opt/ directory and modify permissions.**
 
@@ -46,6 +46,7 @@ cd /opt/
 chmod -R 700 bi-server
 chown -R biadmin bi-server
 chgrp -R biadmin bi-server
+ls -al bi-server
 ```
 
 <div align="left"><img src="./images/image-20220829171632512.png"  /></div>
@@ -100,4 +101,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.
+Place the update package `optimibi-update.jar` in the `bi-server\update` folder and restart the system.

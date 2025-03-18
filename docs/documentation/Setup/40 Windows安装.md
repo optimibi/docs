@@ -58,4 +58,4 @@ username  /  password
 
 ## Update the System
 
-Place the update package `bi-update.jar` in the `bi-server\update` folder and restart the system.
+Place the update package `optimibi-update.jar` in the `bi-server\update` folder and restart the system.
