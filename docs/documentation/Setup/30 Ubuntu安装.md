@@ -12,7 +12,7 @@ permalink: /documentation/Setup/OptimiBI-Installation-Ubuntu/
 sudo su
 ```
 
-<div align="left"><img src="./images/image-20220829171526492.png"  /></div>
+<div align="left"><img src="./images/image-20220829171526492.png" width="40%" /></div>
 
 **Step 2. Create the "biadmin" user, and set the user password to "biadmin" as well.**
 
@@ -20,7 +20,7 @@ sudo su
 adduser biadmin
 ```
 
-<div align="left"><img src="./images/image-20220829171542736.png"  /></div>
+<div align="left"><img src="./images/image-20220829171542736.png" width="53%" /></div>
 
 **Step 3. Create a user group and add the "biadmin" user to the "biadmin" user group.**
 
@@ -29,7 +29,7 @@ addgroup biadmin
 addgroup biadmin biadmin
 ```
 
-<div align="left"><img src="./images/image-20220829171600582.png"  /></div>
+<div align="left"><img src="./images/image-20220829171600582.png"  width="48%"/></div>
 
 **Step 4. Navigate to the directory where the installation package is located and unzip the package to the /opt path.**
 
@@ -37,7 +37,7 @@ addgroup biadmin biadmin
 unzip -o optimibi-linux-7.02.zip -d /opt/
 ```
 
-<div align="left"><img src="./images/image-20220829172446528.png"  /></div>
+<div align="left"><img src="./images/image-20220829172446528.png"  width="57%"/></div>
 
 **Step 5. After the extraction is complete, go to the /opt/ directory and modify permissions.**
 
@@ -49,7 +49,7 @@ chgrp -R biadmin bi-server
 ls -al bi-server
 ```
 
-<div align="left"><img src="./images/image-20220829171632512.png"  /></div>
+<div align="left"><img src="./images/image-20220829171632512.png"  width="67%"/></div>
 
 **Installation Completed**
 
@@ -86,7 +86,7 @@ cd /opt/bi-server/
 ps -ef|grep tomcat
 ```
 
-<div align="left"><img src="./images/image-20220829171716368.png"  /></div>
+<div align="left"><img src="./images/image-20220829171716368.png"  width="72%"/></div>
 
 **If the command outputs as above, it indicates that the service is in a running state.**
 

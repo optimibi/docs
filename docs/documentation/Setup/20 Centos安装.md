@@ -11,7 +11,7 @@ permalink: /documentation/Setup/OptimiBI-Installation-CentOS/
 sudo su root
 ```
 
-<div align="left"><img src="./images/image-20220829172346058.png"  /></div>
+<div align="left"><img src="./images/image-20220829172346058.png"  width="43%"/></div>
 
 **Step 2. Create the 'biadmin' user group**
 
@@ -28,7 +28,7 @@ adduser biadmin -g biadmin
 passwd biadmin
 ```
 
-<div align="left"><img src="./images/image-20220829172434849.png"  /></div>
+<div align="left"><img src="./images/image-20220829172434849.png" width="63%" /></div>
 
 **Step 4. Navigate to the directory containing the installation package and extract the package to the /opt directory.**
 
@@ -36,7 +36,7 @@ passwd biadmin
 unzip -o optimibi-linux-7.02.zip -d /opt/
 ```
 
-<div align="left"><img src="./images/image-20220829172446528.png"  /></div>
+<div align="left"><img src="./images/image-20220829172446528.png"  width="58%"/></div>
 
 **Step 5. After extracting, go to the /opt/ directory and modify permissions.**
 
@@ -83,7 +83,7 @@ cd /opt/bi-server/
 ps -ef|grep tomcat
 ```
 
-<div align="left"><img src="./images/image-20220829171716368.png"  /></div>
+<div align="left"><img src="./images/image-20220829171716368.png" width="67%" /></div>
 
 If the command produces the above output, it indicates that the service is in a running state.
 
