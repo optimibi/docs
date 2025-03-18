@@ -35,6 +35,7 @@ groupadd biadmin
 [root@52d0bef30d9c /]#
 ```
 
+
 ## Step 3: Create the `biadmin` User
 
 Create a user named `biadmin`, add it to the `biadmin` group, and set its password:
