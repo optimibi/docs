@@ -40,7 +40,6 @@ In the **"Style"** tab, users can configure the appearance of the rectangle:
 - **Buttons**: Combine with click events (if supported) to create interactive buttons.
 - **Decorative Elements**: Enhance the dashboard's appearance with different styles and colors.
 
-
 ## **3. Notes**
 
 - Ensure a good contrast between the **background color** and other components for better visibility.
