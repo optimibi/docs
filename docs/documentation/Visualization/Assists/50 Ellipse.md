@@ -1,6 +1,6 @@
 ---
-title:  Image
-permalink:  /documentation/Visualization/Image/
+title:  Ellipse
+permalink:  /documentation/Visualization/Ellipse/
 ---
 
 # **Ellipse**
