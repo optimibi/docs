@@ -1,5 +1,5 @@
 ---
-title:  Line Chart
+title:  Line
 permalink: /documentation/Visualization/Line-Chart/
 ---
 

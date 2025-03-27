@@ -1,5 +1,5 @@
 ---
-title:  Word Cloud Chart
+title:  Word Cloud
 permalink: /documentation/Visualization/Word-Cloud-Chart/
 ---
 

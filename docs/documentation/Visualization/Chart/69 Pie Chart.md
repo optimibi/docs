@@ -1,5 +1,5 @@
 ---
-title:  Pie Chart
+title:  Pie
 permalink: /documentation/Visualization/Pie-Chart/
 ---
 

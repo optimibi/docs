@@ -1,5 +1,5 @@
 ---
-title:  Progress Chart
+title:  Progress
 permalink: /documentation/Visualization/Progress-Chart/
 ---
 

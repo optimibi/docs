@@ -1,5 +1,5 @@
 ---
-title:  Range Column Chart
+title:  Range Column
 permalink: /documentation/Visualization/Range-Column-Chart/
 ---
 

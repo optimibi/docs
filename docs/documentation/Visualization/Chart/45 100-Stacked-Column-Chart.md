@@ -1,5 +1,5 @@
 ---
-title:  100% Stacked Column Chart
+title:  100% Stacked Column
 permalink: /documentation/Visualization/100-Stacked-Column-Chart/
 ---
 

@@ -1,5 +1,5 @@
 ---
-title:  Stacked Ratio Chart
+title:  Stacked Ratio
 permalink: /documentation/Visualization/Stacked-Ratio-Chart/
 ---
 

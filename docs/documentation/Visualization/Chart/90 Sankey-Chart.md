@@ -1,5 +1,5 @@
 ---
-title:  Sankey Chart
+title:  Sankey
 permalink: /documentation/Visualization/Sankey-Chart/
 ---
 

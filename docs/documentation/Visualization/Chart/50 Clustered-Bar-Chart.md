@@ -1,5 +1,5 @@
 ---
-title:  Clustered Bar Chart
+title:  Clustered Bar
 permalink: /documentation/Visualization/Clustered-Bar-Chart/
 ---
 

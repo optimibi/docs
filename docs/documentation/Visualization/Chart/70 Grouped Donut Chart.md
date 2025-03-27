@@ -1,5 +1,5 @@
 ---
-title:  Grouped Donut Chart
+title:  Grouped Donut
 permalink: /documentation/Visualization/Grouped-Donut-Chart/
 ---
 

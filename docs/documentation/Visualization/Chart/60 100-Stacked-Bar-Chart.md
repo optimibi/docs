@@ -1,5 +1,5 @@
 ---
-title:  100% Stacked Bar Chart
+title:  100% Stacked Bar
 permalink: /documentation/Visualization/100-Stacked-Bar-Chart/
 ---
 

@@ -1,5 +1,5 @@
 ---
-title:  Radar Chart
+title:  Radar
 permalink: /documentation/Visualization/Radar-Chart/
 ---
 

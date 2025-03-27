@@ -1,5 +1,5 @@
 ---
-title:  Stacked Area Chart
+title:  Stacked Area
 permalink: /documentation/Visualization/Stacked0-Area-Chart/
 ---
 

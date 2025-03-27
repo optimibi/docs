@@ -1,5 +1,5 @@
 ---
-title:  Combo Chart
+title:  Combo
 permalink: /documentation/Visualization/Combo Chart/
 ---
 

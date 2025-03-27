@@ -1,5 +1,5 @@
 ---
-title:  Waterfall Chart
+title:  Waterfall
 permalink: /documentation/Visualization/Waterfall-Chart/
 ---
 

@@ -1,5 +1,5 @@
 ---
-title:  Calendar Chart
+title:  Calendar
 permalink: /documentation/Visualization/Calendar-Chart/
 ---
 

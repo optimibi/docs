@@ -1,5 +1,5 @@
 ---
-title:  Treemap Chart
+title:  Treemap
 permalink: /documentation/Visualization/Treemap/
 ---
 
