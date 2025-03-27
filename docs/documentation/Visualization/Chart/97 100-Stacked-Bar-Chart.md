@@ -17,13 +17,11 @@ This chart is useful when the focus is on **percentage contribution** rather tha
 - To normalize data where total values differ but **percentage distribution matters**.
 - To show **trends in composition** across multiple groups (e.g., quarters, regions).
 
----
 
 ## Data Structure
 
 100% Stacked Bar Charts support two ways of defining data:
 
----
 
 ### **Method 1: Wide Table Format (Multiple Measures)**
 
@@ -44,11 +42,9 @@ Each category (e.g., Q1, Q2...) has separate columns for each series to be stack
 
 **Chart Example**:
 
-![image-20250327170330881](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250327170330881.png)
 
-<div align="left"><img src="./../images/100-stacked-bar-multi-measure.png" width="100%" /></div>
+<div align="left"><img src="./../images/image-20250327170330881.png" width="100%" /></div>
 
----
 
 ### **Method 2: Long Table Format (Dimension + Measure)**
 
@@ -78,11 +74,9 @@ Each row represents a category–type pair with its value. This format is more n
 
 **Chart Example**:
 
-![image-20250327170257047](D:\github_projects\docs-optimibi\docs\documentation\Visualization\images\image-20250327170257047.png)
 
-<div align="left"><img src="./../images/100-stacked-bar-long-table.png" width="100%" /></div>
+<div align="left"><img src="./../images/image-20250327170257047.png" width="100%" /></div>
 
----
 
 ## Notes
 
